@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: IranSans;
+}
+
+:root {
+    --first: 13, 179, 158;
+    --second: 2, 195, 154;
+    --third: 57, 74, 109;
+    --fourth: 15, 33, 45;
+    --body-color: #ffffff;
+}
