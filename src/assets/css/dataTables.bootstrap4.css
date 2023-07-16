@@ -5,6 +5,9 @@ table.dataTable {
   margin-bottom: 6px !important;
   max-width: none !important;
   border-spacing: 0;
+  border-collapse: collapse!important;
+  
+  
 }
 
 .table.dataTable thead tr th{
@@ -89,6 +92,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   margin: 2px 0;
   white-space: nowrap;
   justify-content: center;
+  direction: ltr!important;
 }
 
 div.dataTables_wrapper div.dataTables_processing {

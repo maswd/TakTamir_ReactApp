@@ -3,7 +3,7 @@ import "../../assets/css/dataTables.bootstrap4.css";
 function Workers() {
   return (
     <>
-      <div className=" card shadow mb-4" style={{ direction: "ltr" }}>
+      <div className=" card shadow mb-4">
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">وضعیت تکنسین ها</h6>
         </div>
@@ -41,7 +41,7 @@ function Workers() {
                     cellspacing="0"
                     role="grid"
                     aria-describedby="dataTable_info"
-                    style={{ width: "100%", direction: "rtl" }}
+                    style={{ width: "100%" }}
                   >
                     <thead>
                       <tr role="row">
@@ -100,7 +100,7 @@ function Workers() {
                         <td>Tokyo</td>
                         <td>
                           <div className="btn btn-success btn-icon-split">
-                            <span className="text">کار میگیرم</span>
+                            <span className="text d-md-block d-none">کار میگیرم</span>
                             <span className="icon text-white-50">
                               <i className="fas fa-check"></i>
                             </span>
@@ -113,7 +113,7 @@ function Workers() {
                         <td>London</td>
                         <td>
                           <div className="btn btn-danger btn-icon-split">
-                            <span className="text">کار نمیگیرم</span>
+                            <span className="text d-md-block d-none">کار نمیگیرم</span>
                             <span className="icon text-white-50">
                               <i className="fas fa-times"></i>
                             </span>
@@ -126,7 +126,7 @@ function Workers() {
                         <td>66</td>
                         <td>
                           <div className="btn btn-danger btn-icon-split">
-                            <span className="text">کار نمیگیرم</span>
+                            <span className="text d-md-block d-none">کار نمیگیرم</span>
                             <span className="icon text-white-50">
                               <i className="fas fa-times"></i>
                             </span>
@@ -139,7 +139,7 @@ function Workers() {
                         <td>dd</td>
                         <td>
                           <div className="btn btn-success btn-icon-split">
-                            <span className="text">کار میگیرم</span>
+                            <span className="text d-md-block d-none">کار میگیرم</span>
                             <span className="icon text-white-50">
                               <i className="fas fa-check"></i>
                             </span>

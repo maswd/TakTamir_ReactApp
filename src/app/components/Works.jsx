@@ -4,7 +4,7 @@ function Works() {
   return (
     <div>
     
-      <div className=" card shadow mb-4" style={{ direction: "ltr" }}>
+      <div className=" card shadow mb-4" >
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">وضعیت  کار ها </h6>
         </div>
@@ -95,7 +95,7 @@ function Works() {
                         <td className="sorting_1">Airi Satou</td>
                         <td>
                         <div className="btn btn-success btn-icon-split">
-                            <span className="text">انجام شده </span>
+                            <span className="text text-nowrap">انجام شده </span>
                           </div>
                         </td>
                         <td>Accountant</td>
@@ -106,7 +106,7 @@ function Works() {
                         <td className="sorting_1">Angelica Ramos</td>
                         <td>
                           <div className="btn btn-danger btn-icon-split">
-                            <span className="text">کنسل شده </span>
+                            <span className="text text-nowrap">کنسل شده </span>
   
                           </div>
                         </td>
@@ -118,7 +118,7 @@ function Works() {
                         <td className="sorting_1">Ashton Cox</td>
                         <td>
                           <div className="btn btn-primary btn-icon-split">
-                            <span className="text">حمل به کارگاه </span>
+                            <span className="text text-nowrap">حمل به کارگاه </span>
   
                           </div>
                         </td>
@@ -129,7 +129,7 @@ function Works() {
                         <td className="sorting_1">Bradley Greer</td>
                         <td>
                           <div className="btn btn-warning btn-icon-split">
-                            <span className="text">کار زمان بالا </span>
+                            <span className="text text-nowrap">کار زمان بالا </span>
                             
                           </div>
                         </td>
@@ -141,7 +141,7 @@ function Works() {
                         <td className="sorting_1">Bradley Greer</td>
                         <td>
                           <div className="btn btn-info btn-icon-split">
-                            <span className="text">در حال انجام</span>
+                            <span className="text text-nowrap">در حال انجام</span>
                             
                           </div>
                         </td>
@@ -160,20 +160,21 @@ function Works() {
                     id="dataTable_paginate"
                   >
                     <ul className="pagination">
-                      <li
-                        className="paginate_button page-item previous disabled"
-                        id="dataTable_previous"
+                    <li
+                        className="paginate_button  page-item previous"
+                        id="dataTable_next"
                       >
                         <a
                           href="#"
                           aria-controls="dataTable"
-                          data-dt-idx="0"
+                          data-dt-idx="7"
                           tabindex="0"
                           className="page-link"
                         >
                           برگشت
                         </a>
                       </li>
+                      
                       <li className="paginate_button page-item ">
                         <a
                           href="#"
@@ -241,13 +242,13 @@ function Works() {
                         </a>
                       </li>
                       <li
-                        className="paginate_button page-item next"
-                        id="dataTable_next"
+                        className="paginate_button page-item next disabled"
+                        id="dataTable_previous"
                       >
                         <a
                           href="#"
                           aria-controls="dataTable"
-                          data-dt-idx="7"
+                          data-dt-idx="0"
                           tabindex="0"
                           className="page-link"
                         >
