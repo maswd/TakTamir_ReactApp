@@ -11599,6 +11599,7 @@ a:focus {
   width: 2.5rem;
   height: 2.5rem;
   text-align: center;
+  padding: 0.6rem;
   cursor: pointer;
   margin-top: 1rem;
 }

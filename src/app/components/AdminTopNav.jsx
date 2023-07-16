@@ -1,5 +1,6 @@
 import React from "react";
 import user from "../../assets/img/undraw_profile.svg"
+import { NavLink } from "react-router-dom";
 function AdminTopNav() {
   return (
     <>
@@ -260,15 +261,13 @@ function AdminTopNav() {
                 Activity Log
               </a>
               <div className="dropdown-divider"></div>
-              <a
+              <NavLink
                 className="dropdown-item"
-                href="#"
-                data-toggle="modal"
-                data-target="#logoutModal"
+                to="/logout"
               >
                 <i className="fa fa-power-off fa-sm fa-fw ml-2 text-gray-400"></i>
                 Logout
-              </a>
+              </NavLink>
             </div>
           </li>
         </ul>

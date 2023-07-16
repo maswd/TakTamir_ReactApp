@@ -122,9 +122,9 @@ const AdminSidebar = () => {
           ></button>
         </div>
         <div className="text-center">
-          <button className="rounded-circle border-0  bg-gradient-warning logout">
-            <i className="fa fa-power-off fa-sm fa-fw text-white"></i>
-          </button>
+          <NavLink to="/logout" className="rounded-circle border-0 btn  bg-gradient-warning logout">
+            <i className="fa fa-power-off  text-white"></i>
+          </NavLink>
         </div>
       </ul>
     </div>

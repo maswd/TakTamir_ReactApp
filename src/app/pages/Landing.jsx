@@ -19,8 +19,8 @@ function Landing() {
         
             <Header />
             <Hero />
-            <Conect/>
             <Features />
+            <Conect/>
             <Pricing />
             <Footer />
         </>

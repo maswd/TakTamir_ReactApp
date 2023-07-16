@@ -6,6 +6,7 @@ import Dashborad from "./app/pages/Dashborad";
 import Workers from "./app/components/Workers";
 import Works from "./app/components/Works";
 import Masseages from "./app/components/Masseages";
+import Logout from "./app/components/Logout";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="works" element={<Works />} />
           <Route path="messages" element={<Masseages />} />
         </Route>
+        <Route path="/logout" element={<Logout />} />
       </Routes>
       {/* <Route path="category" element={<DashCategory />} /> 
 
