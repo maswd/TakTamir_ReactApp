@@ -3,32 +3,22 @@ import { Routes, Route } from "react-router-dom";
 
 import Landing from "./app/pages/Landing";
 import Dashborad from "./app/pages/Dashborad";
-
-
+import Workers from "./app/components/Workers";
+import Works from "./app/components/Works";
+import Masseages from "./app/components/Masseages";
 
 function App() {
-
   return (
     <>
       <Routes>
-        <Route
-          path="/dashboard"
-          element={
-              <Dashborad />
-          }
-        />
         <Route path="/" element={<Landing />} />
-        {/* <Route index element={<DashHome />} />
-          <Route
-            path="setting"
-            element={
-              <UserContext>
-                <DashSetting />
-              </UserContext>
-            } 
-          />
-          {/* <Route path="category" element={<DashCategory />} /> */}
+        <Route path="/dashboard" element={<Dashborad />}>
+          <Route index element={<Workers />} />
+          <Route path="works" element={<Works />} />
+          <Route path="messages" element={<Masseages />} />
+        </Route>
       </Routes>
+      {/* <Route path="category" element={<DashCategory />} /> 
 
       {/* <Route path="/logout" element={<Logout />} />
       <Route path="/verify" element={<VerifyCode />} />

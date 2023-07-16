@@ -5286,8 +5286,8 @@ input[type="button"].btn-block {
 
 .page-item:first-child .page-link {
   margin-left: 0;
-  border-top-right-radius: 0.35rem;
-  border-bottom-right-radius: 0.35rem;
+  border-top-left-radius: 0.35rem;
+  border-bottom-left-radius: 0.35rem;
 }
 
 .page-item:last-child .page-link {
@@ -5333,8 +5333,8 @@ input[type="button"].btn-block {
 }
 
 .pagination-sm .page-item:first-child .page-link {
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 
 .pagination-sm .page-item:last-child .page-link {
@@ -11595,17 +11595,17 @@ a:focus {
   width: 2.5rem;
   height: 2.5rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   cursor: pointer;
 }
 
-.lougout {
+.logout {
   width: 2.5rem;
   height: 2.5rem;
   text-align: center;
   cursor: pointer;
+  margin-top: 1rem;
 }
-
 
 
 .sidebar #sidebarToggle::after {
@@ -11933,11 +11933,11 @@ a:focus {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.sidebar-dark .nav-item.active .nav-link {
+.sidebar-dark .nav-item .nav-link.active  {
   color: #fff;
 }
 
-.sidebar-dark .nav-item.active .nav-link i {
+.sidebar-dark .nav-item .nav-link.active  i {
   color: #fff;
 }
 
