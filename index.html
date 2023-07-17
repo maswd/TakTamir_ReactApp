@@ -7,12 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./src/assets/fonts/iran_sans.css">
   <link rel="stylesheet" href="./src/assets/css/all.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./src/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
   <title>Vite + React + TS</title>
 </head>
 
 <body>
 
-  <div id="root"></div>
+  <div id="root">
+    <div id="loading" style="display: flex;height: 100vh;justify-content: center;align-items: center">
+      <div class="spinner-border  text-info" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
   <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery"
     src="./src/assets/js//jquery.slim.min.js.download"></script>
@@ -22,8 +30,6 @@
   <!-- <script src="src/assets/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
   <!-- <script src="src/assets/js/sb-admin-2.js"></script> -->
   <!-- <script src="src/assets/css/vendor/jquery-easing/jquery.easing.min.js"></script> -->
-
-
 
 
 </body>

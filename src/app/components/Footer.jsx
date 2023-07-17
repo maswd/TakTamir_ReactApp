@@ -4,7 +4,9 @@ import phone2 from "../../assets/img/email2.svg"
 
 function Footer() {
     return (
-        <div id="footer">
+        <div data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="500" id="footer">
             <section className="footertwo__section forPadding" >
                 <div className="container">
                     <div className="row justify-content-md-center">

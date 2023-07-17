@@ -2,7 +2,7 @@ import logo from "../../assets/image 1.svg"
 import {NavLink} from 'react-router-dom'
 function Header() {
     return (
-        <div id="header">
+        <div data-aos="fade-down"  id="header">
             <section className="nav headerone__section right" >
                 <div className="container">
                     <div className="row justify-content-md-center">

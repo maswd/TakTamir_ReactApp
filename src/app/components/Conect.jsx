@@ -2,7 +2,7 @@ import React from 'react'
 
 function Conect() {
     return (
-        <section className="tem2-leadSec leadcapturetwo__section" ><img
+        <section data-aos="zoom-in-up" className="tem2-leadSec leadcapturetwo__section" ><img
             className="leadcapturetwo__bgdecoration" src="https://cdn.landin.ir/default/sections/images/leaf.svg" />
             <div className="container">
                 <div className="row justify-content-md-center tem2-height-res">

@@ -15,19 +15,16 @@ function Workers() {
             >
               <div className="row">
                 <div className="col-sm-12 col-md-6">
-               
-                </div>
-                <div className="col-sm-12 col-md-6">
                   <div id="dataTable_filter" className="dataTables_filter">
                     <label>
-                      
+                    جستجو: 
+
                       <input
                         type="search"
                         className="form-control form-control-sm mr-1"
                         placeholder=""
                         aria-controls="dataTable"
                       />
-                       :جستجو
                       
                     </label>
                   </div>
