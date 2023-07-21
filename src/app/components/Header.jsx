@@ -24,7 +24,12 @@ function Header() {
                                         >تماس با ما</a></li>
                                         <li className="nav-item active">
                                             <div className=" " >
-                                                <NavLink  className="nav-link"  to="/dashboard" >ورود به حساب </NavLink>
+                                                <NavLink  className="nav-link"  to="/login" >ورود به حساب </NavLink>
+                                            </div>
+                                        </li>
+                                        <li className="nav-item active">
+                                            <div className=" " >
+                                                <NavLink  className="nav-link"  to="/dashboard" >داشبورد ادمین   </NavLink>
                                             </div>
                                         </li>
 
