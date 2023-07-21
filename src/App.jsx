@@ -7,9 +7,12 @@ import Workers from "./app/components/Workers";
 import Works from "./app/components/Works";
 import Masseages from "./app/components/Masseages";
 import Logout from "./app/components/Logout";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Login from "./app/components/Login";
+import ConfirmPhone from "./app/components/ConfirmPhone";
+import UserInformation from "./app/components/UserInformation";
 
 function App() {
   useEffect(() => {
@@ -26,6 +29,9 @@ function App() {
           <Route path="messages" element={<Masseages />} />
         </Route>
         <Route path="/logout" element={<Logout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/confirm" element={<ConfirmPhone />} />
+        <Route path="/user-information" element={<UserInformation />} />
       </Routes>
       {/* <Route path="category" element={<DashCategory />} /> 
 
