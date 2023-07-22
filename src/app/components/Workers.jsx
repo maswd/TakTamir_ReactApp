@@ -1,5 +1,4 @@
 import React from "react";
-import "../../assets/css/dataTables.bootstrap4.css";
 function Workers() {
   return (
     <>

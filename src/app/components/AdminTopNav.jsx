@@ -1,5 +1,5 @@
 import React from "react";
-import user from "../../assets/img/undraw_profile.svg"
+import user from "/img/undraw_profile.svg"
 import { NavLink } from "react-router-dom";
 function AdminTopNav() {
   return (

@@ -11982,19 +11982,31 @@ a:focus {
   padding: 0;
   overflow: hidden;
   display: inline-flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
 }
 
 .btn-icon-split .icon {
-  background: rgba(0, 0, 0, 0.15);
-  display: inline-block;
+  /* background: rgba(0, 0, 0, 0.15); */
+  display: block;
+  align-self: center;
+  font-size: x-small;
+  height: 100%;
   padding: 0.375rem 0.75rem;
+}
+
+@media (min-width:768px) {
+  .btn-icon-split .icon {
+    /* background: rgba(0, 0, 0, 0.15); */
+    display: block;
+    height: 100%;
+    padding: 0.375rem 0 0.375rem .75rem;
+  }
 }
 
 .btn-icon-split .text {
   display: inline-block;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem .75rem;
 }
 
 .btn-icon-split.btn-sm .icon,
@@ -12595,5 +12607,3 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
-
-

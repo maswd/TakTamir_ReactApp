@@ -1,4 +1,4 @@
-import logo from "../../assets/image 1.svg"
+import logo from "/image 1.svg"
 import {NavLink} from 'react-router-dom'
 function Header() {
     return (

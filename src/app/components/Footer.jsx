@@ -1,6 +1,6 @@
-import email2 from "../../assets/img/email2.svg"
-import address2 from "../../assets/img/address2.svg"
-import phone2 from "../../assets/img/email2.svg"
+import email2 from "/img/email2.svg"
+import address2 from "/img/address2.svg"
+import phone2 from "/img/email2.svg"
 
 function Footer() {
     return (

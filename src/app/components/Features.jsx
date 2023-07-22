@@ -1,4 +1,4 @@
-import ten from "../../assets/img/10.svg";
+import ten from "/img/10.svg";
 
 function Features() {
   return (

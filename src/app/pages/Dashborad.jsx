@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../../assets/css/sb-admin-2.css";
 import { initMyJQuery, remove } from "../../utils/script";
 import AdminSidebar from "../components/AdminSidebar";
 import AdminTopNav from "../components/AdminTopNav";

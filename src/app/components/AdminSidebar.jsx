@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/image 1.svg";
+import logo from "/image 1.svg";
 import { NavLink } from "react-router-dom";
 const AdminSidebar = () => {
   return (

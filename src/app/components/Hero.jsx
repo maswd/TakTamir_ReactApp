@@ -1,8 +1,8 @@
 import React from 'react'
-import normalCircle from "../../assets/img/normal-circle.svg"
-import ring from "../../assets/img/ring.svg"
-import ten from "../../assets/img/10.svg"
-import dotsPattern from "../../assets/img/dots-pattern.svg"
+import normalCircle from "/img/normal-circle.svg"
+import ring from "/img/ring.svg"
+import ten from "/img/10.svg"
+import dotsPattern from "/img/dots-pattern.svg"
 function Hero() {
     return (
         <div id="text">
