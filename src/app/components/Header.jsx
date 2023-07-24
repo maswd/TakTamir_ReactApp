@@ -32,6 +32,11 @@ function Header() {
                                                 <NavLink  className="nav-link"  to="/dashboard" >داشبورد ادمین   </NavLink>
                                             </div>
                                         </li>
+                                        <li className="nav-item active">
+                                            <div className=" " >
+                                                <NavLink  className="nav-link"  to="/technician" >داشبورد تکنسین   </NavLink>
+                                            </div>
+                                        </li>
 
                                     </ul>
                                 </div>

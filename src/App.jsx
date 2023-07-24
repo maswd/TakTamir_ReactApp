@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import Login from "./app/components/Login";
 import ConfirmPhone from "./app/components/ConfirmPhone";
 import UserInformation from "./app/components/UserInformation";
+import TechnicianDash from "./app/pages/TechnicianDash";
+import Cards from "./app/components/Cards";
+import Jobs from "./app/components/Jobs";
 
 function App() {
   useEffect(() => {
@@ -28,6 +31,12 @@ function App() {
           <Route path="works" element={<Works />} />
           <Route path="messages" element={<Masseages />} />
         </Route>
+        <Route path="/technician" element={<TechnicianDash />}>
+          <Route index element={<Cards />} />
+          <Route path="jobs" element={<Jobs />} />
+          <Route path="profile" element={<UserInformation />} />
+        </Route>
+
         <Route path="/logout" element={<Logout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/confirm" element={<ConfirmPhone />} />
