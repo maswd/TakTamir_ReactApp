@@ -12,7 +12,20 @@ function TechnicianDash() {
             <ul className="navbar-nav flex-row ">
               <li className="nav-item mx-2 text-center ">
                 <NavLink
-                  to=""
+                  to="write"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  <div>
+                    <i class="btn-circle btn-sm  bg-dark circle-1 text-light fa fa-pen text-light"></i>
+                  </div>
+                  <p className="small"> ثبت کار</p>
+                </NavLink>
+              </li>
+              <li className="nav-item mx-2 text-center ">
+                <NavLink
+                  to="orders"
                   className={({ isActive }) =>
                     isActive ? "nav-link active" : "nav-link"
                   }
@@ -39,7 +52,8 @@ function TechnicianDash() {
 
               <li className="nav-item mx-2  text-center ">
                 <NavLink
-                  to="profile"
+                  to=""
+                  end
                   className={({ isActive }) =>
                     isActive ? "nav-link active" : "nav-link"
                   }

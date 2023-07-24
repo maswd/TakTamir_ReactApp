@@ -54,7 +54,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          <hr className="mt-5" />
+          <hr  />
           <div className=" d-flex flex-column justify-content-center align-items-center">
             <div class="shadow w-100 btn text-light bg-gradient-warning my-2 ">
               <span class="text text-nowrap">قوانین   </span>
