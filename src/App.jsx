@@ -16,6 +16,7 @@ import UserInformation from "./app/components/UserInformation";
 import TechnicianDash from "./app/pages/TechnicianDash";
 import Cards from "./app/components/Cards";
 import Jobs from "./app/components/Jobs";
+import Profile from "./app/components/Profile";
 
 function App() {
   useEffect(() => {
@@ -34,7 +35,7 @@ function App() {
         <Route path="/technician" element={<TechnicianDash />}>
           <Route index element={<Cards />} />
           <Route path="jobs" element={<Jobs />} />
-          <Route path="profile" element={<UserInformation />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
 
         <Route path="/logout" element={<Logout />} />

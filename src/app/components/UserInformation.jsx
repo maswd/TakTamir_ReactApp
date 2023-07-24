@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function UserInformation() {
   return (
     <>
-      <div className="">
-        <div className="row justify-content-center mt-2">
-          <div className="col-12 ">
-            <div className="card o-hidden border-0 shadow-lg ">
+     <div className="container">
+        <div className="row justify-content-center ">
+          <div className="col-xl-10 col-lg-12 col-md-9 ">
+            <div className="card o-hidden border-0 shadow-lg my-5">
               <div className="card-body p-0">
                 <div className="row">
                   <div className="col-12  col-lg-6  d-block bg-login-image"></div>

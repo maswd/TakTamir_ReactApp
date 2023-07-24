@@ -127,7 +127,7 @@ function Workers() {
                               <i className="fas fa-times"></i>
                             </span>
                           </div>
-                        </td>{" "}
+                        </td>
                       </tr>
                       <tr className="even">
                         <td className="sorting_1">Bradley Greer</td>

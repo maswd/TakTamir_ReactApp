@@ -114,7 +114,7 @@ function Works() {
                         <td>
                           <div className="btn btn-primary btn-icon-split">
                             <span className="text text-nowrap">
-                              حمل به کارگاه{" "}
+                              حمل به کارگاه
                             </span>
                           </div>
                         </td>
@@ -126,7 +126,7 @@ function Works() {
                         <td>
                           <div className="btn btn-warning btn-icon-split">
                             <span className="text text-nowrap">
-                              کار زمان بالا{" "}
+                              کار زمان بالا
                             </span>
                           </div>
                         </td>
