@@ -65,7 +65,7 @@ function WriteWorks() {
         <Subscription />
         </div>
       <div className="col-md-10 mx-auto ">
-        <div className=" mt-3 d-flex justify-content-between g-3 ">
+        <div className=" mt-3 d-flex justify-content-evenly g-3 ">
           <button className="shadow-sm  btn w-50 btn-warning">افزودن عکس</button>
           <button className="shadow-sm  btn w-50 btn-primary">امضا مشتری</button>
         </div>
