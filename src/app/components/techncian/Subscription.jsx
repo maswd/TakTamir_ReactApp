@@ -8,8 +8,9 @@ function Subscription() {
   };
 
   return (
-    <div className="d-flex">
+    <div className="mt-3 d-flex justify-content-around py-3">
       <div className="form-check">
+        
         <input
           className="form-check-input "
           type="checkbox"
