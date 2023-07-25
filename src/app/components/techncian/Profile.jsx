@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Profile() {
   return (
     <>
-      <div className="  mt-2 ">
+      <div className="mt-2 ">
         <div className=" col-md-10 col-lg-12 mx-auto mb-4 mb-lg-0">
           <div className="card shadow-lg" style={{ direction: "ltr" }}>
             <div className="row">
@@ -19,7 +19,7 @@ function Profile() {
                       "linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))",
                   }}
                 >
-                   <div className="mb-5 d-flex justify-content-start pl-3 pt-3 align-items-center ">
+                  <div className="mb-5 d-flex justify-content-start pl-3 pt-3 align-items-center ">
                     <Link to="/" className="mr-3">
                       <div className="shadow-sm border btn-circle text-light ">
                         <i className="fas fa-sign-out-alt "> </i>
@@ -33,14 +33,11 @@ function Profile() {
                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                     alt="avatar"
                     className="img-fluid w-50"
-                    
                   />
-                 
+
                   <p className="h5 mt-3">اقای هاشمی</p>
                   <p className="h6 my-3">حساب ذخیره : 2,000,000</p>
-                 
                 </div>
-                
               </div>
               <div className=" col-12 col-md-8 w-50 ">
                 <div className="order-0 card-body p-4 w-100">
@@ -62,25 +59,21 @@ function Profile() {
                   </div>
                 </div>
                 <div className="d-flex border-top order-1 justify-content-around p-3">
-                  <img
-                    src="/img/undraw_profile_re_4a55.svg"
-                    className="w-50 h-50 "
-                    alt=""
-                  />
-                  <div className="text-right align-self-end">
+                  <div className="text-left align-self-end">
                     <h5 className="h6 mt-4">
                       <span className="text-gray-900">کد تکنسین :</span> 5565465{" "}
                     </h5>
                   </div>
-                  
+                  <img
+                    src="/img/undraw_profile_re_4a55.svg"
+                    className="w-50 my-3"
+                    alt=""
+                  />
                 </div>
-                
               </div>
-              
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );
