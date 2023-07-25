@@ -5,7 +5,13 @@ function Jobs() {
     <>
       <section className=" mt-2">
         <div className="">
-          <div className="row justify-content-center align-items-center textthree-row textthree-position-right">
+          <div
+            style={{
+              background:
+                "linear-gradient(to right bottom, rgba(246, 211, 101, .1), rgba(253, 160, 133, .1))",
+            }}
+            className="row justify-content-center align-items-center textthree-row textthree-position-right"
+          >
             <div className="col-md-12 col-lg-7 textthree-texts">
               <div
                 className="textthree-texts__wrapper"
@@ -20,10 +26,14 @@ function Jobs() {
                   className="table table-bordered dataTable"
                   cellspacing="0"
                   aria-describedby="dataTable_info"
-                  style={{ width: "100%", direction: "rtl",textAlign:"center" }}
+                  style={{
+                    width: "100%",
+                    direction: "rtl",
+                    textAlign: "center",
+                  }}
                 >
                   <thead>
-                    <tr role="row" >
+                    <tr role="row">
                       <th
                         className="p-3 bg-white  text-gray-900"
                         tabindex="0"
@@ -59,7 +69,7 @@ function Jobs() {
                   </thead>
 
                   <tbody>
-                    <tr  className="border-white">
+                    <tr className="border-white">
                       <td className="">Airi Satou</td>
                       <td>Accountant</td>
                       <td>
@@ -79,7 +89,6 @@ function Jobs() {
                       <td>
                         <div className="btn btn-danger btn-icon-split">
                           <span className="text d-md-block d-none">
-                           
                             رزرو شده
                           </span>
                           <span className="icon text-white-50">
@@ -172,7 +181,13 @@ function Jobs() {
                 </div>
               </div>
             </div>
-            <div className="textthree-bgBox"></div>
+            <div
+              style={{
+                background:
+                  "linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))",
+              }}
+              className="textthree-bgBox"
+            ></div>
           </div>
         </div>
       </section>
