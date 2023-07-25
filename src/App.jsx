@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Landing from "./app/pages/Landing";
 import Dashborad from "./app/pages/Dashborad";
-import Workers from "./app/components/Workers";
-import Works from "./app/components/Works";
-import Masseages from "./app/components/Masseages";
-import Logout from "./app/components/Logout";
+import Workers from "./app/components/admin/Workers";
+import Works from "./app/components/admin/Works";
+import Masseages from "./app/components/chat/Masseages";
+import Logout from "./app/components/login/Logout";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
-import Login from "./app/components/Login";
-import ConfirmPhone from "./app/components/ConfirmPhone";
-import UserInformation from "./app/components/UserInformation";
+import Login from "./app/components/login/Login";
+import ConfirmPhone from "./app/components/login/ConfirmPhone";
+import UserInformation from "./app/components/login/UserInformation";
 import TechnicianDash from "./app/pages/TechnicianDash";
-import Cards from "./app/components/Cards";
-import Jobs from "./app/components/Jobs";
-import Profile from "./app/components/Profile";
-import WriteWorks from "./app/components/WriteWorks";
+import Cards from "./app/components/techncian/Cards";
+import Jobs from "./app/components/techncian/Jobs";
+import Profile from "./app/components/techncian/Profile";
+import WriteWorks from "./app/components/techncian/WriteWorks";
 
 function App() {
   useEffect(() => {
@@ -34,11 +33,11 @@ function App() {
           <Route path="messages" element={<Masseages />} />
         </Route>
         <Route path="/technician" element={<TechnicianDash />}>
-
           <Route path="write" element={<WriteWorks />} />
           <Route path="orders" element={<Cards />} />
+          <Route path="support" element={<Masseages />} />
           <Route path="jobs" element={<Jobs />} />
-          <Route index  element={<Profile />} />
+          <Route index element={<Profile />} />
         </Route>
 
         <Route path="/logout" element={<Logout />} />

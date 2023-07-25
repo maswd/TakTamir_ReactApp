@@ -1,5 +1,4 @@
 import React from "react";
-import Cards from "../components/Cards";
 import { NavLink, Outlet } from "react-router-dom";
 
 function TechnicianDash() {
@@ -12,13 +11,26 @@ function TechnicianDash() {
             <ul className="navbar-nav flex-row ">
               <li className="nav-item mx-2 text-center ">
                 <NavLink
+                  to="support"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  <div>
+                    <i className="btn-circle btn-sm  bg-dark circle-1 text-light fa fa-headset text-light"></i>
+                  </div>
+                  <p className="small"> پشتیبانی</p>
+                </NavLink>
+              </li>
+              <li className="nav-item mx-2 text-center ">
+                <NavLink
                   to="write"
                   className={({ isActive }) =>
                     isActive ? "nav-link active" : "nav-link"
                   }
                 >
                   <div>
-                    <i class="btn-circle btn-sm  bg-dark circle-1 text-light fa fa-pen text-light"></i>
+                    <i className="btn-circle btn-sm  bg-dark circle-1 text-light fa fa-pen text-light"></i>
                   </div>
                   <p className="small"> ثبت کار</p>
                 </NavLink>
@@ -31,7 +43,7 @@ function TechnicianDash() {
                   }
                 >
                   <div>
-                    <i class="btn-circle btn-sm  bg-dark circle-1 text-light fa fa-shopping-cart text-light"></i>
+                    <i className="btn-circle btn-sm  bg-dark circle-1 text-light fa fa-shopping-cart text-light"></i>
                   </div>
                   <p className="small"> سفارشات</p>
                 </NavLink>
@@ -44,7 +56,7 @@ function TechnicianDash() {
                   }
                 >
                   <div>
-                    <i class="btn-circle btn-sm bg-dark circle-1  fa fa-hands-helping  text-light"></i>
+                    <i className="btn-circle btn-sm bg-dark circle-1  fa fa-hands-helping  text-light"></i>
                   </div>
                   <p className="small"> گرفتن کار</p>
                 </NavLink>
@@ -59,7 +71,7 @@ function TechnicianDash() {
                   }
                 >
                   <div>
-                    <i class="btn-circle btn-sm  bg-dark circle-1 fa fa-user text-light"></i>
+                    <i className="btn-circle btn-sm  bg-dark circle-1 fa fa-user text-light"></i>
                   </div>
                   <p className="small">پروفایل</p>
                 </NavLink>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { initMyJQuery, remove } from "../../utils/script";
-import AdminSidebar from "../components/AdminSidebar";
-import AdminTopNav from "../components/AdminTopNav";
+import AdminSidebar from "../components/admin/AdminSidebar";
+import AdminTopNav from "../components/admin/AdminTopNav";
 import { Outlet } from "react-router-dom";
 function Dashborad() {
   useEffect(() => {

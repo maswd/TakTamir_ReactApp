@@ -1,4 +1,5 @@
 import React from "react";
+import StatusDropdown from "./StatusDropdown";
 
 function Card() {
   return (
@@ -36,9 +37,7 @@ function Card() {
                   </div>
                 </div>
                 <div className="col-auto text-left">
-                  <button className="mb-5 btn btn-dark p-1 text-xs">
-                    تغییر وضعیت
-                  </button>
+                  <StatusDropdown />
                   <i className="mt-5 d-block fas fa-calendar fa-2x text-gray-300"></i>
                 </div>
               </div>
@@ -78,9 +77,7 @@ function Card() {
                   </div>
                 </div>
                 <div className="col-auto text-left">
-                  <button className="mb-5 btn btn-dark p-1 text-xs">
-                    تغییر وضعیت
-                  </button>
+                  <StatusDropdown />
                   <i className="mt-5 d-block fas fa-dollar-sign fa-2x text-gray-300"></i>
                 </div>
               </div>
@@ -126,9 +123,8 @@ function Card() {
                   </div>
                 </div>
                 <div className="col-auto text-left">
-                  <button className="mb-5 btn btn-dark p-1 text-xs">
-                    تغییر وضعیت
-                  </button>
+                  <StatusDropdown />
+
                   <i className="mt-5 d-block fas fa-clipboard-list fa-2x text-gray-300"></i>
                 </div>
               </div>
@@ -168,9 +164,8 @@ function Card() {
                   </div>
                 </div>
                 <div className="col-auto text-left">
-                  <button className="mb-5 btn btn-dark p-1 text-xs">
-                    تغییر وضعیت
-                  </button>
+                  <StatusDropdown />
+
                   <i className="mt-5 d-block fas fa-comments fa-2x text-gray-300"></i>
                 </div>
               </div>

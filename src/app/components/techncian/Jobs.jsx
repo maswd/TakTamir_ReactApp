@@ -24,7 +24,7 @@ function Jobs() {
 
                 <table
                   className="table table-bordered dataTable"
-                  cellspacing="0"
+                  cellSpacing="0"
                   aria-describedby="dataTable_info"
                   style={{
                     width: "100%",
@@ -36,10 +36,10 @@ function Jobs() {
                     <tr role="row">
                       <th
                         className="p-3 bg-white  text-gray-900"
-                        tabindex="0"
+                        tabIndex="0"
                         aria-controls="dataTable"
-                        rowspan="1"
-                        colspan="1"
+                        rowSpan="1"
+                        colSpan="1"
                         aria-label="Name: activate to sort column descending"
                         aria-sort="ascending"
                       >
@@ -47,20 +47,20 @@ function Jobs() {
                       </th>
                       <th
                         className="p-3 bg-white text-gray-900"
-                        tabindex="0"
+                        tabIndex="0"
                         aria-controls="dataTable"
-                        rowspan="1"
-                        colspan="1"
+                        rowSpan="1"
+                        colSpan="1"
                         aria-label="Position: activate to sort column ascending"
                       >
                         نام مشتری
                       </th>
                       <th
                         className="p-3 bg-white text-gray-900"
-                        tabindex="0"
+                        tabIndex="0"
                         aria-controls="dataTable"
-                        rowspan="1"
-                        colspan="1"
+                        rowSpan="1"
+                        colSpan="1"
                         aria-label="Age: activate to sort column ascending"
                       >
                         وضعیت
