@@ -6,8 +6,7 @@ function TechnicianDash() {
     <div className="container-fluid " style={{ paddingBottom: "90px" }}>
       <Outlet />
       <nav className="navbar shadow-lg fixed-bottom  navbar-light bg-light">
-        <div className="container ">
-          <div className="mx-auto">
+        <div className="mx-auto ">
             <ul className="navbar-nav flex-row ">
               <li className="nav-item mx-2 text-center ">
                 <NavLink
@@ -77,7 +76,6 @@ function TechnicianDash() {
                 </NavLink>
               </li>
             </ul>
-          </div>
         </div>
       </nav>
     </div>

@@ -13,15 +13,15 @@ function Jobs() {
             className="row justify-content-center align-items-center textthree-row textthree-position-right"
           >
             <div className="col-md-12 col-lg-7 textthree-texts">
+            <div className="" >
+                  <img src="/img/dots-pattern.svg" />
+                  <p className="d-inline-block mr-4 h5"> کارتو اینجا پیدا کن</p>
+                </div>
               <div
                 className="textthree-texts__wrapper"
                 style={{ width: "100%" }}
               >
-                <div className="">
-                  <img src="/img/dots-pattern.svg" />
-                  <p className="d-inline-block mr-4 h5"> کارتو اینجا پیدا کن</p>
-                </div>
-
+               
                 <table
                   className="table table-bordered dataTable"
                   cellSpacing="0"
@@ -167,6 +167,59 @@ function Jobs() {
                         </div>
                       </td>
                     </tr>
+                    <tr className="">
+                      <td className="">Angelica Ramos</td>
+                      <td>Chief Executive Officer (CEO)</td>
+                      <td>
+                        <div className="btn btn-danger btn-icon-split">
+                          <span className="text d-md-block d-none">
+                            رزرو شده
+                          </span>
+                          <span className="icon text-white-50">
+                            <i className="fas fa-times"></i>
+                          </span>
+                        </div>
+                      </td>
+                    </tr><tr className="">
+                      <td className="">Angelica Ramos</td>
+                      <td>Chief Executive Officer (CEO)</td>
+                      <td>
+                        <div className="btn btn-danger btn-icon-split">
+                          <span className="text d-md-block d-none">
+                            رزرو شده
+                          </span>
+                          <span className="icon text-white-50">
+                            <i className="fas fa-times"></i>
+                          </span>
+                        </div>
+                      </td>
+                    </tr><tr className="">
+                      <td className="">Angelica Ramos</td>
+                      <td>Chief Executive Officer (CEO)</td>
+                      <td>
+                        <div className="btn btn-danger btn-icon-split">
+                          <span className="text d-md-block d-none">
+                            رزرو شده
+                          </span>
+                          <span className="icon text-white-50">
+                            <i className="fas fa-times"></i>
+                          </span>
+                        </div>
+                      </td>
+                    </tr><tr className="">
+                      <td className="">Angelica Ramos</td>
+                      <td>Chief Executive Officer (CEO)</td>
+                      <td>
+                        <div className="btn btn-danger btn-icon-split">
+                          <span className="text d-md-block d-none">
+                            رزرو شده
+                          </span>
+                          <span className="icon text-white-50">
+                            <i className="fas fa-times"></i>
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -186,7 +239,7 @@ function Jobs() {
                 background:
                   "linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))",
               }}
-              className="textthree-bgBox"
+              className="textthree-bgBox "
             ></div>
           </div>
         </div>

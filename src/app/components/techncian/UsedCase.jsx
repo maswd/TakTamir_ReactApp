@@ -2,7 +2,7 @@ import React from "react";
 
 function UsedCase({ items, handleItemChange, handleAddItem }) {
   return (
-    <div className="mt-3 mx-auto col-md-10 shadow-sm p-3 rounded">
+    <div className="mt-3 mx-auto col-md-10 p-3 rounded">
       <div className="text-center ">
         <img
           className="img-responsive w-50 h-50 "

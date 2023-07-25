@@ -13,7 +13,7 @@ function CustomerInfo() {
   };
 
   return (
-    <div className="mx-auto rounded text-dark  p-3 ">
+    <div className="mx-auto bg-gradient-warning rounded text-dark  p-3 ">
       <div>
         <div className="order-0 pb-2 ">
             <label htmlFor="nationalCode" className="form-label">

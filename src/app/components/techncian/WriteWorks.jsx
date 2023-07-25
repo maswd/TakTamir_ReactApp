@@ -31,7 +31,7 @@ function WriteWorks() {
     <div className="mt-1">
       <div className="row justify-content-center align-items-center">
         <div className="col-md-5">
-          <div className="mb-3 mb-md-0 rounded text-light bg-gradient-warning p-3 shadow-sm">
+          <div className="mb-3 mb-md-0 rounded text-dark  p-3 shadow-sm">
             <div className="text-center">
               <img
                 className="img-responsive w-75 h-75"

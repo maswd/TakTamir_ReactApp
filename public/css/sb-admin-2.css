@@ -12634,6 +12634,15 @@ body.sidebar-toggled footer.sticky-footer {
 .g-3 {
   column-gap: 5px;
 }
-.justify-content-evenly{
+
+.justify-content-evenly {
   justify-content: space-evenly;
+}
+
+.sticky-element {
+  position: sticky !important;
+  position: -webkit-sticky;
+  width: 100%;
+  top: 0 !important;
+  z-index: 10000 !important;
 }
