@@ -7,16 +7,17 @@ import Workers from "./app/components/admin/Workers";
 import Works from "./app/components/admin/Works";
 import Masseages from "./app/components/chat/Masseages";
 import Logout from "./app/components/login/Logout";
+import Login from "./app/components/login/Login";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Login from "./app/components/login/Login";
-import ConfirmPhone from "./app/components/login/ConfirmPhone";
+import ConfirmPhone from "./app/components/login/VerifyCode";
 import UserInformation from "./app/components/login/UserInformation";
 import TechnicianDash from "./app/pages/TechnicianDash";
 import Cards from "./app/components/techncian/Cards";
 import Jobs from "./app/components/techncian/Jobs";
 import Profile from "./app/components/techncian/Profile";
 import WriteWorks from "./app/components/techncian/WriteWorks";
+import UserContext from "./app/context/userContext";
 
 function App() {
   useEffect(() => {
@@ -41,9 +42,30 @@ function App() {
         </Route>
 
         <Route path="/logout" element={<Logout />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/confirm" element={<ConfirmPhone />} />
-        <Route path="/user-information" element={<UserInformation />} />
+        <Route
+          path="/login"
+          element={
+            <UserContext>
+              <Login />
+            </UserContext>
+          }
+        />
+        <Route
+          path="/confirm"
+          element={
+            <UserContext>
+              <ConfirmPhone />
+            </UserContext>
+          }
+        />
+        <Route
+          path="/user-information"
+          element={
+            <UserContext>
+              <UserInformation />
+            </UserContext>
+          }
+        />
       </Routes>
       {/* <Route path="category" element={<DashCategory />} /> 
 

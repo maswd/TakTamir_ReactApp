@@ -5,7 +5,7 @@ function TechnicianDash() {
   return (
     <div className="container-fluid " style={{ paddingBottom: "90px" }}>
       <Outlet />
-      <nav className="navbar shadow-lg fixed-bottom  navbar-light bg-light">
+      <nav className="navbar shadow-sm fixed-bottom  navbar-light bg-light">
         <div className="mx-auto ">
             <ul className="navbar-nav flex-row ">
               <li className="nav-item mx-2 text-center ">

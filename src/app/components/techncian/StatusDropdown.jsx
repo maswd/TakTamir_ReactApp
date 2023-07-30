@@ -30,19 +30,27 @@ function StatusDropdown() {
         >
           {selectedStatus}
         </Dropdown.Toggle>
-        <Dropdown.Menu>
+        <Dropdown.Menu >
           <Dropdown.Item eventKey="حمل به کارگاه" className="text-primary">
             حمل به کارگاه
           </Dropdown.Item>
+          <Dropdown.Divider />
+
           <Dropdown.Item eventKey="کنسل شده" className="text-danger">
             کنسل شده
           </Dropdown.Item>
+          <Dropdown.Divider />
+
           <Dropdown.Item eventKey="در حال انجام" className="text-success">
             در حال انجام
           </Dropdown.Item>
+          <Dropdown.Divider />
+
           <Dropdown.Item eventKey="کار زمان بالا" className="text-warning">
             کار زمان بالا
           </Dropdown.Item>
+          <Dropdown.Divider />
+
           <Dropdown.Item eventKey="انجام شده" className="text-info">
             انجام شده
           </Dropdown.Item>

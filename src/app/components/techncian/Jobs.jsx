@@ -10,7 +10,7 @@ function Jobs() {
               background:
                 "linear-gradient(to right bottom, rgba(246, 211, 101, .1), rgba(253, 160, 133, .1))",
             }}
-            className="row justify-content-center align-items-center textthree-row textthree-position-right"
+            className="row justify-content-center align-items-center align-items-lg-start textthree-row textthree-position-right"
           >
             <div className="col-md-12 col-lg-7 textthree-texts">
             <div className="" >
