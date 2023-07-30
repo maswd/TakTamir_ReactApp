@@ -3,22 +3,26 @@ import { context } from "../../context/context";
 
 function Login() {
   const LoginContext = useContext(context);
-  const { phone, setPhone, handleLogin,validator,formSubmitted } = LoginContext;
+  const { phone, setPhone, handleLogin, validator, formSubmitted } =
+    LoginContext;
   return (
     <>
       <div className="container">
         <div className="row justify-content-center ">
           <div className="col-xl-10 col-lg-12 col-md-9 ">
-            <div className="card o-hidden border-0 shadow-lg my-2">
+            <div className="card o-hidden border-0 my-2">
               <div className="card-body p-0">
                 <div className="row">
                   <div className="col-12  col-lg-6  d-block bg-login-image"></div>
                   <div className="col-12 col-lg-6 ">
-                    <div className="p-5 my-lg-5">
-                      <div className="text-center pb-lg-5">
-                        <h1 className="h4 text-gray-900 mb-4">خوش آمدید</h1>
+                    <div className="p-3 my-lg-5">
+                      <div className=" pb-lg-5">
+                        <h1 className="h4 text-gray-900 text-center mb-4">
+                          خوش آمدید
+                        </h1>
+                        <p className="text-gray-900">ورود / ثبت نام </p>
                       </div>
-                      <form className="user" onSubmit={handleLogin}>
+                      <form className="user mt-3" onSubmit={handleLogin}>
                         <div className="form-group">
                           <input
                             type="phone"
@@ -38,8 +42,7 @@ function Login() {
                             "required|regex:09|numeric|min:11|max:11"
                           )}
                         </div>
-                        
-                        <hr />
+
                         <button
                           type="submit"
                           className="btn btn-warning btn-user btn-block shadow-sm"
@@ -48,6 +51,26 @@ function Login() {
                           ورود
                         </button>
                       </form>
+                      <hr />
+
+                      <p class="text-xs fw-bold color-700 mt-4">
+                        ورود شما به معنای پذیرش
+                        <a
+                          class="mx-1 d-inline-block text-primray-700"
+                          href="/page/terms/"
+                        >
+                          شرایط 
+                        </a>
+                        و
+                        <a
+                          class="mx-1 d-inline-block color-secondary-700"
+                          href="/page/privacy/"
+                        >
+                          قوانین 
+                        </a>
+                        تک تعمیر 
+                        است.
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -39,15 +39,16 @@ function UserInformation() {
       <div className="container">
         <div className="row justify-content-center ">
           <div className="col-xl-10 col-lg-12 col-md-9 ">
-            <div className="card o-hidden border-0 shadow-lg my-2">
+            <div className="card o-hidden border-0  my-2">
               <div className="card-body p-0">
                 <div className="row">
-                  <div className="col-12  col-lg-6  d-block bg-login-image"></div>
+                  <div className="col-12 col-lg-6  d-block bg-login-image w-25">
+                    <div className="text-center ">
+                      <h1 className="h4 text-gray-900  mt-4">تکمیل اطلاعات</h1>
+                    </div>
+                  </div>
                   <div className="col-12 col-lg-6 ">
                     <div className="px-lg-5 px-3 my-lg-5 ">
-                      <div className="text-center ">
-                        <h1 className="h4 text-gray-900 mb-4">تکمیل اطلاعات</h1>
-                      </div>
                       <form className="user" onSubmit={handleRegister}>
                         <div>
                           <label htmlFor="firstName" className="text-xs">
@@ -147,16 +148,15 @@ function UserInformation() {
                           <label htmlFor="fullname" className="text-xs">
                             تخصص
                           </label>
-                          
-                          <div className="input-group" >
-                         
+
+                          <div className="input-group">
                             <input
                               type="text"
                               className="rounded-pill- form-control form-control-user"
                               id="skil"
                               placeholder="تخصص  خود را وارد کنید"
                               value={skill}
-                              style={{borderRadius:" 0  50px 50px 0 "}}
+                              style={{ borderRadius: " 0  50px 50px 0 " }}
                               name="skill"
                               autoComplete="skill"
                               onChange={(e) => {
@@ -164,15 +164,15 @@ function UserInformation() {
                                 validator.current.showMessageFor("skillsList");
                               }}
                             />
-                          <div className="input-group-append">
-                          <button
-                              type="button"
-                              className=" btn btn-success rounded-pill-left "
-                              onClick={handleSkillSubmit}
-                            >
-                              افزودن
-                            </button>
-                          </div>
+                            <div className="input-group-append">
+                              <button
+                                type="button"
+                                className=" btn btn-success rounded-pill-left "
+                                onClick={handleSkillSubmit}
+                              >
+                                افزودن
+                              </button>
+                            </div>
                           </div>
                           {validator.current.message(
                             "skillsList",

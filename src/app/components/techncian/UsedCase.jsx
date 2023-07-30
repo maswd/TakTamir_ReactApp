@@ -3,14 +3,14 @@ import React from "react";
 function UsedCase({ items, handleItemChange, handleAddItem }) {
   return (
     <div className="mt-3 mx-auto col-md-10 p-3 rounded">
-      <div className="text-center ">
+      <div className="d-flex justify-content-between align-items-end ">
+      <h2>لوازم استفاده شده : </h2>
         <img
           className="img-responsive w-50 h-50 "
           src="/img/undraw_logistics_x-4-dc.svg"
           alt=""
         />
       </div>
-      <h2>لوازم استفاده شده : </h2>
       {items.map((item, index) => (
         <div className="animated--grow-in" key={index}>
           <div className="d-flex g-3">

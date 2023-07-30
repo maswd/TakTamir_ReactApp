@@ -29,20 +29,19 @@ function ConfirmPhone() {
       <div className="container">
         <div className="row justify-content-center ">
           <div className="col-xl-10 col-lg-12 col-md-9 ">
-            <div className="card o-hidden border-0 shadow-lg my-2">
+            <div className="card o-hidden border-0 my-2">
               <div className="card-body p-0">
                 <div className="row">
-                  <div className="col-12  col-lg-6  d-block bg-login-image"></div>
+                  <div className="col-12  col-lg-6  d-block bg-login-image"> </div>
                   <div className="col-12 col-lg-6 ">
-                    <div className="p-lg-5 my-lg-5">
-                      <div className="text-center pb-lg-2">
+                    <div className="p-lg-5 my-lg-5">   
+                    <div className="text-center pb-lg-2">
                         <h1 className="h4 text-gray-900 mb-4">
                           تایید شماره تلفن
                         </h1>
-                      </div>
-
+                      </div>       
                       <form
-                        className="p-2"
+                        className="p-2 user"
                         onSubmit={handleCode}
                         style={{ direction: "ltr" }}
                       >
@@ -58,11 +57,23 @@ function ConfirmPhone() {
                           }}
                         />
 
+                       
+                        
+                        <div className="p-3">
+                          <button
+                            type="submit"
+                            disabled={otp.length !== 5}
+                            className="btn btn-warning btn-user btn-block shadow-sm mx-auto "
+                          >
+                            تایید
+                          </button>
+                        </div>
+                        <hr />
                         <div className="mx-3">
                           <button
                             onClick={sendCodeAgain}
                             type="button"
-                            className="btn btn-dark btn-sm"
+                            className="btn text-primary btn-sm"
                             hidden={counter !== 0 ? true : false}
                           >
                             درخواست مجدد کد
@@ -74,16 +85,6 @@ function ConfirmPhone() {
                           >
                             اعتبار کد <span> {counter} ثانیه </span>
                           </small>
-                        </div>
-                        <hr />
-                        <div className="p-3">
-                          <button
-                            type="submit"
-                            disabled={otp.length !== 5}
-                            className="btn btn-warning btn-user btn-block shadow-sm mx-auto "
-                          >
-                            تایید
-                          </button>
                         </div>
                       </form>
                     </div>
