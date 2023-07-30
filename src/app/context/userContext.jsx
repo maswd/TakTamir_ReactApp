@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import { errorMessage, successMessage } from "../../utils/message";
 import {
   checkPhone,
+  getProfile,
   registerUser,
   sendCode,
   verifyCode,
@@ -99,13 +100,19 @@ const UserContext = ({ children }) => {
     e.preventDefault();
     setFormSubmitted(true);
     try {
-      const res = await verifyCode({
+      const { data, status } = await verifyCode({
         code: otp,
         phone_number: phone.length <= 0 ? localStorage.getItem("phone") : phone,
       });
-      console.log(res);
-    } catch (error) {
 
+      if (status === 200) {
+        localStorage.setItem("access_token", data.access_Token);
+        localStorage.setItem("refresh_token", data.refresh_Token);
+        const { data:user } = await getProfile(data.access_Token);
+        dispatch(addUser(user));
+        history("/technician", { replace: true });
+      }
+    } catch (error) {
       if (error.response.status === 426) {
         localStorage.setItem("access_token", error.response.data.access_Token);
         localStorage.setItem(
@@ -113,8 +120,7 @@ const UserContext = ({ children }) => {
           error.response.data.refresh_Token
         );
         history("/user-information");
-      }
-      else if (error.response.status === 400) {
+      } else if (error.response.status === 400) {
         errorMessage("کد یا شماره تلفن نامعتبر است");
       }
     }

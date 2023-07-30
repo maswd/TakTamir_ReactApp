@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Profile() {
+  const user = useSelector((state) => state.user);
   return (
     <>
       <div className="mt-2 ">
@@ -30,13 +32,16 @@ function Profile() {
                     </div>
                   </div>
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                    src={user.profile_url}
                     alt="avatar"
                     className="img-fluid w-50"
                   />
 
-                  <p className="h5 mt-3">اقای هاشمی</p>
-                  <p className="h6 my-3">حساب ذخیره : 2,000,000</p>
+                  <p className="h5 mt-3">
+                    {" "}
+                    {user.firstname} {user.lastName}
+                  </p>
+                  <p className="h6 my-3">حساب ذخیره : {user.wallet.balance}</p>
                 </div>
               </div>
               <div className=" col-12 col-md-8 w-50 ">
@@ -47,21 +52,17 @@ function Profile() {
                   </div>
                   <h6 className="py-3  text-gray-900"> : تخصص ها </h6>
                   <div className="row pt-1" style={{ direction: "rtl" }}>
-                    <div className="col-4 mb-3">
-                      <p className="text-muted">یخچال</p>
-                    </div>
-                    <div className="col-4 mb-3">
-                      <p className="d-block">تلویزیون</p>
-                    </div>
-                    <div className="col-4 mb-3">
-                      <p className="text-muted">کولر گازی </p>
-                    </div>
+                    {user.specialties.map((item,index) => (
+                      <div className="col-4 mb-3" key={index}>
+                        <p className="text-muted border-left-warning p-2">{item.name}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="d-flex border-top order-1 justify-content-around p-3">
                   <div className="text-left align-self-end">
                     <h5 className="h6 mt-4">
-                      <span className="text-gray-900">کد تکنسین :</span> 5565465{" "}
+                      <span className="text-gray-900">کد تکنسین :</span> {user.id}
                     </h5>
                   </div>
                   <img

@@ -53,17 +53,17 @@ function Login() {
                       </form>
                       <hr />
 
-                      <p class="text-xs fw-bold color-700 mt-4">
+                      <p className="text-xs fw-bold color-700 mt-4">
                         ورود شما به معنای پذیرش
                         <a
-                          class="mx-1 d-inline-block text-primray-700"
+                          className="mx-1 d-inline-block text-primray-700"
                           href="/page/terms/"
                         >
                           شرایط 
                         </a>
                         و
                         <a
-                          class="mx-1 d-inline-block color-secondary-700"
+                          className="mx-1 d-inline-block color-secondary-700"
                           href="/page/privacy/"
                         >
                           قوانین 
