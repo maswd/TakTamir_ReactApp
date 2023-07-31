@@ -10995,7 +10995,7 @@ a:focus {
   flex: 1 0 auto;
 }
 
-.container,
+/* .container,
 .container-fluid,
 .container-sm,
 .container-md,
@@ -11003,7 +11003,7 @@ a:focus {
 .container-xl {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
+} */
 
 .scroll-to-top {
   position: fixed;

@@ -21,7 +21,6 @@ const UserContext = ({ children }) => {
   const history = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [token, setToken] = useState([]);
   const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -29,8 +28,6 @@ const UserContext = ({ children }) => {
   const [skill, setSkill] = useState("");
   const [skillsList, setSkillsList] = useState([]);
   const [, forceUpdate] = useState();
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [register, setRegister] = useState("");
   const dispatch = useDispatch();
 
   const validator = useRef(
@@ -54,50 +51,7 @@ const UserContext = ({ children }) => {
     })
   );
 
-  // useEffect(() => {
-  //     return () => {
-  //         setEmail()
-  //         setPhone()
-  //         setPassword()
-  //         setConfirmPassword()
-  //         setPolicy()
 
-  //     }
-  // }, [])
-
-  // const handleDelete = async (e) => {
-  //   try {
-  //     dispatch(showLoading());
-  //     const { data, status } = await DeleteProfilePicture();
-  //     const { data: token, message } = data.details;
-  //     if (status === 200) {
-  //       localStorage.setItem("token", token);
-  //       successMessage(message);
-  //       let user = [token, decodeToken(token)];
-  //       dispatch(updateUser(user));
-  //       dispatch(hideLoading());
-  //     }
-  //   } catch (err) {
-  //     errorMessage(err.response.data.details.message);
-  //     err.response.data.details.data.map((er) => errorMessage(er));
-  //     dispatch(hideLoading());
-  //   }
-  // };
-
-  // const handleCheck = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { status } = await checkPhone({ phone: phone });
-  //     if (status === 200) {
-  //       setState({ passwordConfirm: true });
-  //     }
-  //   } catch (error) {
-  //     if (error.response.status === 404) {
-  //       setState({ code: true });
-  //       const res = await sendCode({ phone: phone });
-  //     }
-  //   }
-  // };
   const handleCode = async (e) => {
     e.preventDefault();
     dispatch(submitForm())
@@ -148,28 +102,6 @@ const UserContext = ({ children }) => {
         validator.current.showMessages();
         forceUpdate(1);
       }
-      //   const tokens = data.details.data.tokens;
-      //   const accessToken = tokens.accessToken;
-      //   const refreshToken = tokens.refreshToken;
-      //   localStorage.setItem("accessToken", accessToken);
-      //   localStorage.setItem("refreshToken", refreshToken);
-      //   if (status === 200) {
-      //     const { data } = await getProfile(accessToken);
-      //     const role = data.details.data.user.role;
-      //     const { data: profile } = await getProfilePicture(
-      //       data.details.data.user.profile.pictureId
-      //     );
-      //     dispatch(addUser(data.details.data, profile.details.data.file.path));
-      //     if (role === "admin") {
-      //       history("/dashboard", { replace: true });
-      //     } else history("/new-posts/createpost", { replace: true });
-      //     successMessage("ورود با موفیقت انجام شد");
-      //     dispatch(hideLoading());
-      // }
-      // } else {
-      //     validator.current.showMessages()
-      //     forceUpdate(1)
-      //   }
     } catch (error) {
       dispatch(hideLoading());
       if (error.response.status === 400) {
@@ -211,55 +143,6 @@ const UserContext = ({ children }) => {
 
     }
   };
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  //   const user = {
-  //     email: email,
-  //     phone: phone,
-  //     password: password === "" ? undefined : password,
-  //   };
-  //   try {
-  //     if (validator.current.allValid()) {
-  //       dispatch(showLoading());
-  //       const { status, data } = await updateUserProfile(user);
-  //       const { message, data: token } = data.details;
-  //       if (status === 200) {
-  //         localStorage.setItem("token", token);
-  //         let user = [token, decodeToken(token)];
-  //         dispatch(updateUser(user));
-  //         dispatch(hideLoading());
-  //       }
-  //     } else {
-  //       validator.current.showMessages();
-  //       forceUpdate(1);
-  //     }
-  //   } catch (error) {
-  //     error.response.data.details.forEach((err) => {
-  //       errorMessage(err.message);
-  //     });
-  //     dispatch(hideLoading());
-  //   }
-  // };
-  // const handleChange = async (e) => {
-  //   console.log(e);
-  //   const formData = new FormData();
-  //   const file = e.target.files[0];
-  //   formData.append("userPicture", file);
-  //   try {
-  //     dispatch(showLoading());
-  //     const { data, status } = await profilePicture(formData);
-  //     console.log(data);
-  //     const { data: token, message } = data.details;
-  //     if (status === 200) {
-  //       successMessage(message);
-  //       // dispatch(updateUser(user))
-  //       dispatch(hideLoading());
-  //     }
-  //   } catch (err) {
-  //     errorMessage(err.response.data.details.message);
-  //     dispatch(hideLoading());
-  //   }
-  // };
   return (
     <context.Provider
       value={{
@@ -283,8 +166,7 @@ const UserContext = ({ children }) => {
         setSkill,
         handleRegister,
         validator,
-        formSubmitted,
-        setFormSubmitted,
+        
       }}
     >
       {children}

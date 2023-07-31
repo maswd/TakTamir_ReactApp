@@ -1,8 +1,6 @@
 import { createContext } from "react";
 
 export const context = createContext({
-  token: [],
-  setToken: () => {},
   email: "",
   phone: "",
   setPhone: () => {},
@@ -30,7 +28,4 @@ export const context = createContext({
   handleCode: () => {},
   handleChange: () => {},
   handleDelete: () => {},
-  setFormSubmitted: () => {},
-  formSubmitted: "",
-
 });

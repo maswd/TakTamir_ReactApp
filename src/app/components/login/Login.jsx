@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 function Login() {
   const LoginContext = useContext(context);
-  const { phone, setPhone, handleLogin, validator, formSubmitted } =
+  const { phone, setPhone, handleLogin, validator } =
     LoginContext;
     const form =useSelector(state=>state.form)
   return (

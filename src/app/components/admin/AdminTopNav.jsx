@@ -249,7 +249,7 @@ function AdminTopNav() {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <span className="ml-2 d-none d-lg-inline text-gray-600 small">
+              <span className="ml-2 d-flex text-gray-600 small">
                 مسعود{" "}
               </span>
               <img className="/img-profile rounded-circle" src={user} />
