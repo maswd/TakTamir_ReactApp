@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { context } from "../../context/context";
 import AuthCode from "react-auth-code-input";
 import { checkPhone } from "../../services/userService";
+import { useSelector } from "react-redux";
 
 function ConfirmPhone() {
   const LoginContext = useContext(context);
   const { setOtp, otp, handleCode } = LoginContext;
-
+const form =useSelector(state=>state.form)
   const [counter, setCounter] = useState(60);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function ConfirmPhone() {
                         <div className="p-3">
                           <button
                             type="submit"
-                            disabled={otp.length !== 5}
+                            disabled={otp.length !== 5 || form.isSubmitting}
                             className="btn btn-warning btn-user btn-block shadow-sm mx-auto "
                           >
                             تایید

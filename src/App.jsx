@@ -18,7 +18,8 @@ import Jobs from "./app/components/techncian/Jobs";
 import Profile from "./app/components/techncian/Profile";
 import WriteWorks from "./app/components/techncian/WriteWorks";
 import UserContext from "./app/context/userContext";
-
+import {  showLoading } from "react-redux-loading-bar";
+import { useDispatch } from "react-redux";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -26,6 +27,7 @@ function App() {
   }, []);
   return (
     <>
+    
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashborad />}>

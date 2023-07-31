@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { context } from "../../context/context";
+import { useSelector } from "react-redux";
 
 function Login() {
   const LoginContext = useContext(context);
   const { phone, setPhone, handleLogin, validator, formSubmitted } =
     LoginContext;
+    const form =useSelector(state=>state.form)
   return (
     <>
       <div className="container">
@@ -46,7 +48,7 @@ function Login() {
                         <button
                           type="submit"
                           className="btn btn-warning btn-user btn-block shadow-sm"
-                          disabled={formSubmitted}
+                          disabled={form.isSubmitting}
                         >
                           ورود
                         </button>

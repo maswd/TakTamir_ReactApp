@@ -7,16 +7,27 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./app/redux/store";
 import { ToastContainer } from "react-toastify";
 import { PersistGate } from "redux-persist/integration/react";
+import LoadingBar from "react-redux-loading-bar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <>
     <BrowserRouter>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <LoadingBar
+          style={{
+            backgroundColor: "#F9A826",
+            height: "5px",
+            zIndex: "1000",
+          }}
+          updateTime={50}
+          maxProgress={100}
+          progressIncrease={30}
+        />
+        <PersistGate persistor={persistor}>
           <App />
         </PersistGate>
         <ToastContainer />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  </>
 );
