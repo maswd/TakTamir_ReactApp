@@ -19,8 +19,11 @@ import Profile from "./app/components/techncian/Profile";
 import WriteWorks from "./app/components/techncian/WriteWorks";
 import UserContext from "./app/context/userContext";
 import {  showLoading } from "react-redux-loading-bar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import PrivateRoute from "./app/pages/PrivateRoute";
+import NotFound from "./app/pages/NotFound";
 function App() {
+  const user=useSelector(state=>state.user)
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -29,13 +32,14 @@ function App() {
     <>
     
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashborad />}>
           <Route index element={<Workers />} />
           <Route path="works" element={<Works />} />
           <Route path="messages" element={<Masseages />} />
         </Route>
-        <Route path="/technician" element={<TechnicianDash />}>
+        <Route path="/technician" element={<PrivateRoute user={user}><TechnicianDash /></PrivateRoute>}>
           <Route path="write" element={<WriteWorks />} />
           <Route path="orders" element={<Cards />} />
           <Route path="support" element={<Masseages />} />

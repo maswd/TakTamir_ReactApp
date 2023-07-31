@@ -56,7 +56,7 @@ function Profile() {
                     </div>
                   </div>
                   <img
-                    src={user.profile_url}
+                    src={user?.profile_url}
                     alt="avatar"
                     className="img-fluid w-50"
                   />
@@ -67,38 +67,36 @@ function Profile() {
                         <input
                           className="form-control form-control-user text-right"
                           type="text"
-                          value={user.lastName}
+                          value={user?.lastName}
                         />
                         <input
                           className="form-control form-control-user text-right"
                           type="text"
-                          value={user.firstname}
+                          value={user?.firstname}
                         />
                       </div>
                     ) : (
                       <>
-                        {user.firstname} {user.lastName}
+                        {user?.firstname} {user?.lastName}
                       </>
                     )}
                   </p>
-                  <p className="h6 my-3">حساب ذخیره : {user.wallet.balance}</p>
-                  <div className="text-center mt-4">
+                  <p className="h6 my-3">حساب ذخیره : {user.wallet?.balance}</p>
                     {isEditing ? (
                       <button
-                        className="btn btn-success mx-2"
+                        className="btn btn-success mb-3"
                         onClick={handleSaveClick}
                       >
                         <i className="fa fa-save"></i>
                       </button>
                     ) : (
                       <button
-                        className="btn btn-secondary mx-2"
+                        className="btn btn-secondary mb-3 "
                         onClick={handleEditClick}
                       >
                         <i className="fa fa-edit"></i>
                       </button>
                     )}
-                  </div>
                 </div>
               </div>
               <div className=" col-12 col-md-8 w-50 ">
@@ -109,7 +107,7 @@ function Profile() {
                   </div>
                   <h6 className="py-3  text-gray-900"> : تخصص ها </h6>
                   <div className="row pt-1 " style={{ direction: "rtl" }}>
-                    {user.specialties.map((item, index) => (
+                    {user.specialties?.map((item, index) => (
                       <div className="col-4 mb-3" key={index}>
                         {isEditing ? (
                           <input
@@ -156,7 +154,7 @@ function Profile() {
                   <div className="text-left align-self-end">
                     <h5 className="h6 mt-4">
                       <span className="text-gray-900">کد تکنسین :</span>{" "}
-                      {user.id}
+                      {user?.id}
                     </h5>
                   </div>
                   <img
