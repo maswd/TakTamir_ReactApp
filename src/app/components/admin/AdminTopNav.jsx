@@ -1,5 +1,5 @@
 import React from "react";
-import user from "/img/undraw_profile.svg"
+import user from "/img/undraw_profile.svg";
 import { NavLink } from "react-router-dom";
 function AdminTopNav() {
   return (
@@ -9,7 +9,6 @@ function AdminTopNav() {
           id="sidebarToggleTop"
           className="btn btn-link d-md-none rounded-circle ml-3"
         >
-          
           <i className="fa fa-bars"></i>
         </button>
 
@@ -23,14 +22,17 @@ function AdminTopNav() {
               aria-describedby="basic-addon2"
             />
             <div className="input-group-append">
-              <button className="btn btn-info  bg-gradient-info rounded-left" type="button">
+              <button
+                className="btn btn-info  bg-gradient-info rounded-left"
+                type="button"
+              >
                 <i className="fas fa-search fa-sm"></i>
               </button>
             </div>
           </div>
         </form>
 
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav mx-auto">
           <li className="nav-item dropdown no-arrow d-sm-none">
             <a
               className="nav-link dropdown-toggle"
@@ -86,7 +88,7 @@ function AdminTopNav() {
               className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
               aria-labelledby="alertsDropdown"
             >
-              <h6 className="dropdown-header">Alerts Center</h6>
+              <h6 className="dropdown-header">مرکز هشدارها</h6>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="ml-3">
                   <div className="icon-circle bg-primary">
@@ -94,9 +96,9 @@ function AdminTopNav() {
                   </div>
                 </div>
                 <div>
-                  <div className="small text-gray-500">December 12, 2019</div>
+                  <div className="small text-gray-500">12 دسامبر 2019</div>
                   <span className="font-weight-bold">
-                    A new monthly report is ready to download!
+                    یک گزارش ماهانه جدید برای دانلود آماده شده است!
                   </span>
                 </div>
               </a>
@@ -107,8 +109,8 @@ function AdminTopNav() {
                   </div>
                 </div>
                 <div>
-                  <div className="small text-gray-500">December 7, 2019</div>
-                  $290.29 has been deposited into your account!
+                  <div className="small text-gray-500">7 دسامبر 2019</div>
+                  290.29 دلار به حساب شما واریز شده است!
                 </div>
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
@@ -118,13 +120,15 @@ function AdminTopNav() {
                   </div>
                 </div>
                 <div>
-                  <div className="small text-gray-500">December 2, 2019</div>
-                  Spending Alert: We've noticed unusually high spending for your
-                  account.
+                  <div className="small text-gray-500">2 دسامبر 2019</div>
+                  هشدار هزینه: ما خرج بالایی در حساب شما مشاهده کرده‌ایم.
                 </div>
               </a>
-              <a className="dropdown-item text-center small text-gray-500" href="#">
-                Show All Alerts
+              <a
+                className="dropdown-item text-center small text-gray-500"
+                href="#"
+              >
+                نمایش همه هشدارها
               </a>
             </div>
           </li>
@@ -145,81 +149,90 @@ function AdminTopNav() {
             </a>
 
             <div
-              className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+              className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in"
               aria-labelledby="messagesDropdown"
             >
-              <h6 className="dropdown-header">Message Center</h6>
+              <h6 className="dropdown-header">مرکز پیام‌ها</h6>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image ml-3">
                   <img
                     className="rounded-circle"
-                    src="img/undraw_profile_1.svg"
+                    src="/img/undraw_profile.svg"
                     alt="..."
                   />
                   <div className="status-indicator bg-success"></div>
                 </div>
                 <div className="font-weight-bold">
                   <div className="text-truncate">
-                    Hi there! I am wondering if you can help me with a problem
-                    I've been having.
+                    سلام! می‌خواستم بدونم می‌تونید به من با یه مشکل کمک کنید که
+                    دارم؟
                   </div>
-                  <div className="small text-gray-500">Emily Fowler · 58m</div>
+                  <div className="small text-gray-500">
+                    امیلی فاولر · ۵۸ دقیقه پیش
+                  </div>
                 </div>
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image ml-3">
                   <img
                     className="rounded-circle"
-                    src="img/undraw_profile_2.svg"
+                    src="/img/undraw_profile.svg"
                     alt="..."
                   />
                   <div className="status-indicator"></div>
                 </div>
                 <div>
                   <div className="text-truncate">
-                    I have the photos that you ordered last month, how would you
-                    like them sent to you?
+                    عکس‌هایی که ماه قبل سفارش دادید رو دارم، چطوری می‌خواید
+                    براتون بفرستم؟
                   </div>
-                  <div className="small text-gray-500">Jae Chun · 1d</div>
+                  <div className="small text-gray-500">جی چان · ۱ روز پیش</div>
                 </div>
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image ml-3">
                   <img
                     className="rounded-circle"
-                    src="img/undraw_profile_3.svg"
+                    src="/img/undraw_profile.svg"
                     alt="..."
                   />
                   <div className="status-indicator bg-warning"></div>
                 </div>
                 <div>
                   <div className="text-truncate">
-                    Last month's report looks great, I am very happy with the
-                    progress so far, keep up the good work!
+                    گزارش ماه گذشته خیلی خوب بود، من تا به حال با پیشرفت راضی
+                    هستم، همین کار رو ادامه بده!
                   </div>
-                  <div className="small text-gray-500">Morgan Alvarez · 2d</div>
+                  <div className="small text-gray-500">
+                    مورگان آلوارز · ۲ روز پیش
+                  </div>
                 </div>
               </a>
               <a className="dropdown-item d-flex align-items-center" href="#">
                 <div className="dropdown-list-image ml-3">
                   <img
                     className="rounded-circle"
-                    src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                    src="/img/undraw_profile.svg"
                     alt="..."
                   />
                   <div className="status-indicator bg-success"></div>
                 </div>
                 <div>
                   <div className="text-truncate">
-                    Am I a good boy? The reason I ask is because someone told me
-                    that people say this to all dogs, even if they aren't
-                    good...
+                    آیا من یک سگ خوب هستم؟ دلیل پرسیدن این سوال این بود که کسی
+                    به من گفت که این جمله رو به تمام سگ‌ها می‌گن، حتی اگر خوب
+                    نباشن...
                   </div>
-                  <div className="small text-gray-500">Chicken the Dog · 2w</div>
+                  <div className="small text-gray-500">
+                    چیکن سگ · ۲ هفته پیش
+                  </div>
                 </div>
               </a>
-              <a className="dropdown-item text-center small text-gray-500" href="#">
-                Read More Messages
+              <a
+                className="dropdown-item text-center small text-gray-500"
+                href="#"
+              >
+                خواندن پیام‌های بیشتر
               </a>
             </div>
           </li>
@@ -237,37 +250,31 @@ function AdminTopNav() {
               aria-expanded="false"
             >
               <span className="ml-2 d-none d-lg-inline text-gray-600 small">
-                Douglas McGee
+                مسعود{" "}
               </span>
-              <img
-                className="img-profile rounded-circle"
-                src={user}
-              />
+              <img className="/img-profile rounded-circle" src={user} />
             </a>
 
             <div
-              className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+              className="dropdown-menu dropdown-menu-left shadow animated--grow-in"
               aria-labelledby="userDropdown"
             >
               <a className="dropdown-item" href="#">
                 <i className="fas fa-user fa-sm fa-fw ml-2 text-gray-400"></i>
-                Profile
+                پروفایل
               </a>
               <a className="dropdown-item" href="#">
                 <i className="fas fa-cogs fa-sm fa-fw ml-2 text-gray-400"></i>
-                Settings
+                تنظیمات
               </a>
               <a className="dropdown-item" href="#">
                 <i className="fas fa-list fa-sm fa-fw ml-2 text-gray-400"></i>
-                Activity Log
+                لاگ فعالیت
               </a>
               <div className="dropdown-divider"></div>
-              <NavLink
-                className="dropdown-item"
-                to="/logout"
-              >
+              <NavLink className="dropdown-item" to="/logout">
                 <i className="fa fa-power-off fa-sm fa-fw ml-2 text-gray-400"></i>
-                Logout
+                خروج
               </NavLink>
             </div>
           </li>
