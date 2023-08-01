@@ -22,6 +22,8 @@ import {  showLoading } from "react-redux-loading-bar";
 import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./app/pages/PrivateRoute";
 import NotFound from "./app/pages/NotFound";
+import AcceptTec from "./app/components/admin/AcceptTec";
+import Requests from "./app/components/admin/Requests";
 function App() {
   const user=useSelector(state=>state.user)
   useEffect(() => {
@@ -38,6 +40,8 @@ function App() {
           <Route index element={<Workers />} />
           <Route path="works" element={<Works />} />
           <Route path="messages" element={<Masseages />} />
+          <Route path="accept" element={<AcceptTec />} />
+          <Route path="requests" element={<Requests />} />
         </Route>
         <Route path="/technician" element={<PrivateRoute user={user}><TechnicianDash /></PrivateRoute>}>
           <Route path="write" element={<WriteWorks />} />

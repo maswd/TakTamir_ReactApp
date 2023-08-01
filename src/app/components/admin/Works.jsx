@@ -33,7 +33,7 @@ function Works() {
                   <table
                     className="table table-bordered dataTable"
                     id="dataTable"
-                    cellspacing="0"
+                    cellSpacing="0"
                     role="grid"
                     aria-describedby="dataTable_info"
                     style={{ width: "100%", direction: "rtl" }}

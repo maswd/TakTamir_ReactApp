@@ -34,7 +34,7 @@ function Workers() {
                   <table
                     className="table table-bordered dataTable"
                     id="dataTable"
-                    cellspacing="0"
+                    cellSpacing="0"
                     role="grid"
                     aria-describedby="dataTable_info"
                     style={{ width: "100%" }}
@@ -43,7 +43,7 @@ function Workers() {
                       <tr role="row">
                         <th
                           className="sorting table-bordered sorting_asc"
-                          tabindex="0"
+                          tabIndex="0"
                           aria-controls="dataTable"
                           rowSpan="1"
                           colSpan="1"
@@ -55,7 +55,7 @@ function Workers() {
                         </th>
                         <th
                           className="sorting"
-                          tabindex="0"
+                          tabIndex="0"
                           aria-controls="dataTable"
                           rowSpan="1"
                           colSpan="1"
@@ -66,7 +66,7 @@ function Workers() {
                         </th>
                         <th
                           className="sorting"
-                          tabindex="0"
+                          tabIndex="0"
                           aria-controls="dataTable"
                           rowSpan="1"
                           colSpan="1"
@@ -77,7 +77,7 @@ function Workers() {
                         </th>
                         <th
                           className="sorting"
-                          tabindex="0"
+                          tabIndex="0"
                           aria-controls="dataTable"
                           rowSpan="1"
                           colSpan="1"
@@ -162,7 +162,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="0"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           برگشت
@@ -173,7 +173,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="1"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           1
@@ -184,7 +184,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="2"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           2
@@ -195,7 +195,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="3"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           3
@@ -206,7 +206,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="4"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           4
@@ -217,7 +217,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="5"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           5
@@ -228,7 +228,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="6"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           6
@@ -242,7 +242,7 @@ function Workers() {
                           href="#"
                           aria-controls="dataTable"
                           data-dt-idx="7"
-                          tabindex="0"
+                          tabIndex="0"
                           className="page-link"
                         >
                           بعدی

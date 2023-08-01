@@ -51,23 +51,27 @@ const UserContext = ({ children }) => {
     })
   );
 
-
   const handleCode = async (e) => {
     e.preventDefault();
-    dispatch(submitForm())
+    dispatch(submitForm());
     try {
       dispatch(showLoading());
       const { data, status } = await verifyCode({
         code: otp,
         phone_number: phone.length <= 0 ? localStorage.getItem("phone") : phone,
       });
-
+      console.log(data);
       if (status === 200) {
         localStorage.setItem("access_token", data.access_Token);
         localStorage.setItem("refresh_token", data.refresh_Token);
         const { data: user } = await getProfile(data.access_Token);
         dispatch(addUser(user));
-        history("/technician", { replace: true });
+        if (data.role === "TechnicianAdmin") {
+          history("/dashboard", { replace: true });
+        }
+        if (data.role === "Technician") {
+          history("/technician", { replace: true });
+        }
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -88,9 +92,8 @@ const UserContext = ({ children }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-     
       if (validator.current.allValid()) {
-        dispatch(submitForm())
+        dispatch(submitForm());
         dispatch(showLoading());
         const { status } = await checkPhone(phone);
         if (status === 200) {
@@ -123,7 +126,7 @@ const UserContext = ({ children }) => {
     };
     try {
       if (validator.current.allValid()) {
-        dispatch(submitForm())
+        dispatch(submitForm());
         dispatch(showLoading());
 
         const { status } = await registerUser(user);
@@ -140,7 +143,6 @@ const UserContext = ({ children }) => {
       }
     } catch (error) {
       dispatch(hideLoading());
-
     }
   };
   return (
@@ -166,7 +168,6 @@ const UserContext = ({ children }) => {
         setSkill,
         handleRegister,
         validator,
-        
       }}
     >
       {children}
