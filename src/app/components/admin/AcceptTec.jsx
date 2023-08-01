@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUser } from "../../redux/actions/admin";
 
 const AcceptTec = () => {
+  const user = useSelector((state) => state.admin);
+  console.log(user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
   return (
     <div className=" card shadow mb-4">
       <div className="card-header py-3">
@@ -96,12 +105,12 @@ const AcceptTec = () => {
                       <td>Tokyo</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>
@@ -113,12 +122,12 @@ const AcceptTec = () => {
                       <td>London</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>
@@ -130,12 +139,12 @@ const AcceptTec = () => {
                       <td>66</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>
@@ -147,12 +156,12 @@ const AcceptTec = () => {
                       <td>dd</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>

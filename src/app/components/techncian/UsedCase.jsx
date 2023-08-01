@@ -2,11 +2,11 @@ import React from "react";
 
 function UsedCase({ items, handleItemChange, handleAddItem }) {
   return (
-    <div className="mt-3 mx-auto col-md-10 p-3 rounded">
+    <div className="mt-3 mx-auto col-md-12 p-3 rounded ">
       <div className="d-flex justify-content-between align-items-end ">
       <h2>لوازم استفاده شده : </h2>
         <img
-          className="img-responsive w-50 h-50 "
+          className="img-responsive d-block w-50 h-50 "
           src="/img/undraw_logistics_x-4-dc.svg"
           alt=""
         />

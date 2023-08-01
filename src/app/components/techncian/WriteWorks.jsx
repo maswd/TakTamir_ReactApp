@@ -29,8 +29,8 @@ function WriteWorks() {
 
   return (
     <div className="mt-1">
-      <div className="row justify-content-center align-items-center">
-        <div className="col-md-5">
+      <div className="d-flex flex-wrap justify-content-center align-items-center">
+        <div className="col-md-6">
           <div className=" mb-md-0 rounded text-dark p-3">
             <div className="w-100 text-center">
             <label htmlFor="amount" className="form-label text-right h4">
@@ -53,7 +53,7 @@ function WriteWorks() {
           
           </div>
         </div>
-        <div className="col-md-5">
+        <div className="col-md-6">
           <CustomerInfo />
         </div>
       </div>
@@ -63,10 +63,10 @@ function WriteWorks() {
         items={items}
         handleAddItem={handleAddItem}
       />
-      <div className="col-md-10 mt-3 py-1 mx-auto  ">
+      <div className="col-md-12 mt-3 py-1 mx-auto  ">
         <Subscription />
       </div>
-      <div className="col-md-10 mx-auto ">
+      <div className="col-md-12 mx-auto ">
         <div className=" mt-3 d-flex justify-content-evenly g-3 ">
           <button className="shadow-sm  btn w-50 btn-danger">افزودن عکس</button>
           <button className="shadow-sm  btn w-50 btn-primary">

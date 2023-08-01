@@ -10,8 +10,9 @@ function Card(props) {
         <div className={`text-xs font-weight-bold text-${props.color} text-uppercase mb-1`}>
                 {props.status}
               </div>
-          <div className="row no-gutters">
+          <div className="row no-gutters align-items-center">
             <div className="col ml-2">
+             
               <User {...props.user} />
             </div>
             <div className="col-auto text-left">

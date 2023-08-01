@@ -7,7 +7,7 @@ function TechnicianDash() {
   // const user = useSelector((state) => state.user);
 
   return (
-    <div className="container-fluid " style={{ paddingBottom: "90px" }}>
+    <div className="container-fluid" style={{ paddingBottom: "90px" }}>
         <Outlet />
       <nav className="navbar shadow-sm fixed-bottom  navbar-light bg-light">
         <div className="mx-auto ">

@@ -1,6 +1,8 @@
 
 body {
     font-family: IranSans;
+    /* overflow-x: hidden; */
+    overflow-wrap:break-word
 }
 
 :root {

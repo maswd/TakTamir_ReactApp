@@ -105,12 +105,12 @@ const Requests = () => {
                       <td>Tokyo</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>
@@ -123,12 +123,12 @@ const Requests = () => {
                       <td>London</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>
@@ -141,12 +141,12 @@ const Requests = () => {
                       <td>66</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>
@@ -159,12 +159,12 @@ const Requests = () => {
                       <td>dd</td>
                       <td>
                         <div className="btn btn-danger shadow-sm btn-icon-split ml-2">
-                          <span className="text d-md-block d-none">
+                          <span className="text">
                             رد کردن
                           </span>
                         </div>
                         <div className="btn bg-gradient-light shadow-sm border btn-icon-split">
-                          <span className="text text-dark d-md-block d-none">
+                          <span className="text text-dark">
                             تایید کردن
                           </span>
                         </div>

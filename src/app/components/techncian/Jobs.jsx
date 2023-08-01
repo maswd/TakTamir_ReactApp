@@ -24,7 +24,7 @@ function Jobs() {
   return (
     <>
       <section className=" mt-2">
-        <div className="">
+        <div className="container-fluid">
           <div
             style={{
               background:
@@ -32,6 +32,7 @@ function Jobs() {
             }}
             className="row justify-content-center align-items-center align-items-lg-start textthree-row textthree-position-right"
           >
+          
             <div className="col-md-12 col-lg-7 textthree-texts">
               <div className="">
                 <img src="/img/dots-pattern.svg" />

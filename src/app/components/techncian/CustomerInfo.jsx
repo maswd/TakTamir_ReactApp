@@ -13,7 +13,13 @@ function CustomerInfo() {
   };
 
   return (
-    <div className="mx-auto bg-gradient-warning rounded text-dark  p-3 ">
+    <div
+      className="mx-auto rounded text-dark  p-3 "
+      style={{
+        background:
+          "linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))",
+      }}
+      >
       <div>
         <div className="order-0 pb-2 ">
           <label htmlFor="nationalCode" className="form-label">
@@ -29,7 +35,7 @@ function CustomerInfo() {
           />
           <div className="p-3 order-1 text-center">
             <img
-              className="img-responsive w-75 h-75"
+              className="img-responsive  w-75 h-75"
               src="/img/undraw_personal_info_re_ur1n.svg"
               alt=""
             />
