@@ -6,7 +6,7 @@ function Header() {
             <section className="nav headerone__section right" >
                 <div className="container">
                     <div className="row justify-content-md-center">
-                        <div className="col-md-10">
+                        <div className="col-md-12">
                             <nav className="navbar navbar-expand-lg navbar-light navbar-light forPadding" >
                                 <div className="navbar-brand"><img src={logo} alt="logo" /></div>
                                 <button className="navbar-toggler navbar-toggler-right" data-toggle="collapse"

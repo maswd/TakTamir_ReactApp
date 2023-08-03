@@ -5,8 +5,10 @@ const AdminSidebar = () => {
   return (
     <div className="main-menu ">
       <ul
-        className="navbar-nav bg-gradient-info sidebar sidebar-dark accordion"
-        id="accordionSidebar"
+        className="navbar-nav bg-gradient-info sidebar sidebar-dark accordion "
+        // id="accordionSidebar"
+        id="collapseDiv"
+        data-bs-toggle="collapse"
       >
         <a className="sidebar-brand d-flex align-items-center justify-content-center">
           <div className="sidebar-brand-icon rotate-n-15">

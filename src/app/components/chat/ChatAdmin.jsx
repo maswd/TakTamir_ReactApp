@@ -5,7 +5,7 @@ const ChatAdmin = () => {
     <div>
       <div className="card">
         <div className="row ">
-          <div className="col-12 col-lg-5 col-xl-3 border-right ">
+          <div className="col-12 col-lg-5 col-xl-3  ">
             <div className="px-4 d-block">
               <div className="d-flex align-items-center">
                 <div className="flex-grow-1 ">
@@ -17,7 +17,7 @@ const ChatAdmin = () => {
                 </div>
               </div>
             </div>
-            <p className="p-2 border-bottom">لیست کاربران :</p>
+            <p className="px-4 py-2 border-bottom">لیست کاربران :</p>
             <span
               className=""
               style={{ maxHeight: "540px", overflowY: "scroll" }}
@@ -40,6 +40,28 @@ const ChatAdmin = () => {
                     Vanessa Tucker
                     <div className="small">
                       <span className="fas fa-circle chat-online"></span> Online
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a
+                href="#"
+                className="list-group-item list-group-item-action  border-0"
+                style={{backgroundColor: "transparent"}}
+              >
+                <div className="badge bg-danger text-light float-right">5</div>
+                <div className="d-flex align-items-star border-bottom pb-2 ">
+                  <img
+                    src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                    className="rounded-circle mr-1"
+                    alt="Vanessa Tucker"
+                    width="40"
+                    height="40"
+                  />
+                  <div className="flex-grow-1 mr-3 ">
+                    Vanessa Tucker
+                    <div className="small">
+                      <span className="fas fa-circle chat-offline"></span> offline
                     </div>
                   </div>
                 </div>
