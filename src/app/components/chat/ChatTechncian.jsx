@@ -1,5 +1,6 @@
 import React from "react";
 import photo from "/img/suprted.jpg";
+
 function ChatTechncian() {
   return (
     <div className="">

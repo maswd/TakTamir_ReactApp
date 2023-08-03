@@ -1,6 +1,95 @@
 import React from "react";
 import "./chat.css";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+
 const ChatAdmin = () => {
+  const [rooms,setRooms]=useState([]);
+  const [connection, setConnection] = useState();
+  const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
+  useEffect(()=>{
+    const fetchRooms = async () => {
+      try {
+        const accessToken=localStorage.getItem('access_token');
+        const response = await axios.get('https://taktamir.mohamadrezakiani.ir/api/Chats',{
+            headers:{
+                      Authorization: `Bearer ${accessToken}`,
+            }
+        }); // Replace 'your-endpoint' with the actual API endpoint URL
+        console.log("get rooms", response.data);
+        setRooms(response.data);
+      } catch (error) {
+        console.error('Error fetching rooms:', error);
+      }
+    };
+    fetchRooms();
+   
+  },[])
+  const jonAdminroom=async (Nameroom)=>{
+    const token =localStorage.getItem('access_token');;
+    const headers = {
+      Authorization: `Bearer ${token}`
+    }
+  
+    try {
+      const connection = new HubConnectionBuilder()
+        .withUrl("https://taktamir.mohamadrezakiani.ir/chats",{ headers: headers })
+        .configureLogging(LogLevel.Information)
+        .build();
+   
+        connection.on('ReceiveRooms', rooms => {
+          console.log(rooms)
+          setRooms({ rooms });
+        });
+        // connection.on("ReceivenewMessage",(messge)=>{
+        //   console.log("new message"+messge)
+        // })
+        connection.on("notification",(msg)=>{
+          alert(msg);
+      });
+      connection.on("ReceiveMessage", (user, message) => {
+        console.log("Message Recived:",message)
+        setMessages(messages => [...messages, { user, message }]);
+      });
+      connection.on("AllMessage",(messagesroom)=>{
+        messagesroom.forEach(msg => {
+            console.log("mesage is"+ msg);
+          });
+      });
+      connection.on("UsersInRoom", (users) => {
+        setUsers(users);
+      });
+      connection.on("Erorr",(eror)=>{
+        console.log(eror)
+      })
+  
+      connection.onclose(e => {
+        setConnection();
+        setMessages([]);
+        setUsers([]);
+      });
+  
+      await connection.start();
+     
+    
+      await connection.invoke("JonAdmintoroom",Nameroom);
+      setConnection(connection);
+    } catch (e) {
+      console.log(e);
+    }
+    // try {
+    //   await connection.invoke("JonAdmintoroom",Nameroom)
+      
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }
+  const handelClick= (item)=>{
+    jonAdminroom(item);
+  }
   return (
     <div>
       <div className="card">
@@ -22,6 +111,31 @@ const ChatAdmin = () => {
               className=""
               style={{ maxHeight: "540px", overflowY: "scroll" }}
             >
+              {rooms.map((item,index)=>(
+                <button 
+                className="list-group-item list-group-item-action  border-0"
+                style={{backgroundColor: "transparent"}}
+                key={index}
+                onClick={()=> handelClick(item.nameRoom)}
+              >
+                <div className="badge bg-success float-right">5</div>
+                <div className="d-flex align-items-star border-bottom pb-2  " >
+                  <img
+                    src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                    className="rounded-circle mr-1"
+                    alt="Vanessa Tucker"
+                    width="40"
+                    height="40"
+                  />
+                  <div className="flex-grow-1 mr-3 " >
+                     {item.nameRoom}
+                    <div className="small">
+                      <span className="fas fa-circle chat-online"></span> Online
+                    </div>
+                  </div>
+                </div>
+              </button>
+              ))}
               <a
                 href="#"
                 className="list-group-item list-group-item-action  border-0"
