@@ -5,7 +5,7 @@ export const submitForm = () => {
         dispatch({ type: 'SET_SUBMITTING', payload: true });
         setTimeout(() => {
             dispatch({ type: 'SET_SUBMITTING', payload: false });
-        }, 4000);
+        }, 5000);
       }
     };
   };
