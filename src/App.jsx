@@ -5,7 +5,7 @@ import Landing from "./app/pages/Landing";
 import Dashborad from "./app/pages/Dashborad";
 import Workers from "./app/components/admin/Workers";
 import Works from "./app/components/admin/Works";
-import Masseages from "./app/components/chat/Masseages";
+import Masseages from "./app/components/chat/ChatTechncian";
 import Logout from "./app/components/login/Logout";
 import Login from "./app/components/login/Login";
 import AOS from "aos";
@@ -24,6 +24,8 @@ import PrivateRoute from "./app/pages/PrivateRoute";
 import NotFound from "./app/pages/NotFound";
 import AcceptTec from "./app/components/admin/AcceptTec";
 import Requests from "./app/components/admin/Requests";
+import ChatAdmin from "./app/components/chat/ChatAdmin";
+import ChatTechncian from "./app/components/chat/ChatTechncian";
 function App() {
   const user=useSelector(state=>state.user)
   useEffect(() => {
@@ -39,14 +41,14 @@ function App() {
         <Route path="/dashboard" element={<Dashborad />}>
           <Route index element={<Workers />} />
           <Route path="works" element={<Works />} />
-          <Route path="messages" element={<Masseages />} />
+          <Route path="messages" element={<ChatAdmin />} />
           <Route path="accept" element={<AcceptTec />} />
           <Route path="requests" element={<Requests />} />
         </Route>
         <Route path="/technician" element={<PrivateRoute user={user}><TechnicianDash /></PrivateRoute>}>
           <Route path="write" element={<WriteWorks />} />
           <Route path="orders" element={<Cards />} />
-          <Route path="support" element={<Masseages />} />
+          <Route path="support" element={<ChatTechncian />} />
           <Route path="jobs" element={<Jobs />} />
           <Route index element={<Profile />} />
         </Route>

@@ -77,12 +77,13 @@ const UserContext = ({ children }) => {
     } catch (error) {
       dispatch(hideLoading());
       if (error.response.status === 426) {
+        history("/user-information");
         localStorage.setItem("access_token", error.response.data.access_Token);
         localStorage.setItem(
           "refresh_token",
           error.response.data.refresh_Token
-        );
-        history("/user-information");
+          );
+          history("/user-information");
       } else if (error.response.status === 400) {
         errorMessage("کد یا شماره تلفن نامعتبر است");
       }
