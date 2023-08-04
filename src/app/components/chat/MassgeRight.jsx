@@ -1,8 +1,8 @@
 import React from "react";
 
-const MassgeRight = ({data}) => {
+const MassgeRight = ({data,ref}) => {
   return (
-    <div className="chat-message-right pb-4">
+    <div className="chat-message-right pb-4" ref={ref}>
       <div>
         <img
           src="https://bootdey.com/img/Content/avatar/avatar1.png"

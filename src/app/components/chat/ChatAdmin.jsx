@@ -6,17 +6,21 @@ import MassageLeft from "./MassageLeft";
 import User from "./User";
 import "./chat.css";
 import { successMessage } from "../../../utils/message";
+import { useRef } from "react";
 
 const ChatAdmin = () => {
   const [rooms, setRooms] = useState([]);
-  const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
-  const [messageUser, setMessageUer] = useState("");
-  const [allmessageUser, setAllMessageUer] = useState([]);
+  const [messageUser, setMessageUser] = useState("");
+  const [allmessageUser, setAllMessageUser] = useState([]);
+  console.log("allmessageUser",allmessageUser);
   const [nameRoom, setNameRoom] = useState();
   const [connection, setConnection] = useState();
   console.log("KSLAKDLSA", connection);
-
+  const messagesEndRef = useRef(null);
+  useEffect(() => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [allmessageUser]);
   const connectToSignalR = () => {
     const token = localStorage.getItem("access_token");
     const headers = {
@@ -54,6 +58,7 @@ const ChatAdmin = () => {
 
   useEffect(() => {
     fetchRooms();
+    
   }, [fetchRooms]);
 
   const jonAdminroom = useCallback(async (Nameroom) => {
@@ -66,14 +71,14 @@ const ChatAdmin = () => {
         successMessage(msg);
       });
 
-      connection.on("ReceiveMessage", (user, msd) => {
-        setMessages((messages) => [...messages, { user, msd }]);
-        // console.log(message);
+      connection.on("ReceiveMessage", (user, message) => {
+        setAllMessageUser((messages) => [...messages,  JSON.parse(message)]);
+        console.log("logger",message);
       });
 
       connection.on("AllMessage", (messagesroom) => {
         console.log("AllMessage", messagesroom);
-        setAllMessageUer(JSON.parse(messagesroom));
+        setAllMessageUser(JSON.parse(messagesroom));
       });
 
       connection.on("UsersInRoom", (users) => {
@@ -86,7 +91,7 @@ const ChatAdmin = () => {
 
       connection.onclose(() => {
         setConnection();
-        setMessages([]);
+        setAllMessageUser([]);
         setUsers([]);
       });
 
@@ -106,6 +111,61 @@ const ChatAdmin = () => {
     },
     [jonAdminroom, setNameRoom]
   );
+  // const handleClick = useCallback(
+  //   async (item) => {
+  //     try {
+  //       const token = localStorage.getItem("access_token");
+  //       const headers = {
+  //         Authorization: `Bearer ${token}`,
+  //       };
+  //       const connection = new signalR.HubConnectionBuilder()
+  //         .withUrl("https://taktamir.mohamadrezakiani.ir/chats", {
+  //           headers: headers,
+  //         })
+  //         .configureLogging(signalR.LogLevel.Information)
+  //         .withAutomaticReconnect()
+  //         .build();
+      
+  //       connection.on("ReceiveRooms", (rooms) => {
+  //         setRooms(rooms);
+  //       });
+  
+  //       connection.on("notification", (msg) => {
+  //         successMessage(msg);
+  //       });
+  
+  //       connection.on("ReceiveMessage", (user, message) => {
+  //         setAllMessageUser((messages) => [...messages,  JSON.parse(message)]);
+  //         console.log("logger",message);
+  //       });
+  
+  //       connection.on("AllMessage", (messagesroom) => {
+  //         console.log("AllMessage", messagesroom);
+  //         setAllMessageUser(JSON.parse(messagesroom));
+  //       });
+  
+  //       connection.on("UsersInRoom", (users) => {
+  //         setUsers(users);
+  //       });
+  
+  //       connection.on("Erorr", (eror) => {
+  //         console.log(eror);
+  //       });
+  
+  //       connection.onclose(() => {
+  //         setAllMessageUser([]);
+  //         setUsers([]);
+  //       });
+  
+  //       await connection.start();
+  
+  //       await connection.invoke("JonAdmintoroom", item);
+  //       localStorage.setItem("NameRoom", item);
+  //       setNameRoom(item);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   }, []);
 
   // const sendMessage = useCallback(
   //   async (message) => {
@@ -134,8 +194,9 @@ const ChatAdmin = () => {
     async (message) => {
       try {
         const NameRoom = localStorage.getItem("NameRoom") || nameRoom;
-       
+        
         await connection.invoke("SendMessage", message,NameRoom);
+        setMessageUser("")
       } catch (e) {
         console.error(e);
       }
@@ -223,7 +284,7 @@ const ChatAdmin = () => {
               </div>
             </div>
             <div className="position-relative">
-              <div className="chat-messages p-4">
+              <div className="chat-messages p-4" >
                 {allmessageUser?.map((m, index) =>
                   m.Sender === "Admin" ? (
                     <MassgeRight key={index} data={m} />
@@ -231,6 +292,8 @@ const ChatAdmin = () => {
                     <MassageLeft key={index} data={m} />
                   )
                 )}
+                  <div ref={messagesEndRef} />
+
               </div>
             </div>
             <div className="flex-grow-0  py-3 px-4 border-top">
@@ -239,7 +302,8 @@ const ChatAdmin = () => {
                   type="text"
                   className="form-control"
                   placeholder="پیام خود را ارسال کنید !"
-                  onChange={(e) => setMessageUer(e.target.value)}
+                  value={messageUser}
+                  onChange={(e) => setMessageUser(e.target.value)}
                 />
                 <button
                   className="btn btn-primary"

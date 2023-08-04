@@ -28,7 +28,7 @@ axios.interceptors.response.use(
       originalRequest._retry = true;
       const result = await Swal.fire({
         title: "هشدار!",
-        text: "جلسه شما تمام شده است لطفا حساب خود را بروزرسانی کنید .        ",
+        text: "زمان دسترسی شما به پنل تمام شده .        ",
         icon: "error",
         confirmButtonText: "بروزرسانی ",
       });
