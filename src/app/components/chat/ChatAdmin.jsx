@@ -21,24 +21,24 @@ const ChatAdmin = () => {
   useEffect(() => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [allmessageUser]);
-  const connectToSignalR = () => {
-    const token = localStorage.getItem("access_token");
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    };
-    const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://taktamir.mohamadrezakiani.ir/chats", {
-        headers: headers,
-      })
-      .configureLogging(signalR.LogLevel.Information)
-      .withAutomaticReconnect()
-      .build();
-    setConnection(connection);
-  };
+  // const connectToSignalR = () => {
+  //   const token = localStorage.getItem("access_token");
+  //   const headers = {
+  //     Authorization: `Bearer ${token}`,
+  //   };
+  //   const connection = new signalR.HubConnectionBuilder()
+  //     .withUrl("https://taktamir.mohamadrezakiani.ir/chats", {
+  //       headers: headers,
+  //     })
+  //     .configureLogging(signalR.LogLevel.Information)
+  //     .withAutomaticReconnect()
+  //     .build();
+  //   setConnection(connection);
+  // };
 
-  useEffect(() => {
-    connectToSignalR();
-  }, []);
+  // useEffect(() => {
+  //   connectToSignalR();
+  // }, []);
   const fetchRooms = useCallback(async () => {
     try {
       const accessToken = localStorage.getItem("access_token");
@@ -60,48 +60,109 @@ const ChatAdmin = () => {
     fetchRooms();
     
   }, [fetchRooms]);
-
+  const connectToSignalR = (headers) => {
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("https://taktamir.mohamadrezakiani.ir/chats", {
+        headers: headers,
+      })
+      .configureLogging(signalR.LogLevel.Information)
+      .withAutomaticReconnect()
+      .build();
+    return connection;
+  };
+  
   const jonAdminroom = useCallback(async (Nameroom) => {
     try {
-      connection.on("ReceiveRooms", (rooms) => {
+      const token = localStorage.getItem("access_token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      const newConnection = connectToSignalR(headers);
+      setConnection(newConnection);
+
+      newConnection.on("ReceiveRooms", (rooms) => {
         setRooms(rooms);
       });
-
-      connection.on("notification", (msg) => {
+  
+      newConnection.on("notification", (msg) => {
         successMessage(msg);
       });
-
-      connection.on("ReceiveMessage", (user, message) => {
+  
+      newConnection.on("ReceiveMessage", (user, message) => {
         setAllMessageUser((messages) => [...messages,  JSON.parse(message)]);
-        console.log("logger",message);
+        console.log("logger", message);
       });
-
-      connection.on("AllMessage", (messagesroom) => {
+  
+      newConnection.on("AllMessage", (messagesroom) => {
         console.log("AllMessage", messagesroom);
         setAllMessageUser(JSON.parse(messagesroom));
       });
-
-      connection.on("UsersInRoom", (users) => {
+  
+      newConnection.on("UsersInRoom", (users) => {
         setUsers(users);
       });
-
-      connection.on("Erorr", (eror) => {
+  
+      newConnection.on("Erorr", (eror) => {
         console.log(eror);
       });
-
-      connection.onclose(() => {
+  
+      newConnection.onclose(() => {
         setConnection();
         setAllMessageUser([]);
         setUsers([]);
       });
-
-      await connection.start();
-
-      await connection.invoke("JonAdmintoroom", Nameroom);
+  
+      await newConnection.start();
+      await newConnection.invoke("JonAdmintoroom", Nameroom);
+      setNameRoom(Nameroom);
+      setConnection(newConnection);
     } catch (e) {
       console.log(e);
+      connectToSignalR();
     }
-  }, [connection]);
+  }, []);
+  // const jonAdminroom = useCallback(async (Nameroom) => {
+  //   try {
+  //     connection.on("ReceiveRooms", (rooms) => {
+  //       setRooms(rooms);
+  //     });
+
+  //     connection.on("notification", (msg) => {
+  //       successMessage(msg);
+  //     });
+
+  //     connection.on("ReceiveMessage", (user, message) => {
+  //       setAllMessageUser((messages) => [...messages,  JSON.parse(message)]);
+  //       console.log("logger",message);
+  //     });
+
+  //     connection.on("AllMessage", (messagesroom) => {
+  //       console.log("AllMessage", messagesroom);
+  //       setAllMessageUser(JSON.parse(messagesroom));
+  //     });
+
+  //     connection.on("UsersInRoom", (users) => {
+  //       setUsers(users);
+  //     });
+
+  //     connection.on("Erorr", (eror) => {
+  //       console.log(eror);
+  //     });
+
+  //     connection.onclose(() => {
+  //       setConnection();
+  //       setAllMessageUser([]);
+  //       setUsers([]);
+  //     });
+
+  //     await connection.start();
+  //     await connection.invoke("JonAdmintoroom", Nameroom);
+  //   } catch (e) {
+  //     console.log(e);
+  //     connectToSignalR();
+
+  //   }
+  // }, [connection]);
 
   const handleClick = useCallback(
     (item) => {
