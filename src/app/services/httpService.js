@@ -1,6 +1,8 @@
 import axios from "axios";
-import config from './config.json'
-axios.defaults.headers.common["Content-Type"] = "application/json";
+import config from "./config.json";
+import Swal from "sweetalert2";
+
+axios.defaults.headers.common["content-type"] = "application/json";
 
 axios.interceptors.request.use(
   (config) => {
@@ -20,19 +22,34 @@ axios.interceptors.response.use(
     return response;
   },
   async (error) => {
+    console.log(error);
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refresh_token = localStorage.getItem("refresh_token");
-      const res = await axios.post(`${config.api}/api/AuthUsers/refresh-token/${refresh_token}`);
-      if (res.status === 200) {
-        localStorage.setItem("access_token", res.data.access);
-        return api(originalRequest);
+      const result = await Swal.fire({
+        title: "هشدار!",
+        text: "جلسه شما تمام شده است لطفا حساب خود را بروزرسانی کنید .        ",
+        icon: "error",
+        confirmButtonText: "بروزرسانی ",
+      });
+      console.log(result);
+      if (result.isConfirmed) {
+        const refreshToken = localStorage.getItem("refresh_token");
+        const encodedRefreshToken = encodeURIComponent(refreshToken);
+        const res = await axios.post(
+          `https://taktamir.mohamadrezakiani.ir/api/AuthUsers/refresh-token?refreshToken=${encodedRefreshToken}`
+        );
+        if (res.status === 200) {
+          localStorage.setItem("access_token", res.data.access_Token);
+        }
+      } else {
+        return Promise.reject(error);
       }
     }
     return Promise.reject(error);
   }
 );
+
 export const http = {
   get: axios.get,
   post: axios.post,
