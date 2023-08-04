@@ -96,7 +96,7 @@ const ChatAdmin = () => {
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [connection]);
 
   const handleClick = useCallback(
     (item) => {
@@ -134,11 +134,8 @@ const ChatAdmin = () => {
     async (message) => {
       try {
         const NameRoom = localStorage.getItem("NameRoom") || nameRoom;
-        const chatMessage = {
-          NameRoom: NameRoom,
-          message: message,
-        };
-        await connection.invoke("SendMessage", chatMessage);
+       
+        await connection.invoke("SendMessage", message,NameRoom);
       } catch (e) {
         console.error(e);
       }
