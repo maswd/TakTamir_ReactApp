@@ -1,7 +1,9 @@
 import React from "react";
 import user from "/img/undraw_profile.svg";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 function AdminTopNav() {
+  const user= useSelector(state=>state.user)
   return (
     <>
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -250,9 +252,9 @@ function AdminTopNav() {
               aria-expanded="false"
             >
               <span className="ml-2 d-flex text-gray-600 small">
-                مسعود{" "}
+                {user.firstname} {user.lastName}
               </span>
-              <img className="/img-profile rounded-circle" src={user} />
+              <img className="img-profile rounded-circle" src={user.profile_url} />
             </a>
 
             <div
