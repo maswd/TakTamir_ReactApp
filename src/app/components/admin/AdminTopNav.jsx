@@ -14,7 +14,7 @@ function AdminTopNav() {
           <i className="fa fa-bars"></i>
         </button>
 
-        <form className="d-none d-sm-inline-block form-inline mr-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+        {/* <form className="d-none d-sm-inline-block form-inline mr-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
           <div className="input-group">
             <input
               type="text"
@@ -32,10 +32,10 @@ function AdminTopNav() {
               </button>
             </div>
           </div>
-        </form>
+        </form> */}
 
-        <ul className="navbar-nav mx-auto">
-          <li className="nav-item dropdown no-arrow d-sm-none">
+        <ul className="navbar-nav pr-5 mr-auto">
+          {/* <li className="nav-item dropdown no-arrow d-sm-none">
             <a
               className="nav-link dropdown-toggle"
               href="#"
@@ -69,7 +69,7 @@ function AdminTopNav() {
                 </div>
               </form>
             </div>
-          </li>
+          </li> */}
 
           <li className="nav-item dropdown no-arrow mx-1">
             <a
