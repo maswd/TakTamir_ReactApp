@@ -1,11 +1,31 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const User = ({item,handelClick}) => {
+  const [disableButton, setDisableButton] = useState(false);
+
+  const handleClickWithDelay = () => {
+    if (!disableButton) {
+      handelClick(item.nameRoom);
+      setDisableButton(true);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisableButton(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, [disableButton]);
   return (
     <button
     className="list-group-item list-group-item-action  border-0"
     style={{ backgroundColor: "transparent" }}
-    onClick={() => handelClick(item.nameRoom)}
+    onClick={handleClickWithDelay}
+    disabled={disableButton}
+
   >
     <div className="badge bg-success float-right">5</div>
     <div className="d-flex align-items-star border-bottom pb-2  ">

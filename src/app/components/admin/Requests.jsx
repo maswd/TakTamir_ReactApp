@@ -1,6 +1,16 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRequsets } from "../../redux/actions/admin";
+import { useEffect } from "react";
 
 const Requests = () => {
+  const requests = useSelector((state) => state.admin.requests);
+  console.log("requests",requests);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllRequsets());
+  }, [dispatch]);
+
   return (
     <div className=" card shadow mb-4">
       <div className="card-header py-3">

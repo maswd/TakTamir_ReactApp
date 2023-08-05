@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllJobs } from "../../redux/actions/jobs";
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { reservationService } from "../../services/jobsService";
+import { successMessage } from "../../../utils/message";
 function Jobs() {
   const [selectedJob, setSelectedJob] = useState(null);
-  const jobs = useSelector((state) => state.jobs);
+  const jobs = useSelector((state) => state.jobs.jobs);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllJobs());
@@ -20,7 +22,13 @@ function Jobs() {
   const handleCloseModal = () => {
     setSelectedJob(null);
   };
-
+  const handleReservation = async (id) => {
+    const { status } = await reservationService(id);
+    if (status === 200) {
+      successMessage("رزرو انجام شد")
+      setSelectedJob(null);
+    }
+  };
   return (
     <>
       <section className=" mt-2">
@@ -32,7 +40,6 @@ function Jobs() {
             }}
             className="row justify-content-center align-items-center align-items-lg-start textthree-row textthree-position-right"
           >
-          
             <div className="col-md-12 col-lg-7 textthree-texts">
               <div className="">
                 <img src="/img/dots-pattern.svg" />
@@ -94,7 +101,7 @@ function Jobs() {
                         <td>{job.name_Device}</td>
                         <td className="">{job.customer.fullNameCustomer}</td>
                         <td>
-                          {job.statusJob !== "0" ? (
+                          {!job.reservation ? (
                             <button
                               className="btn btn-success btn-icon-split"
                               onClick={() => handleJobClick(job)}
@@ -124,17 +131,22 @@ function Jobs() {
                 {selectedJob && (
                   <Modal show={true} onHide={handleCloseModal}>
                     <Modal.Header closeButton>
-                      <Modal.Title>{selectedJob.name_Device}</Modal.Title>
+                      <Modal.Title>{selectedJob?.name_Device}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <p>مشکل: {selectedJob.problems}</p>
-                      <p>مشتری : {selectedJob.customer.fullNameCustomer}</p>
-                      <p>آدرس: {selectedJob.customer.address}</p>
-                      <p>شماره تلفن: {selectedJob.customer.phone}</p>
-                      <p>توضیحات: {selectedJob.description}</p>
+                      <p>مشکل: {selectedJob?.problems}</p>
+                      <p>مشتری : {selectedJob.customer?.fullNameCustomer}</p>
+                      <p>آدرس: {selectedJob.customer?.address}</p>
+                      <p>شماره تلفن: {selectedJob.customer?.phone}</p>
+                      <p>توضیحات: {selectedJob?.description}</p>
                     </Modal.Body>
                     <Modal.Footer>
-                      <button className="btn btn-success">گرفتن کار</button>
+                      <button
+                        className="btn btn-success"
+                        onClick={() => handleReservation(selectedJob.id)}
+                      >
+                        گرفتن کار
+                      </button>
                       <button
                         className="btn btn-danger"
                         onClick={handleCloseModal}

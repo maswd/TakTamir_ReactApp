@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUser } from "../../redux/actions/admin";
 
 const AcceptTec = () => {
-  const user = useSelector((state) => state.admin);
+  const user = useSelector((state) => state.admin.users);
   console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {

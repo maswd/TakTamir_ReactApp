@@ -8,3 +8,6 @@ export const AllUsersService = (token) => {
     },
   });
 };
+export const RequestsService = () => {
+  return http.get(`${config.api}/api/AdminUsers/Work_pending_approval`);
+};
