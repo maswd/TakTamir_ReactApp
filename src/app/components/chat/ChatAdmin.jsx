@@ -139,10 +139,10 @@ const ChatAdmin = () => {
     };
   }, [sendMessage, messageUser]);
   return (
-    <div>
-      <div className="card">
+    <div className="container-fluid ">
+      <div className="card shadow-sm w-100">
         <div className="row ">
-          <div className="col-12 col-lg-5 col-xl-3  ">
+          <div className="order-1 order-md-0 col-12 col-lg-5 col-xl-3  ">
             <div className="px-4 d-block">
               <div className="d-flex align-items-center">
                 <div className="flex-grow-1 ">
@@ -174,7 +174,7 @@ const ChatAdmin = () => {
           {connection !== undefined &&
             connection?._connectionState === "Connected" &&
             connection._connectionStarted && (
-              <div className="col-12 col-lg-7 col-xl-9 border">
+              <div className="order-0 col-12 col-lg-7 col-xl-9 border">
                 <div className="py-2 px-4 border-bottom">
                   <div className="d-flex align-items-center py-1">
                     <div className="position-relative ">
