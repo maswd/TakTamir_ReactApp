@@ -2,7 +2,7 @@ import React from "react";
 
 const CardWorkers = ({ name, position, location, isEmployed }) => {
   return (
-    <div className="card  bg-transparent border-0 mt-3 col-12 col-md-6 col-lg-4">
+    <div className="card  bg-transparent border-0 mb-3 col-12 col-md-6 col-lg-4">
       <div
         className={`card-body rounded shadow-sm d-flex justify-content-between border border-left-${
           isEmployed ? "success" : "danger"

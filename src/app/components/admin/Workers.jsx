@@ -4,7 +4,7 @@ import ResponsiveTable from "./ResTable";
 function Workers() {
   return (
     <>
-      <div className=" card shadow mb-4">
+      <div className=" card shadow mb-4 p-2">
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">وضعیت تکنسین ها</h6>
         </div>
@@ -21,10 +21,8 @@ function Workers() {
             </label>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm-12">
+        <div className="py-2">
             <ResponsiveTable />
-          </div>
         </div>
       </div>
       <Pagination />

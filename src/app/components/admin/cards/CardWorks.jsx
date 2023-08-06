@@ -19,7 +19,7 @@ const CardWorks = ({ name, status, technician, description }) => {
   };
 
   return (
-    <div className={`card bg-transparent mt-3 col-12 col-md-6 col-lg-4 col-xl-3 border-0`}>
+    <div className={`card bg-transparent mb-3 col-12 col-md-6 col-lg-4 col-xl-3 border-0`}>
       <div
         className={`card-body rounded-top shadow-sm border border-${getStatusClass(
           status
