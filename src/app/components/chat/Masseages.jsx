@@ -184,7 +184,7 @@ function Masseages() {
     //       <div className="direct-chat-contacts">
     //         <ul className="contacts-list">
     //           <li>
-    //             <a href="#">
+    //             <button type="button" >
     //               <img
     //                 className="contacts-list-img"
     //                 src="dist/img/user1-128x128.jpg"
@@ -201,11 +201,11 @@ function Masseages() {
     //                   How have you been? I was...
     //                 </span>
     //               </div>
-    //             </a>
+    //             </button>
     //           </li>
 
     //           <li>
-    //             <a href="#">
+    //             <button type="button" >
     //               <img
     //                 className="contacts-list-img"
     //                 src="https://picsum.photos/seed/picsum/200/300"
@@ -222,11 +222,11 @@ function Masseages() {
     //                   I will be waiting for...
     //                 </span>
     //               </div>
-    //             </a>
+    //             </button>
     //           </li>
 
     //           <li>
-    //             <a href="#">
+    //             <button type="button" >
     //               <img
     //                 className="contacts-list-img"
     //                 src="dist/img/user3-128x128.jpg"
@@ -243,11 +243,11 @@ function Masseages() {
     //                   I'll call you back at...
     //                 </span>
     //               </div>
-    //             </a>
+    //             </button>
     //           </li>
 
     //           <li>
-    //             <a href="#">
+    //             <button type="button" >
     //               <img
     //                 className="contacts-list-img"
     //                 src="dist/img/user5-128x128.jpg"
@@ -262,11 +262,11 @@ function Masseages() {
     //                 </span>
     //                 <span className="contacts-list-msg">Where is your new...</span>
     //               </div>
-    //             </a>
+    //             </button>
     //           </li>
 
     //           <li>
-    //             <a href="#">
+    //             <button type="button" >
     //               <img
     //                 className="contacts-list-img"
     //                 src="https://picsum.photos/seed/picsum/200/300"
@@ -283,11 +283,11 @@ function Masseages() {
     //                   Can I take a look at...
     //                 </span>
     //               </div>
-    //             </a>
+    //             </button>
     //           </li>
 
     //           <li>
-    //             <a href="#">
+    //             <button type="button" >
     //               <img
     //                 className="contacts-list-img"
     //                 src="https://picsum.photos/seed/picsum/200/300"
@@ -302,7 +302,7 @@ function Masseages() {
     //                 </span>
     //                 <span className="contacts-list-msg">Never mind I found...</span>
     //               </div>
-    //             </a>
+    //             </button>
     //           </li>
     //         </ul>
     //       </div>

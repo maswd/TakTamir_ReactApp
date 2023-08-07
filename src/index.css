@@ -3,6 +3,10 @@ body {
     font-family: IranSans;
     /* overflow-x: hidden; */
     overflow-wrap:break-word
+    
+}
+button{
+  border: 0;
 }
 
 :root {
@@ -35,3 +39,4 @@ body {
     background-color: #aaa;    border-radius: 50px;
 
   }
+

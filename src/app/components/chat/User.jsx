@@ -45,8 +45,8 @@ const User = ({item,handelClick}) => {
       </div>
     </div>
   </button>
-//     <a
-//     href="#"
+//     <button type="button"
+//     
 //     className="list-group-item list-group-item-action  border-0"
 //     style={{ backgroundColor: "transparent" }}
 //   >
@@ -67,7 +67,7 @@ const User = ({item,handelClick}) => {
 //         </div>
 //       </div>
 //     </div>
-//   </a>
+//   </button>
   )
 }
 

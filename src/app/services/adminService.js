@@ -9,5 +9,5 @@ export const AllUsersService = (token) => {
   });
 };
 export const RequestsService = () => {
-  return http.get(`${config.api}/api/AdminUsers/Work_pending_approval`);
+  return http.get(`${config.api}/api/AdminUsers/Work_pending_approval?page=1&pageSize=10`);
 };

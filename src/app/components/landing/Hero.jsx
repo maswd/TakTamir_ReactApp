@@ -6,7 +6,7 @@ import dotsPattern from "/img/dots-pattern.svg"
 function Hero() {
     return (
         <div id="text">
-            <section data-aos="fade-right" className="textthree-wrapper textthree__section forPadding">
+            <section data-aos="fade-right" className="textthree__section forPadding">
                 <div className="container">
                     <div className="row justify-content-center align-items-center textthree-row textthree-position-right">
                         <div className="col-md-10 col-lg-7 textthree-texts">

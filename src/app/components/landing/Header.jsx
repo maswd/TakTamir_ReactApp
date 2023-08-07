@@ -16,12 +16,12 @@ function Header() {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbar">
                                     <ul className="navbar-nav nav-right">
-                                        <li className="nav-item active"><a className="nav-link" href="#"
-                                        >صفحه اصلی</a></li>
-                                        <li className="nav-item active"><a className="nav-link" href="#"
-                                        >درباره ما</a></li>
-                                        <li className="nav-item active"><a className="nav-link" href="#"
-                                        >تماس با ما</a></li>
+                                        <li className="nav-item active"><NavLink type="button" className="nav-link" 
+                                        >صفحه اصلی</NavLink></li>
+                                        <li className="nav-item active"><NavLink type="button" className="nav-link" 
+                                        >درباره ما</NavLink></li>
+                                        <li className="nav-item active"><NavLink type="button" className="nav-link" 
+                                        >تماس با ما</NavLink></li>
                                         <li className="nav-item active">
                                             <div className=" " >
                                                 <NavLink  className="nav-link"  to="/login" >ورود به حساب </NavLink>
