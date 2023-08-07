@@ -1,4 +1,6 @@
 import ten from "/img/10.svg";
+import tv from "../../../../public/img/tv.png";
+import imagecontenct from "/img/vecteezy_man-repair-appliances_.jpg"
 
 function Features() {
   return (
@@ -9,8 +11,8 @@ function Features() {
             ویژگی‌ها و ارزش‌های ما
           </div>
           <div className="featuresfour-texts__desc right">
-            هزینه و زمان زیادی برای ساخت لندینگ پیج ( صفحه فرود ) توسط تیم محصول
-            صرف می کنید. همین حالا اقدام کنید
+          با مجموعه تعمیر لوازم خانگی   (تک تعمیر) آشنا شوید! به عنوان بهترین شرکت تعمیر لوازم خانگی در منزل، ما با ارائه خدمات حرفه ای و قابل اعتماد در استان مازندران و به زودی در سراسر کشور، به مشتریان خود خدماتی با کیفیت بالا ارائه می‌دهیم.
+
           </div>
         </div>
         <div className="row justify-content-center align-items-center featuresfour-row featuresfour-position-right">
@@ -47,13 +49,12 @@ function Features() {
               </div>
               <div className="featuresfour-item__texts">
                 <div className="featuresfour-item__title">
-                  امکان پرداخت درب محل
+               تعمیر لباسشویی
                 </div>
                 <div className="featuresfour-item__desc right">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی .
+                  
+                   اگر لباسشویی شما با مشکلات فنی روبرو شده است، تیم ما آماده است تا
+                    با کیفیت بالا و با استفاده از قطعات اصلی، آن را تعمیر کند.
                 </div>
               </div>
             </div>
@@ -82,12 +83,9 @@ function Features() {
                 </svg>
               </div>
               <div className="featuresfour-item__texts">
-                <div className="featuresfour-item__title">تحویل فوری</div>
+                <div className="featuresfour-item__title"> تعمیر تلویزیون</div>
                 <div className="featuresfour-item__desc right">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی .
+                اگر تلویزیون شما دچار اشکال شده است و به تعمیر نیاز دارد، تعمیرکاران ما با تجربه و مهارت در این زمینه، مشکل را برطرف خواهند کرد.
                 </div>
               </div>
             </div>
@@ -122,17 +120,15 @@ function Features() {
                 </svg>
               </div>
               <div className="featuresfour-item__texts">
-                <div className="featuresfour-item__title">بسته بندی شکیل</div>
+                <div className="featuresfour-item__title">  تعمیر ظرفشویی</div>
                 <div className="featuresfour-item__desc right">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی .
+                آیا ظرفشویی شما عملکرد صحیح خود را از دست داده است؟ با تکنسین‌های ما تماس بگیرید تا ظرفشویی شما را تعمیر کنند.
                 </div>
               </div>
             </div>
             <div data-aos="fade-left" className="featuresfour-item">
               <div className="featuresfour-item__img">
+               
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="43.129"
@@ -157,24 +153,25 @@ function Features() {
               </div>
               <div className="featuresfour-item__texts">
                 <div className="featuresfour-item__title">
-                  امکان چاپ نام و شماره دلخواه
+                تعمیر و خدمات رسانی برای سایر لوازم خانگی
                 </div>
                 <div className="featuresfour-item__desc right">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                  مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-                  تکنولوژی .
+                  
+با تعمیر لوازم خانگی در منزل توسط مجموعه تعمیر لوازم خانگی (تک تعمیر)   
+شما می‌توانید از کیفیت قطعات و خدمات ارائه شده اطمینان حاصل کنید. همچنین، می‌توانید با تعمیرکاران ما در مورد سوالات و مشکلات خود در زمینه لوازم خانگی مستقیماً صحبت کرده 
+و نظارت کامل بر روی فرآیند تعمیرات داشته باشید.
                 </div>
               </div>
             </div>
           </div>
           <div className="col-md-12 col-lg-6 featuresfour-img">
             <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="featuresfour-img__wrapper">
-              <img src={ten} />
+              <img src={imagecontenct} />
             </div>
           </div>
         </div>
       </section>
+      
     </div>
   );
 }

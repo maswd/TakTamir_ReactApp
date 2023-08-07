@@ -1,7 +1,7 @@
 import React from 'react'
 import normalCircle from "/img/normal-circle.svg"
 import ring from "/img/ring.svg"
-import ten from "/img/10.svg"
+import ten from "/img/Technician_Singgle-03_generated.jpg"
 import dotsPattern from "/img/dots-pattern.svg"
 function Hero() {
     return (
@@ -11,13 +11,14 @@ function Hero() {
                     <div className="row justify-content-center align-items-center textthree-row textthree-position-right">
                         <div className="col-md-10 col-lg-7 textthree-texts">
                             <div className="textthree-texts__wrapper">
-                                <div className="textthree-texts__title" >کلیک ها رو اینجا فرود بیار و به مشتری تبدیلش
-                                    کن!<img src={dotsPattern} /></div>
+                                <div className="textthree-texts__title" >
+                                با تک تعمیر ، بهترین شرکت تعمیر لوازم خانگی در منزل
+                                    <img src={dotsPattern} /></div>
                                 <div className="textthree-texts__desc color-links" >
-                                    <p data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600" style={{ direction: "rtl", textAlign: "right" }}>هزینه و زمان زیادی برای ساخت لندینگ پیج (
-                                        صفحه فرود ) توسط تیم محصول صرف می کنید. و در آخر هم ممکن است، صفحه فرود شما بدلیل
-                                        استاندارد نبودن، نرخ تبدیل مناسبی نداشته و مشتریان خود را از دست می‌دید. متناسب با
-                                        نیاز کاربران صفحه فرود اختصاصی بسازید. لندین این بستر رو برای شما فراهم کرده است.
+                                    <p data-aos="fade-zoom-in" data-aos-offset="200" 
+                                    data-aos-easing="ease-in-sine" data-aos-duration="600" 
+                                    style={{ direction: "rtl", textAlign: "right" }}>
+                                        آیا بارها تجربه کرده‌اید که لوازم خانگی شما مدت کوتاهی پس از تعمیر، مجدداً خراب شوند و هزینه‌های تعمیرات را افزایش دهند؟ آیا می‌خواهید تعمیر لوازم خانگی را با نظارت کامل در منزل خود انجام داده و از کیفیت قطعات استفاده شده مطمئن شوید؟ با تک تعمیر، بهترین شرکت تعمیر لوازم خانگی در منزل، این امکان را دارید.
                                     </p>
                                 </div>
                                 <div className="textthree-texts__buttons">
