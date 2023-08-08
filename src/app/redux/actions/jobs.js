@@ -14,9 +14,8 @@ export const getAllJobs = () => {
 export const getAllOrders = () => {
   return async (dispatch, getState) => {
     try {
-      const { data } = await orderService();
-      console.log(data);
-      await dispatch({ type: "INIT_ORDERS", payload: data });
+      const {data}= await orderService();
+      await dispatch({ type: "INIT_ORDERS", payload: data.orders });
     } catch (error) {
       dispatch({ type: "INIT_ORDERS", payload: { ...getState().jobs } });
     }

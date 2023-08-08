@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "./componentsTech/Card";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,17 +34,19 @@ function Cards() {
   });
 
   // // ایجاد select ها برای فیلتر کردن بر اساس status
-  // const statusSelects = statusOptions.map((statusOption) => (
-  //   <option key={statusOption} value={statusOption}>
-  //     {statusOption}
-  //   </option>
+  // const statusSelects =
   // ));
   return (
     <>
+      {statusOptions.map((statusOption) => (
+        <option key={statusOption} value={statusOption}>
+         <select> {statusOption}</select>
+        </option>
+      ))}
       <div className="d-flex flex-wrap mt-2">
-        {/* {filteredData.map((data, index) => (
+        {filteredData.map((data, index) => (
           <Card key={index} {...data} />
-        ))} */}
+        ))}
       </div>
     </>
   );

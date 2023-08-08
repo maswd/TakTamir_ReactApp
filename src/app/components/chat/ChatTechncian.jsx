@@ -1,18 +1,116 @@
-import React from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 import photo from "/img/suprted.jpg";
+import TechMessageLeft from "./TechMessageLeft";
+import TechMessageRight from "./TechMessageRight";
+import * as signalR from "@microsoft/signalr";
+import { successMessage } from "../../../utils/message";
+import { useSelector } from "react-redux";
 
 function ChatTechncian() {
+  const user = useSelector((state) => state.user);
+  const [rooms, setRooms] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [messageUser, setMessageUser] = useState("");
+  const [allmessageUser, setAllMessageUser] = useState([]);
+  console.log("allmessageUser", allmessageUser);
+  const [connection, setConnection] = useState();
+  console.log("KSLAKDLSA", connection);
+  const messagesEndRef = useRef(null);
+  const NameRoom = user.firstname + " " + user.lastName;
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [allmessageUser]);
+  const connectToSignalR = (headers) => {
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("https://1s8795ts-7261.euw.devtunnels.ms/chats", {
+        headers: headers,
+      })
+      .configureLogging(signalR.LogLevel.Information)
+      .withAutomaticReconnect()
+      .build();
+    return connection;
+  };
+  const jonAdminroom = useCallback(async () => {
+    try {
+      const token = localStorage.getItem("access_token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      const newConnection = connectToSignalR(headers);
+      setConnection(newConnection);
+
+      // newConnection.on("ReceiveRooms", (rooms) => {
+      //   setRooms(rooms);
+      // });
+
+      newConnection.on("notification", (msg) => {
+        console.log("msg", msg);
+        console.log("NameRoom", NameRoom);
+        if (msg.Sender !== NameRoom) {
+          successMessage(`${msg.Firstname} ${msg.LastName}`);     
+        }
+
+      });
+
+      newConnection.on("ReceiveMessage", (user, message) => {
+        setAllMessageUser((messages) => [...messages, JSON.parse(message)]);
+        console.log("logger", message);
+      });
+
+      newConnection.on("AllMessage", (messagesroom) => {
+        console.log("AllMessage", messagesroom);
+        setAllMessageUser(JSON.parse(messagesroom));
+      });
+
+      newConnection.on("UsersInRoom", (users) => {
+        setUsers(users);
+      });
+
+      newConnection.on("Erorr", (eror) => {
+        console.log(eror);
+      });
+
+      newConnection.onclose(() => {
+        setConnection();
+        setAllMessageUser([]);
+        setUsers([]);
+      });
+
+      await newConnection.start();
+      await newConnection.invoke("JoinRoom");
+      // setNameRoom(Nameroom);
+      setConnection(newConnection);
+    } catch (e) {
+      console.log(e);
+      connectToSignalR();
+    }
+  }, []);
+  const sendMessage = useCallback(
+    async (message) => {
+      try {
+        setMessageUser("");
+        await connection.invoke("SendMessage", message, NameRoom);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    [connection]
+  );
+  useEffect(() => {
+    jonAdminroom();
+  }, []);
+
   return (
     <div className="">
       <div className="col-12 col-lg-7 col-xl-10 mx-auto">
-        <div className=" fixed-top  text-dark col-12 col-lg-7 col-xl-10 mx-auto " style={{
-              background:
-                "linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))",
-            }}>
-          <div
-            className="d-flex align-items-center  border-bottom  py-2 px-4  rounded"
-            
-          >
+        <div
+          className=" fixed-top  text-dark col-12 col-lg-7 col-xl-10 mx-auto "
+          style={{
+            background:
+              "linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))",
+          }}
+        >
+          <div className="d-flex align-items-center  border-bottom  py-2 px-4  rounded">
             <div className="position-relative">
               <img
                 src={photo}
@@ -30,228 +128,62 @@ function ChatTechncian() {
             </div>
           </div>
         </div>
-        <div className="">
-          <div
-            className="chat-messages p-2"
-            style={{ height: "75vh", maxHeight: "75vh", margin: "60px 0" }}
-          >
-            <div className="chat-message-right pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  className="rounded-circle ml-1"
-                  alt="Chris Wood"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:33 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">You</div> Lorem ipsum
-                dolor sit amet, vis erat denique in, dicunt prodesset te vix.
-              </div>
-            </div>
-            <div className="chat-message-left pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                  className="rounded-circle ml-1"
-                  alt="Sharon Lessman"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:34 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div className="font-weight-bold mb-1">Sharon Lessman</div> Sit
-                meis deleniti eu, pri vidit meliore docendi ut, an eum erat
-                animal commodo.
-              </div>
-            </div>
-            <div className="chat-message-right mb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  className="rounded-circle ml-1"
-                  alt="Chris Wood"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:35 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">You</div> Cum ea graeci
-                tractatos.
-              </div>
-            </div>
-            <div className="chat-message-left pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                  className="rounded-circle ml-1"
-                  alt="Sharon Lessman"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:36 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div className="font-weight-bold mb-1">Sharon Lessman</div> Sed
-                pulvinar, massa vitae interdum pulvinar, risus lectus porttitor
-                magna, vitae commodo lectus mauris et velit. Proin ultricies
-                placerat imperdiet. Morbi varius quam ac venenatis tempus.
-              </div>
-            </div>
-            <div className="chat-message-left pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                  className="rounded-circle ml-1"
-                  alt="Sharon Lessman"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:37 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div className="font-weight-bold mb-1">Sharon Lessman</div> Cras
-                pulvinar, sapien id vehicula aliquet, diam velit elementum orci.
-              </div>
-            </div>
-            <div className="chat-message-right mb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  className="rounded-circle ml-1"
-                  alt="Chris Wood"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:38 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">You</div> Lorem ipsum
-                dolor sit amet, vis erat denique in, dicunt prodesset te vix.
-              </div>
-            </div>
-            <div className="chat-message-left pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                  className="rounded-circle ml-1"
-                  alt="Sharon Lessman"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:39 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div className="font-weight-bold mb-1">Sharon Lessman</div> Sit
-                meis deleniti eu, pri vidit meliore docendi ut, an eum erat
-                animal commodo.
-              </div>
-            </div>
-            <div className="chat-message-right mb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  className="rounded-circle ml-1"
-                  alt="Chris Wood"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:40 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">You</div> Cum ea graeci
-                tractatos.
-              </div>
-            </div>
-            <div className="chat-message-right mb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  className="rounded-circle ml-1"
-                  alt="Chris Wood"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:41 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">You</div> Morbi finibus,
-                lorem id placerat ullamcorper, nunc enim ultrices massa, id
-                dignissim metus urna eget purus.
-              </div>
-            </div>
-            <div className="chat-message-left pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                  className="rounded-circle ml-1"
-                  alt="Sharon Lessman"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:42 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div className="font-weight-bold mb-1">Sharon Lessman</div> Sed
-                pulvinar, massa vitae interdum pulvinar, risus lectus porttitor
-                magna, vitae commodo lectus mauris et velit. Proin ultricies
-                placerat imperdiet. Morbi varius quam ac venenatis tempus.
-              </div>
-            </div>
-            <div className="chat-message-right mb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  className="rounded-circle ml-1"
-                  alt="Chris Wood"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:43 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div className="font-weight-bold mb-1">You</div> Lorem ipsum
-                dolor sit amet, vis erat denique in, dicunt prodesset te vix.
-              </div>
-            </div>
-            <div className="chat-message-left pb-4">
-              <div>
-                <img
-                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                  className="rounded-circle ml-1"
-                  alt="Sharon Lessman"
-                  width="40"
-                  height="40"
-                />
-                <div className="text-muted small text-nowrap mt-2">2:44 am</div>
-              </div>
-              <div className="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                <div className="font-weight-bold mb-1">Sharon Lessman</div> Sit
-                meis deleniti eu, pri vidit meliore docendi ut, an eum erat
-                animal commodo.
-              </div>
-            </div>
-          </div>
+        <div className={`${ connection?._connectionState !== "Connecting" ? "d-none":"d-flex vh-100 align-items-center "} `}>
+          {connection !== undefined &&
+            connection?._connectionState === "Connecting" && (
+              <div
+                className="spinner-border text-dark mx-auto "
+                role="status"
+              ></div>
+            )}
         </div>
-        <div
-          className="mx-auto col-12 col-lg-7 col-xl-9 fixed-bottom   "
-          style={{ bottom: "90px" }}
-        >
-          <div className=" rounded-pill shadow-sm d-flex   px-4 py-2">
-            <button className="btn btn-warning btn-circle ml-2 shadow-sm">
-              <i className="fas fa-paper-plane text-dark"></i>
-            </button>
-            <input
-              type="text"
-              className="form-control  shadow-sm"
-              placeholder="پیام خود را ارسال کنید !"
-            />
-          </div>
-        </div>
+        {connection !== undefined &&
+          connection?._connectionState === "Connected" &&
+          connection._connectionStarted && (
+            <div className="">
+              <div
+                className="chat-messages p-2"
+                style={{ height: "75vh", maxHeight: "75vh", margin: "60px 0" }}
+              >
+                {allmessageUser.length === 0 ? (
+                  <p>
+                    <div className="alert alert-info" role="alert">
+                      پیامی وجود ندارد
+                    </div>
+                  </p>
+                ) : (
+                  allmessageUser?.map((m, index) =>
+                    m.Sender === "Admin" ? (
+                      <TechMessageLeft key={index} data={m} />
+                    ) : (
+                      <TechMessageRight key={index} data={m} />
+                    )
+                  )
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+              <div
+                className="mx-auto col-12 col-lg-7 col-xl-9 fixed-bottom   "
+                style={{ bottom: "90px" }}
+              >
+                <div className=" rounded-pill shadow-sm d-flex   px-4 py-2">
+                  <button
+                    onClick={() => sendMessage(messageUser)}
+                    className="btn btn-warning btn-circle ml-2 shadow-sm"
+                  >
+                    <i className="fas fa-paper-plane text-dark"></i>
+                  </button>
+                  <input
+                    value={messageUser}
+                    onChange={(e) => setMessageUser(e.target.value)}
+                    type="text"
+                    className="form-control  shadow-sm"
+                    placeholder="پیام خود را ارسال کنید !"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
       </div>
     </div>
   );

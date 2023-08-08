@@ -1,14 +1,10 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
-import { useSelector } from "react-redux";
 
 function TechnicianDash() {
-  // const user = useSelector((state) => state.user);
-
   return (
     <div className="container-fluid" style={{ paddingBottom: "90px" }}>
-        <Outlet />
+      <Outlet />
       <nav className="navbar shadow-sm fixed-bottom  navbar-light bg-light">
         <div className="mx-auto ">
           <ul className="navbar-nav flex-row ">

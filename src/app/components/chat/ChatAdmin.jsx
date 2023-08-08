@@ -26,7 +26,7 @@ const ChatAdmin = () => {
     try {
       const accessToken = localStorage.getItem("access_token");
       const response = await axios.get(
-        "https://taktamir.mohamadrezakiani.ir/api/Chats",
+        "https://1s8795ts-7261.euw.devtunnels.ms/api/Chats",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -44,7 +44,7 @@ const ChatAdmin = () => {
   }, [fetchRooms]);
   const connectToSignalR = (headers) => {
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://taktamir.mohamadrezakiani.ir/chats", {
+      .withUrl("https://1s8795ts-7261.euw.devtunnels.ms/chats", {
         headers: headers,
       })
       .configureLogging(signalR.LogLevel.Information)
@@ -67,9 +67,13 @@ const ChatAdmin = () => {
       });
 
       newConnection.on("notification", (msg) => {
-        successMessage(msg);
-      });
+        console.log("msg", msg);
 
+        console.log("msg.Sender", msg.Sender);
+        if (msg.Sender !== nameRoom) {
+          successMessage(`${msg.Firstname} ${msg.LastName}`);
+        }
+      });
       newConnection.on("ReceiveMessage", (user, message) => {
         setAllMessageUser((messages) => [...messages, JSON.parse(message)]);
         console.log("logger", message);
@@ -112,7 +116,7 @@ const ChatAdmin = () => {
     },
     [jonAdminroom, setNameRoom]
   );
- 
+
   const sendMessage = useCallback(
     async (message) => {
       try {
@@ -218,7 +222,7 @@ const ChatAdmin = () => {
                   <div className="chat-messages p-4">
                     {allmessageUser.length === 0 ? (
                       <p>
-                        <div class="alert alert-info" role="alert">
+                        <div className="alert alert-info" role="alert">
                           پیامی وجود ندارد
                         </div>
                       </p>

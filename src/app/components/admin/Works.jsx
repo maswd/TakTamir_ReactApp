@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Pagination from "../common/pagination";
 import TableToCards from "./Cards";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllJobs } from "../../redux/actions/jobs";
 
 function Works() {
+  const dispatch=useDispatch()
+  const jobs =useSelector(state=>state.jobs.jobs)
+  useEffect(() => {
+    dispatch(getAllJobs())
+  }, [])
+  
   return (
     <>
       <div className=" card shadow mb-4 p-2">
@@ -23,7 +31,7 @@ function Works() {
           </div>
         </div>
         <div className="py-2">
-      <TableToCards />
+      <TableToCards jobs={jobs} />
           </div>
       </div>
       <Pagination />

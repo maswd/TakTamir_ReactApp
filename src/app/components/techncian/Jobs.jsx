@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJobs } from "../../redux/actions/jobs";
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import {  Modal } from "react-bootstrap";
 import { reservationService } from "../../services/jobsService";
 import { successMessage } from "../../../utils/message";
 function Jobs() {
@@ -27,6 +27,7 @@ function Jobs() {
     if (status === 200) {
       successMessage("رزرو انجام شد")
       setSelectedJob(null);
+      dispatch(getAllJobs())
     }
   };
   return (
@@ -101,7 +102,7 @@ function Jobs() {
                         <td>{job.name_Device}</td>
                         <td className="">{job.customer.fullNameCustomer}</td>
                         <td>
-                          {!job.reservation ? (
+                          {job.reservationStatusResult === "WatingforReserve"&&(
                             <button
                               className="btn btn-success btn-icon-split"
                               onClick={() => handleJobClick(job)}
@@ -113,16 +114,32 @@ function Jobs() {
                                 <i className="fas fa-check"></i>
                               </span>
                             </button>
-                          ) : (
-                            <div className="btn btn-danger btn-icon-split">
+                          ) }
+                          {job.reservationStatusResult === "ReservedByTec" &&(
+                            <button
+                              className="btn shadow btn-icon-split"
+                              disabled
+                            >
+                              <span className="text text-gray-900 d-md-block d-none">
+                                در حال تایید 
+                              </span>
+                
+                            </button>
+                          ) }
+                          {job.reservationStatusResult === "ConfirmeByAdmin"&&(
+                            <button
+                              className="btn btn-danger btn-icon-split"
+                              onClick={() => handleJobClick(job)}
+                            >
                               <span className="text d-md-block d-none">
-                                رزرو شده
+                                 رزرو شده
                               </span>
                               <span className="icon text-white-50">
-                                <i className="fas fa-times"></i>
+                                <i className="fas fa-check"></i>
                               </span>
-                            </div>
-                          )}
+                            </button>
+                          ) }
+
                         </td>
                       </tr>
                     ))}

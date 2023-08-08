@@ -1,11 +1,8 @@
 import { useState } from "react";
 
-function Subscription() {
-  const [hasSubscription, setHasSubscription] = useState(false);
-
-  const handleCheckboxChange = (event) => {
-    setHasSubscription(event.target.checked);
-  };
+function Subscription({handler}) {
+const {hasSubscription,
+  handleCheckboxChange}=handler
 
   return (
     <div className="mt-3 d-flex justify-content-around py-3 ">
