@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJobs } from "../../redux/actions/jobs";
 import { useState } from "react";
-import {  Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { reservationService } from "../../services/jobsService";
 import { successMessage } from "../../../utils/message";
+import "./jobsModal.css";
 function Jobs() {
   const [selectedJob, setSelectedJob] = useState(null);
   const jobs = useSelector((state) => state.jobs.jobs);
@@ -25,9 +26,9 @@ function Jobs() {
   const handleReservation = async (id) => {
     const { status } = await reservationService(id);
     if (status === 200) {
-      successMessage("رزرو انجام شد")
+      successMessage("رزرو انجام شد");
       setSelectedJob(null);
-      dispatch(getAllJobs())
+      dispatch(getAllJobs());
     }
   };
   return (
@@ -81,7 +82,7 @@ function Jobs() {
                         colSpan="1"
                         aria-label="Position: activate to sort column ascending"
                       >
-                        نام مشتری
+                        وضعیت
                       </th>
                       <th
                         className="p-3 bg-white text-gray-900"
@@ -91,7 +92,7 @@ function Jobs() {
                         colSpan="1"
                         aria-label="Age: activate to sort column ascending"
                       >
-                        وضعیت
+                        توضیحات
                       </th>
                     </tr>
                   </thead>
@@ -100,13 +101,18 @@ function Jobs() {
                     {jobs.map((job) => (
                       <tr className="border-white" key={job.id}>
                         <td>{job.name_Device}</td>
-                        <td className="">{job.customer.fullNameCustomer}</td>
+                        <td className="">
+                          <button
+                            onClick={() => handleJobClick(job)}
+                            className="btn btn-info"
+                          >
+                            اطلاعات بیشتر
+                          </button>
+                        </td>
                         <td>
-                          {job.reservationStatusResult === "WatingforReserve"&&(
-                            <button
-                              className="btn btn-success btn-icon-split"
-                              onClick={() => handleJobClick(job)}
-                            >
+                          {job.reservationStatusResult ===
+                            "WatingforReserve" && (
+                            <button className="btn btn-success btn-icon-split">
                               <span className="text d-md-block d-none">
                                 رزرو کردن
                               </span>
@@ -114,63 +120,63 @@ function Jobs() {
                                 <i className="fas fa-check"></i>
                               </span>
                             </button>
-                          ) }
-                          {job.reservationStatusResult === "ReservedByTec" &&(
+                          )}
+                          {job.reservationStatusResult === "ReservedByTec" && (
                             <button
                               className="btn shadow btn-icon-split"
                               disabled
                             >
                               <span className="text text-gray-900 d-md-block d-none">
-                                در حال تایید 
+                                در حال تایید
                               </span>
-                
                             </button>
-                          ) }
-                          {job.reservationStatusResult === "ConfirmeByAdmin"&&(
-                            <button
-                              className="btn btn-danger btn-icon-split"
-                              onClick={() => handleJobClick(job)}
-                            >
+                          )}
+                          {job.reservationStatusResult ===
+                            "ConfirmeByAdmin" && (
+                            <button className="btn btn-danger btn-icon-split">
                               <span className="text d-md-block d-none">
-                                 رزرو شده
+                                رزرو شده
                               </span>
                               <span className="icon text-white-50">
                                 <i className="fas fa-check"></i>
                               </span>
                             </button>
-                          ) }
-
+                          )}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
                 {selectedJob && (
-                  <Modal show={true} onHide={handleCloseModal}>
-                    <Modal.Header closeButton>
+                  <Modal style={{marginTop:"3rem" ,padding:"0"}}
+                    contentClassName="modal-content"
+                    show={true}
+                    onHide={handleCloseModal}
+                  >
+                    <Modal.Header className="header" closeButton>
                       <Modal.Title>{selectedJob?.name_Device}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className="py-5 px-4">
                       <p>مشکل: {selectedJob?.problems}</p>
-                      <p>مشتری : {selectedJob.customer?.fullNameCustomer}</p>
-                      <p>آدرس: {selectedJob.customer?.address}</p>
-                      <p>شماره تلفن: {selectedJob.customer?.phone}</p>
+                      <p>مشتری : {selectedJob?.customer?.fullNameCustomer}</p>
+                      <p>آدرس: {selectedJob?.customer?.address}</p>
+                      <p>شماره تلفن: {selectedJob?.customer?.phone}</p>
                       <p>توضیحات: {selectedJob?.description}</p>
                     </Modal.Body>
                     <Modal.Footer>
                       <button
-                        className="btn btn-success"
-                        onClick={() => handleReservation(selectedJob.id)}
+                        className="btn px-5 mx-auto "
+                        style={{
+                          background: "#f9e090 ",
+                          border: "1px solid #f9e090 ",
+                          color: " #000",
+                        }}
+                        onClick={() => handleReservation(selectedJob?.id)}
                       >
                         گرفتن کار
                       </button>
-                      <button
-                        className="btn btn-danger"
-                        onClick={handleCloseModal}
-                      >
-                        بستن
-                      </button>
                     </Modal.Footer>
+                    {/* </div> */}
                   </Modal>
                 )}
               </div>

@@ -1,0 +1,26 @@
+.modal-content {
+    border: none;
+    position: relative;
+    /* padding:12px 25px !important; */
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    background: #c859ff;
+    background: -moz-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+    background: -webkit-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+    background: -o-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+    background: -ms-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+    background: linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c859ff', endColorstr='#ffab8c', GradientType=1);
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+.header button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+}
