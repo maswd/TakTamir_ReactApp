@@ -40,3 +40,16 @@ button{
 
   }
 
+
+  .switch-handle{
+    border-radius: 50px;
+    width: 58px!important;
+  }
+  .switch-group{
+    border-radius: 50px;
+  }
+  .disabled-link {
+    pointer-events: none; /* Disable click events */
+    opacity: 0.5; /* Apply a visual indication for disabled state */
+    /* Add any additional styling for a disabled link */
+  }

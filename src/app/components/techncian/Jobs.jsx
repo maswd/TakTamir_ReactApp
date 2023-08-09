@@ -8,12 +8,15 @@ import { Modal } from "react-bootstrap";
 import { reservationService } from "../../services/jobsService";
 import { successMessage } from "../../../utils/message";
 import "./jobsModal.css";
+import Pagination from "../common/Pagination";
+
 function Jobs() {
   const [selectedJob, setSelectedJob] = useState(null);
-  const jobs = useSelector((state) => state.jobs.jobs);
+  const jobs = useSelector((state) => state.jobs);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    dispatch(getAllJobs());
+    dispatch(getAllJobs(1));
   }, [dispatch]);
 
   const handleJobClick = (job) => {
@@ -28,9 +31,24 @@ function Jobs() {
     if (status === 200) {
       successMessage("رزرو انجام شد");
       setSelectedJob(null);
-      dispatch(getAllJobs());
+      dispatch(getAllJobs(1));
     }
   };
+  const onPageChange = async (page, currentPage) => {
+    if (currentPage !== page) {
+      try {
+        setLoading(true);
+        dispatch(getAllJobs(page));
+        // در اینجا منتظر بمانید تا درخواست جدید تکمیل شود
+        setLoading(false);
+      } catch (error) {
+        // اگر خطا رخ دهد، می‌توانید اقدامات لازم را انجام دهید
+        setLoading(false);
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <>
       <section className=" mt-2">
@@ -92,63 +110,107 @@ function Jobs() {
                         colSpan="1"
                         aria-label="Age: activate to sort column ascending"
                       >
-                        توضیحات
+                        رزرو کار
                       </th>
                     </tr>
                   </thead>
 
                   <tbody>
-                    {jobs.map((job) => (
-                      <tr className="border-white" key={job.id}>
-                        <td>{job.name_Device}</td>
-                        <td className="">
-                          <button
-                            onClick={() => handleJobClick(job)}
-                            className="btn btn-info"
-                          >
-                            اطلاعات بیشتر
-                          </button>
-                        </td>
-                        <td>
-                          {job.reservationStatusResult ===
-                            "WatingforReserve" && (
-                            <button className="btn btn-success btn-icon-split">
-                              <span className="text d-md-block d-none">
-                                رزرو کردن
-                              </span>
-                              <span className="icon text-white-50">
-                                <i className="fas fa-check"></i>
-                              </span>
-                            </button>
-                          )}
-                          {job.reservationStatusResult === "ReservedByTec" && (
-                            <button
-                              className="btn shadow btn-icon-split"
-                              disabled
-                            >
-                              <span className="text text-gray-900 d-md-block d-none">
-                                در حال تایید
-                              </span>
-                            </button>
-                          )}
-                          {job.reservationStatusResult ===
-                            "ConfirmeByAdmin" && (
-                            <button className="btn btn-danger btn-icon-split">
-                              <span className="text d-md-block d-none">
-                                رزرو شده
-                              </span>
-                              <span className="icon text-white-50">
-                                <i className="fas fa-check"></i>
-                              </span>
-                            </button>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
+                    {loading && (
+                        <>
+                          <tr>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>
+                              <span
+                                className="spinner-border text-center text-dark mx-auto"
+                                role="status"
+                              ></span>
+                            </td>
+                          </tr>
+                        </>
+                      )}
+                    
+                    {(jobs?.jobs?.length === 0 ||
+                      typeof jobs?.jobs?.length === "undefined") &&
+                        <>
+                          <tr>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>
+                              <span
+                                className="spinner-border text-center text-dark mx-auto"
+                                role="status"
+                              ></span>
+                            </td>
+                          </tr>
+                        </>
+                      }
+                    {jobs?.jobs?.length > 0 &&
+                      jobs?.jobs?.length !== undefined &&
+                      jobs?.jobs.map((job) => (
+                        <tr className="border-white" key={job.id}>
+                          <td>{job.name_Device}</td>
+                          <td>
+                            {job.reservationStatusResult ===
+                              "WatingforReserve" && (
+                              <button className="btn btn-success btn-icon-split">
+                                <span className="text d-md-block d-none">
+                                  رزرو نشده
+                                </span>
+                                <span className="icon text-white-50">
+                                  <i className="fas fa-check"></i>
+                                </span>
+                              </button>
+                            )}
+                            {job.reservationStatusResult ===
+                              "ReservedByTec" && (
+                              <button
+                                className="btn shadow btn-icon-split"
+                                disabled
+                              >
+                                <span className="text text-gray-900 d-md-block d-none">
+                                  در حال تایید
+                                </span>
+                              </button>
+                            )}
+
+                            {job.reservationStatusResult ===
+                              "ConfirmeByAdmin" && (
+                              <button className="btn btn-danger btn-icon-split">
+                                <span className="text d-md-block d-none">
+                                  رزرو شده
+                                </span>
+                                <span className="icon text-white-50">
+                                  <i className="fas fa-times"></i>
+                                </span>
+                              </button>
+                            )}
+                          </td>
+                          <td className="">
+                            {job.reservationStatusResult ===
+                            "ConfirmeByAdmin" ? (
+                              <p className="shadow btn">رزرو شده</p>
+                            ) : (
+                              <button
+                                onClick={() => handleJobClick(job)}
+                                className="btn btn-info"
+                              >
+                                اطلاعات بیشتر
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 {selectedJob && (
-                  <Modal style={{marginTop:"3rem" ,padding:"0"}}
+                  <Modal
+                    style={{ marginTop: "3rem", padding: "0" }}
                     contentClassName="modal-content"
                     show={true}
                     onHide={handleCloseModal}
@@ -158,18 +220,22 @@ function Jobs() {
                     </Modal.Header>
                     <Modal.Body className="py-5 px-4">
                       <p>مشکل: {selectedJob?.problems}</p>
-                      <p>مشتری : {selectedJob?.customer?.fullNameCustomer}</p>
+                      <p className="my-3">
+                        مشتری : {selectedJob?.customer?.fullNameCustomer}
+                      </p>
                       <p>آدرس: {selectedJob?.customer?.address}</p>
-                      <p>شماره تلفن: {selectedJob?.customer?.phone}</p>
+                      <p className="my-3">
+                        شماره تلفن: {selectedJob?.customer?.phone}
+                      </p>
                       <p>توضیحات: {selectedJob?.description}</p>
                     </Modal.Body>
                     <Modal.Footer>
                       <button
-                        className="btn px-5 mx-auto "
+                        className="btn shadow-sm btn-info text-light px-5 py-2 mx-auto "
                         style={{
-                          background: "#f9e090 ",
                           border: "1px solid #f9e090 ",
                           color: " #000",
+                          fontWeight: "500",
                         }}
                         onClick={() => handleReservation(selectedJob?.id)}
                       >
@@ -199,6 +265,11 @@ function Jobs() {
               className="textthree-bgBox "
             ></div>
           </div>
+          <Pagination
+            totalItems={jobs?.pagination?.totalPages}
+            pageSize={10}
+            onPageChange={onPageChange}
+          />
         </div>
       </section>
     </>

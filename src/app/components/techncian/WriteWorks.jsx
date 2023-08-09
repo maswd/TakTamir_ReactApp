@@ -2,13 +2,26 @@ import React, { useState } from "react";
 import CustomerInfo from "./componentsTech/CustomerInfo";
 import Subscription from "./componentsTech/Subscription";
 import UsedCase from "./componentsTech/UsedCase";
+import { endJobService } from "../../services/jobsService";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { successMessage } from "../../../utils/message";
 
 function WriteWorks() {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState();
   const [items, setItems] = useState([{ name: "", price: "" }]);
   const [nationalCode, setNationalCode] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [hasSubscription, setHasSubscription] = useState(false);
+  const orderID = localStorage.getItem("orderid");
+  const name_Device = localStorage.getItem("name_Device");
+  const customer = localStorage.getItem("customer");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!orderID || !name_Device || !customer) {
+      navigate("/technician/orders", { replace: true });
+    }
+  }, [navigate, orderID, name_Device, customer]);
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
@@ -29,7 +42,7 @@ function WriteWorks() {
       setItems([...items, { name: "", price: "" }]);
     }
   };
- 
+
   const handleNationalCodeChange = (event) => {
     setNationalCode(event.target.value);
   };
@@ -39,14 +52,38 @@ function WriteWorks() {
   };
 
   const handleCheckboxChange = (event) => {
-    setHasSubscription(event.target.checked);
+    setHasSubscription(event);
   };
-  const handleSubmit=()=>{
-
-  }
+  const handleSubmit = async () => {
+    const state = {
+      descriptionOrder: jobDescription,
+      spent: parseInt(amount),
+      name_Device: name_Device,
+      usedTokcet: hasSubscription,
+      suppliessDtos: items,
+      CodemeliiCustomer:nationalCode
+    };
+    try {
+      const { status } = await endJobService(orderID, state);
+      if (status === 200) {
+        localStorage.removeItem("name_Device");
+        localStorage.removeItem("orderid");
+        localStorage.removeItem("customer");
+        successMessage("ثبت کار با موفقیت انجام شد !")
+        navigate("/technician/orders", { replace: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="mt-1">
       <div className="d-flex flex-wrap justify-content-center align-items-center">
+        <p className="my-4 text-gray-900 font-weight-bold text__title-medium">
+          نام مشتری : {name_Device}
+          <p className="d-inline-block mr-3"> نام دستگاه :‌ {customer}</p>
+        </p>
+
         <div className="col-md-6">
           <div className=" mb-md-0 rounded text-dark p-3">
             <div className="w-100 text-center">
@@ -99,7 +136,10 @@ function WriteWorks() {
           </button>
         </div> */}
         <div className="text-center mt-3">
-          <button onClick={handleSubmit} className=" w-100 shadow-sm btn btn-success">
+          <button
+            onClick={handleSubmit}
+            className=" w-100 shadow-sm btn btn-success"
+          >
             ثبت و ارسال اطلاعات
           </button>
         </div>

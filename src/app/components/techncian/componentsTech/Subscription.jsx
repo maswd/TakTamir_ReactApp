@@ -1,36 +1,19 @@
 import { useState } from "react";
-
-function Subscription({handler}) {
-const {hasSubscription,
-  handleCheckboxChange}=handler
-
+import BootstrapSwitchButton from "bootstrap-switch-button-react";
+function Subscription({ handler }) {
+  const { hasSubscription, handleCheckboxChange } = handler;
+console.log(hasSubscription)
   return (
-    <div className="mt-3 d-flex justify-content-around py-3 ">
-      <div className="form-check">
-        
-        <input
-          className="form-check-input "
-          type="checkbox"
-          id="hasSubscription"
+    <div className="mt-3 w-100 d-flex align-items-center py-3 justify-content-center ">
+      <p className="ml-2">اشتراک: </p>
+        <BootstrapSwitchButton
+          onlabel="دارم"
+          offlabel="ندارم"
           checked={hasSubscription}
           onChange={handleCheckboxChange}
+          style={"w-100 rounded-pill"}
         />
-        <label className="form-check-label mr-3" htmlFor="hasSubscription">
-          اشتراک دارم
-        </label>
-      </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          id="noSubscription"
-          checked={!hasSubscription}
-          onChange={handleCheckboxChange}
-        />
-        <label className="form-check-label mr-3" htmlFor="noSubscription">
-          اشتراک ندارم
-        </label>
-      </div>
+
     </div>
   );
 }

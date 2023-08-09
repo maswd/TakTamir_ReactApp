@@ -11,6 +11,9 @@ export const sendCode = (phone) => {
 export const verifyCode = (code) => {
   return http.post(`${config.api}/api/AuthUsers`, code);
 };
+export const activeService = (avtive) => {
+  return http.post(`${config.api}/api/Users/ActiveAccount`, avtive);
+};
 
 export const registerUser = (user) => {
   return http.post(`${config.api}/api/Users/Update_user`, user);
@@ -18,8 +21,7 @@ export const registerUser = (user) => {
 export const getProfile = (token) => {
   return http.get(`${config.api}/api/Users/user`, {
     headers: {
-      "Authorization":`Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   });
 };
-

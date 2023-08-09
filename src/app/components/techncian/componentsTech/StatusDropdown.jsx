@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import localStorage from "redux-persist/es/storage";
 
-function StatusDropdown({ id, stat }) {
+function StatusDropdown({ id, stat,name_Device,customer }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getStatusId = (statusJob) => {
@@ -45,6 +45,8 @@ function StatusDropdown({ id, stat }) {
       console.log(result);
       if (result.isConfirmed) {
         localStorage.setItem("orderid",id)
+        localStorage.setItem("name_Device",name_Device)
+        localStorage.setItem("customer",customer)
         navigate("/technician/write", { replace: true });
       
       }
@@ -67,7 +69,7 @@ function StatusDropdown({ id, stat }) {
       console.log(res);
       if (res.status == 200) {
         successMessage("وضعیت تغییر کرد");
-        dispatch(getAllOrders());
+        dispatch(getAllOrders(1));
       }
       setDescription();
     } catch (error) {
@@ -80,7 +82,7 @@ function StatusDropdown({ id, stat }) {
 
   return (
     <div>
-      <Dropdown onSelect={handleStatusSelect}>
+      <Dropdown onSelect={handleStatusSelect} >
         <Dropdown.Toggle
           variant="dark"
           className="text-xs "
@@ -131,6 +133,7 @@ function StatusDropdown({ id, stat }) {
             className={`text-info text-xs pt-2 ${
               stat === "Completed" ? "d-none" : ""
             }`}
+            disabled={stat === "Completed"}
           >
             انجام شده
           </Dropdown.Item>
@@ -165,7 +168,7 @@ function StatusDropdown({ id, stat }) {
           <Button
             variant="primary"
             onClick={() => handleModalConfirm(selectedStatus)}
-            disabled={description.length < 5}
+            disabled={description?.length < 5}
           >
             تایید
           </Button>
