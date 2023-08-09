@@ -1,7 +1,7 @@
 import React from 'react'
 import normalCircle from "/img/normal-circle.svg"
 import ring from "/img/ring.svg"
-import ten from "/img/Technician_Singgle-03_generated.jpg"
+import ten from "/img/khadamat.png"
 import dotsPattern from "/img/dots-pattern.svg"
 function Hero() {
     return (
@@ -33,7 +33,7 @@ function Hero() {
                         </div>
                         <div className="col-md-2 col-lg-4 textthree-img">
                             <div className="textthree-img__wrapper" style={{ transform: "scale(1)" }}>
-                                <div className="textthree-img__bg"><img src={ten} />
+                                <div className="textthree-img__bg" style={{background:"transparent"}}><img src={ten} />
                                     <div className="textthree-img__shapes"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="70.527" height="57.153" viewBox="0 0 70.527 57.153">
                                         <g id="Group_379" data-name="Group 379"

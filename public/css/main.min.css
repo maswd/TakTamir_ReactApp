@@ -497,8 +497,7 @@ select {
 }
 
 .featuresfour-img__wrapper img {
-    max-width: 415px;
-    max-height: 340px
+   border-radius: 15px;
 }
 
 .featuresfour-texts {
