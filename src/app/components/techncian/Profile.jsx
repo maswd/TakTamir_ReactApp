@@ -5,7 +5,7 @@ import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { activeService, getProfile } from "../../services/userService";
 import Swal from "sweetalert2";
 import { addUser } from "../../redux/actions/user";
-import profile from '/img/user.jpg'
+import profile from '/img/user.png'
 function Profile() {
   const user = useSelector((state) => state.user);
   const token = localStorage.getItem("access_token");

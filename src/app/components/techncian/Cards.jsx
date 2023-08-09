@@ -13,7 +13,6 @@ function Cards() {
   const dispatch = useDispatch();
   const order = useSelector((state) => state.jobs.orders);
   const pagination = useSelector((state) => state.jobs.pagination);
-  console.log(order?.length);
   useEffect(() => {
     dispatch(getAllOrders(1));
   }, []);
@@ -28,12 +27,13 @@ function Cards() {
   ];
 
   const [statusFilter, setStatusFilter] = useState("همه");
+  // const statusJob = order.map((item) => item.jobsOrder.map((job) => job));
   const getStatusText = (statusJob) => {
-    switch (statusJob) {
+    switch (statusJob) { 
       case "Completed":
         return "انجام شده";
       case "Cancel":
-        return "لغو شده";
+        return "لغوشده";
       case "Carry_off":
         return "حمل به کارگاه ";
       case "High_time":
@@ -46,7 +46,7 @@ function Cards() {
         return "";
     }
   };
-  console.log(pagination);
+  console.log(order);
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
       try {
@@ -70,7 +70,7 @@ function Cards() {
     if (statusFilter === "همه") {
       return true;
     }
-    return card.status === statusFilter;
+    // return  === statusFilter;
   });
   // فیلتر کردن آرایه cardsData بر اساس status انتخاب شده
 
