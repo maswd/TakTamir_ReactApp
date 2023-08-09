@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { context } from "../../context/context";
 import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom'
 
 function Login() {
   const LoginContext = useContext(context);
@@ -57,19 +58,19 @@ function Login() {
 
                       <p className="text-xs fw-bold color-700 mt-4">
                         ورود شما به معنای پذیرش
-                        <a
+                        <Link
                           className="mx-1 d-inline-block text-primray-700"
                           href="/page/terms/"
                         >
                           شرایط 
-                        </a>
+                        </Link>
                         و
-                        <a
+                        <Link
                           className="mx-1 d-inline-block color-secondary-700"
                           href="/page/privacy/"
                         >
                           قوانین 
-                        </a>
+                        </Link>
                         تک تعمیر 
                         است.
                       </p>

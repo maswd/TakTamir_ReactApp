@@ -11418,7 +11418,7 @@ a:focus {
 
 .topbar .dropdown .dropdown-menu {
   width: calc(100% - 1.5rem);
-  right: 0.75rem;
+  left: 0;
 }
 
 .topbar .dropdown-list {
@@ -11483,7 +11483,7 @@ a:focus {
 
   .topbar .dropdown .dropdown-menu {
     width: auto;
-    right: 0;
+    left: 0;
   }
 
   .topbar .dropdown-list {

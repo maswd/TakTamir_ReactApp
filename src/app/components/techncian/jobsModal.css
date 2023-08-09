@@ -1,0 +1,22 @@
+.modal-content {
+    border: none;
+    position: relative;
+    height: 65vh;
+    /* padding:12px 25px !important; */
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to right bottom, rgb(246, 211, 101), rgb(253, 160, 133));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c859ff', endColorstr='#ffab8c', GradientType=1);
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+.header button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+}

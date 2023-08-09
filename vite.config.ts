@@ -5,6 +5,12 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   server: {
+     hmr: {
+      // Set the strategy to 'port' for Fast Refresh
+      protocol: 'ws',
+      host: 'localhost',
+      port: 3006,
+    },
     port: 3006
   }
 })

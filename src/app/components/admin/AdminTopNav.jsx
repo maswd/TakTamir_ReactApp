@@ -1,6 +1,6 @@
 import React from "react";
 import user from "/img/undraw_profile.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 function AdminTopNav() {
   const user = useSelector((state) => state.user);
@@ -37,9 +37,8 @@ function AdminTopNav() {
 
           <ul className="navbar-nav pr-5 mr-auto">
             {/* <li className="nav-item dropdown no-arrow d-sm-none">
-            <a
+            <Link
               className="nav-link dropdown-toggle"
-              href="#"
               id="searchDropdown"
               role="button"
               data-toggle="dropdown"
@@ -47,7 +46,7 @@ function AdminTopNav() {
               aria-expanded="false"
             >
               <i className="fas fa-search fa-fw"></i>
-            </a>
+            </Link>
 
             <div
               className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -73,9 +72,9 @@ function AdminTopNav() {
           </li> */}
 
             <li className="nav-item dropdown no-arrow mx-1">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                
                 id="alertsDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -85,14 +84,14 @@ function AdminTopNav() {
                 <i className="fas fa-bell fa-fw"></i>
 
                 <span className="badge badge-danger badge-counter">3+</span>
-              </a>
+              </Link>
 
               <div
-                className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in"
                 aria-labelledby="alertsDropdown"
               >
                 <h6 className="dropdown-header">مرکز هشدارها</h6>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="ml-3">
                     <div className="icon-circle bg-primary">
                       <i className="fas fa-file-alt text-white"></i>
@@ -104,8 +103,8 @@ function AdminTopNav() {
                       یک گزارش ماهانه جدید برای دانلود آماده شده است!
                     </span>
                   </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                </Link>
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="ml-3">
                     <div className="icon-circle bg-success">
                       <i className="fas fa-donate text-white"></i>
@@ -115,8 +114,8 @@ function AdminTopNav() {
                     <div className="small text-gray-500">7 دسامبر 2019</div>
                     290.29 دلار به حساب شما واریز شده است!
                   </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                </Link>
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="ml-3">
                     <div className="icon-circle bg-warning">
                       <i className="fas fa-exclamation-triangle text-white"></i>
@@ -126,20 +125,20 @@ function AdminTopNav() {
                     <div className="small text-gray-500">2 دسامبر 2019</div>
                     هشدار هزینه: ما خرج بالایی در حساب شما مشاهده کرده‌ایم.
                   </div>
-                </a>
-                <a
+                </Link>
+                <Link
                   className="dropdown-item text-center small text-gray-500"
-                  href="#"
+                  
                 >
                   نمایش همه هشدارها
-                </a>
+                </Link>
               </div>
             </li>
 
             <li className="nav-item dropdown no-arrow mx-1">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                
                 id="messagesDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -149,14 +148,14 @@ function AdminTopNav() {
                 <i className="fas fa-envelope fa-fw"></i>
 
                 <span className="badge badge-danger badge-counter">7</span>
-              </a>
+              </Link>
 
               <div
                 className="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in"
                 aria-labelledby="messagesDropdown"
               >
                 <h6 className="dropdown-header">مرکز پیام‌ها</h6>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="dropdown-list-image ml-3">
                     <img
                       className="rounded-circle"
@@ -174,8 +173,8 @@ function AdminTopNav() {
                       امیلی فاولر · ۵۸ دقیقه پیش
                     </div>
                   </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                </Link>
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="dropdown-list-image ml-3">
                     <img
                       className="rounded-circle"
@@ -193,8 +192,8 @@ function AdminTopNav() {
                       جی چان · ۱ روز پیش
                     </div>
                   </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                </Link>
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="dropdown-list-image ml-3">
                     <img
                       className="rounded-circle"
@@ -212,8 +211,8 @@ function AdminTopNav() {
                       مورگان آلوارز · ۲ روز پیش
                     </div>
                   </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
+                </Link>
+                <Link className="dropdown-item d-flex align-items-center" >
                   <div className="dropdown-list-image ml-3">
                     <img
                       className="rounded-circle"
@@ -232,22 +231,22 @@ function AdminTopNav() {
                       چیکن سگ · ۲ هفته پیش
                     </div>
                   </div>
-                </a>
-                <a
+                </Link>
+                <Link
                   className="dropdown-item text-center small text-gray-500"
-                  href="#"
+                  
                 >
                   خواندن پیام‌های بیشتر
-                </a>
+                </Link>
               </div>
             </li>
 
             <div className="topbar-divider d-none d-sm-block"></div>
 
             <li className="nav-item dropdown no-arrow">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                
                 id="userDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -261,24 +260,24 @@ function AdminTopNav() {
                   className="img-profile rounded-circle"
                   src={user.profile_url}
                 />
-              </a>
+              </Link>
 
               <div
                 className="dropdown-menu dropdown-menu-left shadow animated--grow-in"
                 aria-labelledby="userDropdown"
               >
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" >
                   <i className="fas fa-user fa-sm fa-fw ml-2 text-gray-400"></i>
                   پروفایل
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" >
                   <i className="fas fa-cogs fa-sm fa-fw ml-2 text-gray-400"></i>
                   تنظیمات
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" >
                   <i className="fas fa-list fa-sm fa-fw ml-2 text-gray-400"></i>
                   لاگ فعالیت
-                </a>
+                </Link>
                 <div className="dropdown-divider"></div>
                 <NavLink className="dropdown-item" to="/logout">
                   <i className="fa fa-power-off fa-sm fa-fw ml-2 text-gray-400"></i>
