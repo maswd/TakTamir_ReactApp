@@ -28,7 +28,24 @@ function Cards() {
   ];
 
   const [statusFilter, setStatusFilter] = useState("همه");
-
+  const getStatusText = (statusJob) => {
+    switch (statusJob) {
+      case "Completed":
+        return "انجام شده";
+      case "Cancel":
+        return "لغو شده";
+      case "Carry_off":
+        return "حمل به کارگاه ";
+      case "High_time":
+        return "کار زمان بالا ";
+      case "Doing":
+        return "در حال انجام ";
+      case "waiting":
+        return "در انتظار تایید";
+      default:
+        return "";
+    }
+  };
   console.log(pagination);
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {

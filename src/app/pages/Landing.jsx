@@ -2,7 +2,6 @@ import Features from "../components/landing/Features";
 import Footer from "../components/landing/Footer";
 import Header from "../components/landing/Header";
 import Hero from "../components/landing/Hero";
-import Pricing from "../components/landing/Pricing";
 import Conect from "../components/landing/Connect";
 
 function Landing() {
@@ -11,8 +10,7 @@ function Landing() {
       <Header />
       <Hero />
       <Features />
-      <Conect />
-      <Pricing />
+      {/* <Conect /> */}
       <Footer />
     </div>
   );

@@ -5,7 +5,6 @@ import Landing from "./app/pages/Landing";
 import Dashborad from "./app/pages/Dashborad";
 import Workers from "./app/components/admin/Workers";
 import Works from "./app/components/admin/Works";
-import Masseages from "./app/components/chat/ChatTechncian";
 import Logout from "./app/components/login/Logout";
 import Login from "./app/components/login/Login";
 import AOS from "aos";
@@ -18,7 +17,6 @@ import Jobs from "./app/components/techncian/Jobs";
 import Profile from "./app/components/techncian/Profile";
 import WriteWorks from "./app/components/techncian/WriteWorks";
 import UserContext from "./app/context/userContext";
-import { showLoading } from "react-redux-loading-bar";
 import { useDispatch, useSelector } from "react-redux";
 import PrivateRoute from "./app/pages/PrivateRoute";
 import NotFound from "./app/pages/NotFound";
@@ -26,9 +24,7 @@ import AcceptTec from "./app/components/admin/AcceptTec";
 import Requests from "./app/components/admin/Requests";
 import ChatAdmin from "./app/components/chat/ChatAdmin";
 import ChatTechncian from "./app/components/chat/ChatTechncian";
-import { useState } from "react";
-import Swal from 'sweetalert2'
-
+import Connect from './app/components/landing/Connect'
 function App() {
   const user = useSelector((state) => state.user);
 
@@ -42,6 +38,7 @@ function App() {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Landing />} />
+        <Route path="/request" element={<Connect />} />
         <Route path="/dashboard" element={<Dashborad />}>
           <Route index element={<Workers />} />
           <Route path="works" element={<Works />} />
