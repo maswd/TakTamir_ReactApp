@@ -20,16 +20,18 @@ function Cards() {
   // ایجاد یک آرایه جداگانه حاوی تمام حالت‌های status
   const statusOptions = [
     "همه",
+    "انجام شده",
+    "لغوشده",
+    "حمل به کارگاه ",
+    "کار زمان بالا ",
+    "در حال انجام",
     "در انتظار تایید",
-    "لغو شده",
-    "تحویل داده شده",
-    "حمل به کارگاه",
   ];
 
   const [statusFilter, setStatusFilter] = useState("همه");
   // const statusJob = order.map((item) => item.jobsOrder.map((job) => job));
   const getStatusText = (statusJob) => {
-    switch (statusJob) { 
+    switch (statusJob) {
       case "Completed":
         return "انجام شده";
       case "Cancel":
@@ -46,7 +48,6 @@ function Cards() {
         return "";
     }
   };
-  console.log(order);
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
       try {
@@ -63,14 +64,16 @@ function Cards() {
   };
   const handleStatusChange = (status) => {
     setSelectedStatus(status);
-    setStatusFilter(status); 
+    setStatusFilter(status);
   };
 
   const filteredData = order.filter((card) => {
+    console.log("jobsOrder", getStatusText(card.jobsOrder[0].statusJob));
+    console.log(statusFilter);
     if (statusFilter === "همه") {
       return true;
     }
-    // return  === statusFilter;
+    return getStatusText(card.jobsOrder[0].statusJob) === statusFilter;
   });
   // فیلتر کردن آرایه cardsData بر اساس status انتخاب شده
 
@@ -104,7 +107,11 @@ function Cards() {
         )}
         {order?.length > 0 &&
           order?.length !== undefined &&
-          filteredData?.map((data, index) => <Card key={index} {...data} />)}
+          filteredData?.map((data, index) => (
+            <>
+              <Card key={index} {...data} />
+            </>
+          ))}
       </div>
       <Pagination
         totalItems={pagination?.totalPages}
