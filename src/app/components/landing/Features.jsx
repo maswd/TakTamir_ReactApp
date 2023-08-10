@@ -1,5 +1,3 @@
-import ten from "/img/10.svg";
-import tv from "../../../../public/img/tv.png";
 import imagecontenct from "/img/vecteezy_man-repair-appliances_.jpg";
 
 function Features() {

@@ -29,7 +29,7 @@ export const getStatusClass = (statusJob) => {
     case "Doing":
       return "info";
     case "waiting":
-      return "danger";
+      return "secondary";
     default:
       return "";
   }
@@ -52,6 +52,7 @@ export const getStatusIcon = (statusJob) => {
       return "";
   }
 };
+
 import PersianDate from 'persian-date';
 
 export function convertToPersianDate(inputDateTime) {

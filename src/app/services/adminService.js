@@ -57,3 +57,8 @@ export const WorkRejectService = (id) => {
     `${config.api}/api/AdminUsers/Work_booking_Reject?Idorder=${id}`
   );
 };
+export const UpgradeAccountService = (id) => {
+  return http.get(
+    `${config.api}/api/AdminUsers/UpgradeAccounttoAdmin?userid=${id}`
+  );
+};

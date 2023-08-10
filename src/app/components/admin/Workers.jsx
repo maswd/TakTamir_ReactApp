@@ -3,6 +3,8 @@ import Pagination from "../common/Pagination";
 import CardWorkers from "./cards/CardWorkers";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTechncian } from "../../redux/actions/admin";
+import { confirmMessage, errorMessage, successMessage } from "../../../utils/message";
+import { UpgradeAccountService } from "../../services/adminService";
 function Workers() {
   const users = useSelector((state) => state.admin.users);
   const pagination = useSelector((state) => state.admin.pagination);
@@ -15,6 +17,24 @@ function Workers() {
         dispatch(getAllJobs(page));
       }
     }
+    const handleAdmin =async(id)=>{
+      try {
+        const result = await confirmMessage("آیا برای ارتقا کاربر مطمئن هستید ؟");
+        if (result) {
+          const { status } = await UpgradeAccountService(id);
+          if (status === 200) {
+            successMessage(" کاربر با  با موفقیت ادمین شد !");
+            dispatch(getAllJobs(1));
+          }
+        }
+      } catch (error) {
+        if(error.response.status===406 ){
+          errorMessage("این اکانت قبلا ارتقا داده شده است!");
+
+        }else
+        errorMessage("مشکلی رخ داده است !");
+
+      } }
   return (
     <>
       <div className=" card shadow mb-4 p-2">
@@ -37,7 +57,7 @@ function Workers() {
         <div className="py-2">
           <div className="d-flex flex-wrap">
             {users.map((item, index) => (
-              <CardWorkers key={index} {...item} />
+              <CardWorkers key={index} {...item} handleAdmin={handleAdmin} />
             ))}
           </div>
         </div>

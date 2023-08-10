@@ -25,13 +25,14 @@ const Requests = () => {
   }, [dispatch]);
 
   const handleAccept = async (id) => {
+    console.log(id)
     try {
       const result = await confirmMessage("آیا برای تایید کردن مطمئن هستید ؟");
       if (result) {
         const { status } = await WorkConfirmationService(id);
         if (status === 200) {
-          successMessage(" کار تکنسین با موفقیت تایید شد !");
           dispatch(getAllRequsets(1));
+          successMessage(" کار تکنسین با موفقیت تایید شد !");
         }
       }
     } catch (error) {
@@ -45,8 +46,8 @@ const Requests = () => {
       if (result) {
         const { status } = await WorkRejectService(id);
         if (status === 200) {
-          successMessage("کار با موفیقت رد شد  !");
           dispatch(getAllRequsets(1));
+          successMessage("کار با موفیقت رد شد  !");
         }
       }
     } catch (error) {
@@ -56,7 +57,7 @@ const Requests = () => {
   };
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
-      dispatch(getAllJobs(page));
+      dispatch(getAllRequsets(page));
     }
   };
   return (

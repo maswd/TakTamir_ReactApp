@@ -15,6 +15,7 @@ import { useRef, useState } from "react";
 import { errorMessage } from "../../utils/message";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { submitForm } from "../redux/actions/form";
+import Swal from "sweetalert2";
 // import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const UserContext = ({ children }) => {
@@ -82,10 +83,24 @@ const UserContext = ({ children }) => {
         localStorage.setItem(
           "refresh_token",
           error.response.data.refresh_Token
-          );
-          history("/user-information");
+        );
+        history("/user-information");
       } else if (error.response.status === 400) {
         errorMessage("کد یا شماره تلفن نامعتبر است");
+      } else if (error.response.status === 403) {
+        localStorage.setItem("access_token", error.response.data.access_Token);
+        localStorage.setItem(
+          "refresh_token",
+          error.response.data.refresh_Token
+        );
+        const res = await Swal.fire({
+          title: "در انتظار تایید",
+          text: "حساب کاربری شما هنوز تایید نشده است لطفا صبر کنید ! ",
+          confirmButtonText: "خروج",
+        });
+        if (res) {
+          history("/logout");
+        }
       }
     }
   };
@@ -144,6 +159,16 @@ const UserContext = ({ children }) => {
       }
     } catch (error) {
       dispatch(hideLoading());
+      if (error.response.status === 403) {
+        const res = await Swal.fire({
+          title: "در انتظار تایید",
+          text: "حساب کاربری شما هنوز تایید نشده است لطفا صبر کنید ! ",
+          confirmButtonText: "خروج",
+        });
+        if (res) {
+          history("/logout");
+        }
+      }
     }
   };
   return (

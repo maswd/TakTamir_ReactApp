@@ -10,7 +10,9 @@ import { loadingBarMiddleware } from 'react-redux-loading-bar';
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: [ 'loadingBar','form',"jobs","admin"]
+  blacklist: [ 'loadingBar','form',"jobs","admin","users",
+  "requests",
+  "works"]
 
 };
 const compose = composeWithDevTools({});

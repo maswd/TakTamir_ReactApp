@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import { getStatusClass, getStatusText } from "../../../../utils/convertor";
+import { useEffect } from "react";
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -33,14 +35,17 @@ function SampleNextArrow(props) {
 }
 
 const DynamicSlides = ({ data, handleAccept, handleReject }) => {
+  console.log(data);
   const [slides, setSlides] = useState(data);
+  useEffect(() => {
+    setSlides(slides);
+  }, [data]);
 
   const settings = {
     dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    rtl: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
@@ -51,33 +56,60 @@ const DynamicSlides = ({ data, handleAccept, handleReject }) => {
         {slides.map((i, jj) => (
           <div
             key={jj}
-            className="d-flex justify-content-between align-items-center"
+            className={`d-flex justify-content-between align-items-center"`}
           >
-            <div className="d-flex flex-column">
+            <div
+              className={`${
+                handleAccept ? "d-flex" : "d-none"
+              }  flex-column ml-2 align-self-center align-items-center `}
+            >
               <button
-                onClick={() => handleAccept(i[0].id)}
-                className="btn  mb-3 btn-light  shadow-sm  border "
+                onClick={() => handleAccept(i.id)}
+                className={`btn  mb-3 btn-light  shadow-sm text-nowrap  border ${
+                  handleAccept ? "d-block" : "d-none"
+                }`}
               >
                 تایید کردن
               </button>
               <button
-                onClick={() => handleReject(i[0].id)}
-                className="btn   btn-danger shadow-sm"
+                onClick={() => handleReject(i.id)}
+                className={`btn btn-danger shadow-sm  ${
+                  handleReject ? "d-block" : "d-none"
+                }`}
               >
                 رد کردن
               </button>
             </div>
-            <div
-              className="border-right text-right border-info px-2 mb-2"
-              style={{ direction: "rtl" }}
-            >
-              <p> نام دستگاه : {i[0].name_Device}</p>
-              <p> مشکل : {i[0].problems}</p>
-              <p> نام مشتری : {i[0].customer.fullNameCustomer}</p>
-              <p> شماره همراه : {i[0].customer.phoneNumber}</p>
-              <p> شماره ثابت : {i[0].customer.phone}</p>
-              <p className="text-right"> آدرس : {i[0].customer.address}</p>
-            </div>
+
+            {i.jobs.map((i) => (
+              <div
+                key={i.id}
+                className={` text-right justify-content-between d-flex align-items-center  px-2 mb-2 mr-1 ${
+                  handleAccept ? "" : "w-100"
+                }  rounded border-bottom border-${getStatusClass(
+                  i.statusJob
+                )} `}
+                style={{ direction: "rtl" }}
+              >
+                <div className="">
+                  <p> نام دستگاه : {i.name_Device}</p>
+                  <p> مشکل : {i.problems}</p>
+                  <p> نام مشتری : {i.customer.fullNameCustomer}</p>
+                  <p> شماره همراه : {i.customer.phoneNumber}</p>
+                  <p> شماره ثابت : {i.customer.phone}</p>
+                  <p className="text-right">آدرس : {i.customer.address}</p>
+                </div>
+                {!handleAccept && !handleReject && (
+                  <button
+                    className={`btn text-nowrap btn-${getStatusClass(
+                      i.statusJob
+                    )} align-self-center`}
+                  >
+                    {getStatusText(i.statusJob)}
+                  </button>
+                )}
+              </div>
+            ))}
           </div>
         ))}
       </Slider>
