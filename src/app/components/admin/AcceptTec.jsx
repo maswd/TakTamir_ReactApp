@@ -7,7 +7,7 @@ import { confirmMessage, errorMessage, successMessage } from "../../../utils/mes
 import { RejectAccountUserService, VerifyAccountUserService } from "../../services/adminService";
 const AcceptTec = () => {
   const user = useSelector((state) => state.admin.users);
-  const admin = useSelector((state) => state.admin);
+  const pagination = useSelector((state) => state.admin.pagination);
   console.log(user);
   const dispatch = useDispatch(1);
   useEffect(() => {
@@ -15,26 +15,14 @@ const AcceptTec = () => {
   }, [dispatch]);
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
-      try {
-        setLoading(true);
         dispatch(getAllJobs(page));
-        // در اینجا منتظر بمانید تا درخواست جدید تکمیل شود
-        setLoading(false);
-      } catch (error) {
-        // اگر خطا رخ دهد، می‌توانید اقدامات لازم را انجام دهید
-        setLoading(false);
-        console.error(error);
-      }
     }
   };
   const handleAccept = async (id) => {
-    console.log(id)
     try {
-      const result = await confirmMessage();
-      console.log(result);
+      const result = await confirmMessage("آیا برای تایید کردن مطمئن هستید ؟");
       if (result) {
         const { status } = await VerifyAccountUserService(id);
-        console.log(status)
         if (status === 200) {
           console.log("کابرب ساخت")
           successMessage("حساب کاربر با موفقیت تایید شد !")
@@ -48,8 +36,7 @@ const AcceptTec = () => {
   };
   const handleReject = async (id) => {
     try {
-      const result = await confirmMessage();
-      console.log(result);
+      const result = await confirmMessage("آیا برای رد کردن مطمئن هستید ؟");
       if (result) {
         const { status } = await RejectAccountUserService(id);
         if (status === 200) {
@@ -99,7 +86,7 @@ const AcceptTec = () => {
       </div>
 
       <Pagination
-        totalItems={admin?.pagination?.totalPages}
+        totalItems={pagination?.totalPages}
         pageSize={10}
         onPageChange={onPageChange}
       />

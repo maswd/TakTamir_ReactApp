@@ -15,6 +15,7 @@ function Jobs() {
   const jobs = useSelector((state) => state.jobs);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const page =localStorage.getItem('page')
   useEffect(() => {
     dispatch(getAllJobs(1));
   }, [dispatch]);
@@ -28,16 +29,7 @@ function Jobs() {
   };
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
-      try {
-        setLoading(true);
-        dispatch(getAllJobs(page));
-        // در اینجا منتظر بمانید تا درخواست جدید تکمیل شود
-        setLoading(false);
-      } catch (error) {
-        // اگر خطا رخ دهد، می‌توانید اقدامات لازم را انجام دهید
-        setLoading(false);
-        console.error(error);
-      }
+      dispatch(getAllJobs(page));
     }
   };
 
@@ -47,8 +39,8 @@ function Jobs() {
       if (status === 200) {
         successMessage("رزرو انجام شد ! ");
         setSelectedJob(null);
-        dispatch(getAllJobs(1));
-        onPageChange(1,1)
+        dispatch(getAllJobs(page));
+        onPageChange(1, 1);
       }
     } catch (error) {
       if (error.response.status === 400) {
@@ -57,7 +49,7 @@ function Jobs() {
       }
     }
   };
-  
+
   return (
     <>
       <section className=" mt-2">
@@ -125,22 +117,7 @@ function Jobs() {
                   </thead>
 
                   <tbody>
-                    {loading && (
-                      <>
-                        <tr>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>
-                            <span
-                              className="spinner-border text-center text-dark mx-auto"
-                              role="status"
-                            ></span>
-                          </td>
-                        </tr>
-                      </>
-                    )}
+  
 
                     {(jobs?.jobs?.length === 0 ||
                       typeof jobs?.jobs?.length === "undefined") && (

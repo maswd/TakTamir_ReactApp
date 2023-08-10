@@ -34,16 +34,8 @@ function Cards() {
 
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
-      try {
-        setLoading(true);
-        dispatch(getAllOrders(page));
-        // در اینجا منتظر بمانید تا درخواست جدید تکمیل شود
-        setLoading(false);
-      } catch (error) {
-        // اگر خطا رخ دهد، می‌توانید اقدامات لازم را انجام دهید
-        setLoading(false);
-        console.error(error);
-      }
+      dispatch(getAllOrders(page));
+      // در اینجا منتظر بمانید تا درخواست جدید تکمیل شود
     }
   };
   const handleStatusChange = (status) => {
@@ -89,11 +81,7 @@ function Cards() {
         )}
         {order?.length > 0 &&
           order?.length !== undefined &&
-          filteredData?.map((data, index) => (
-            <>
-              <Card key={index} {...data} />
-            </>
-          ))}
+          filteredData?.map((data, index) => <Card key={index} {...data} />)}
       </div>
       <Pagination
         totalItems={pagination?.totalPages}

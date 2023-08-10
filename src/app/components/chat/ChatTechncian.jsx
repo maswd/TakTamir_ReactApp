@@ -5,6 +5,7 @@ import TechMessageRight from "./TechMessageRight";
 import * as signalR from "@microsoft/signalr";
 import { successMessage } from "../../../utils/message";
 import { useSelector } from "react-redux";
+import config from '../../services/config.json'
 
 function ChatTechncian() {
   const user = useSelector((state) => state.user);
@@ -22,7 +23,7 @@ function ChatTechncian() {
   }, [allmessageUser]);
   const connectToSignalR = (headers) => {
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://1s8795ts-7261.euw.devtunnels.ms/chats", {
+      .withUrl(`${config.api}/chats`, {
         headers: headers,
       })
       .configureLogging(signalR.LogLevel.Information)

@@ -46,7 +46,7 @@ const DynamicSlides = ({ data, handleAccept, handleReject }) => {
   };
 
   return (
-    <div className="container py-3 ">
+    <div className="container mb-3 mt-3 ">
       <Slider {...settings}>
         {slides.map((i, jj) => (
           <div

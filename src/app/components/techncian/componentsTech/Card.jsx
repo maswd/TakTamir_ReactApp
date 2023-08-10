@@ -4,7 +4,6 @@ import StatusDropdown from "./StatusDropdown";
 import { getStatusClass, getStatusIcon, getStatusText } from "../../../../utils/convertor";
 
 function Card(props) {
-
   return (
     <div className={`col-xl-4 col-md-6 col-lg-12 mb-4`}>
       <div

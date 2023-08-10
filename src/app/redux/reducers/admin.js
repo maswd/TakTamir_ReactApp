@@ -1,5 +1,5 @@
 export const adminReducer = (
-  state = { users: [], requests: [], pagination: {} },
+  state = { users: [], requests: [], pagination: {} ,works:[]},
   action
 ) => {
   switch (action.type) {
@@ -14,6 +14,12 @@ export const adminReducer = (
         ...state,
         requests: [...action.payload.data],
         pagination: { ...action.payload.paginationData },
+      };
+    case "INIT_WORKS":
+      return {
+        ...state,
+        works: [...action.payload.data],
+        pagination: { ...action.payload.paginationdata },
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Pagination = ({ totalItems, onPageChange }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -6,11 +6,10 @@ const Pagination = ({ totalItems, onPageChange }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    localStorage.setItem('page', page);
     onPageChange(page, currentPage);
   };
-  useEffect(() => {
-    setCurrentPage(1); // تنظیم صفحه فعلی به صفحه 1 هر بار که totalItems تغییر کند
-  }, [totalItems]);
+
 
   const renderPageLinks = () => {
     const pageLinks = [];

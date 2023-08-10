@@ -82,3 +82,6 @@ button {
   color: #000 !important;
   font-size: 3rem !important
 }
+.slick-dots li {
+  width: 12px!important;
+}

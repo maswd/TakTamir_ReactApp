@@ -1,7 +1,20 @@
-import React from "react";
-import Pagination from "../common/pagination";
-import ResponsiveTable from "./ResTable";
+import React, { useEffect } from "react";
+import Pagination from "../common/Pagination";
+import CardWorkers from "./cards/CardWorkers";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllTechncian } from "../../redux/actions/admin";
 function Workers() {
+  const users = useSelector((state) => state.admin.users);
+  const pagination = useSelector((state) => state.admin.pagination);
+  const dispatch = useDispatch(1);
+  useEffect(() => {
+    dispatch(getAllTechncian(1));
+  }, [dispatch]);
+  const onPageChange = async (page, currentPage) => {
+    if (currentPage !== page) {
+        dispatch(getAllJobs(page));
+      }
+    }
   return (
     <>
       <div className=" card shadow mb-4 p-2">
@@ -22,10 +35,16 @@ function Workers() {
           </div>
         </div>
         <div className="py-2">
-            <ResponsiveTable />
+          <div className="d-flex flex-wrap">
+            {users.map((item, index) => (
+              <CardWorkers key={index} {...item} />
+            ))}
+          </div>
         </div>
       </div>
-      <Pagination />
+      <Pagination totalItems={pagination?.totalPages}
+        pageSize={10}
+        onPageChange={onPageChange} />
     </>
   );
 }

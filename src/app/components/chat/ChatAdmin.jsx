@@ -7,16 +7,14 @@ import User from "./User";
 import "./chat.css";
 import { successMessage } from "../../../utils/message";
 import { useRef } from "react";
-
+import config from '../../services/config.json'
 const ChatAdmin = () => {
   const [rooms, setRooms] = useState([]);
   const [users, setUsers] = useState([]);
   const [messageUser, setMessageUser] = useState("");
   const [allmessageUser, setAllMessageUser] = useState([]);
-  console.log("allmessageUser", allmessageUser);
   const [nameRoom, setNameRoom] = useState();
   const [connection, setConnection] = useState();
-  console.log("KSLAKDLSA", connection);
   const messagesEndRef = useRef(null);
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -26,7 +24,7 @@ const ChatAdmin = () => {
     try {
       const accessToken = localStorage.getItem("access_token");
       const response = await axios.get(
-        "https://1s8795ts-7261.euw.devtunnels.ms/api/Chats",
+        `${config.api}/api/Chats`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -44,7 +42,7 @@ const ChatAdmin = () => {
   }, [fetchRooms]);
   const connectToSignalR = (headers) => {
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://1s8795ts-7261.euw.devtunnels.ms/chats", {
+      .withUrl(`${config.api}/chats`, {
         headers: headers,
       })
       .configureLogging(signalR.LogLevel.Information)
@@ -67,7 +65,6 @@ const ChatAdmin = () => {
       });
 
       newConnection.on("notification", (msg) => {
-        console.log("msg", msg);
 
         console.log("msg.Sender", msg.Sender);
         if (msg.Sender !== nameRoom) {
@@ -76,11 +73,9 @@ const ChatAdmin = () => {
       });
       newConnection.on("ReceiveMessage", (user, message) => {
         setAllMessageUser((messages) => [...messages, JSON.parse(message)]);
-        console.log("logger", message);
       });
 
       newConnection.on("AllMessage", (messagesroom) => {
-        console.log("AllMessage", messagesroom);
         setAllMessageUser(JSON.parse(messagesroom));
       });
 

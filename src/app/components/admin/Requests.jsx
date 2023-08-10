@@ -14,30 +14,21 @@ import {
   WorkConfirmationService,
   WorkRejectService,
 } from "../../services/adminService";
-import Slider from "react-slick";
-import DynamicSlides from "./cards/Slider";
 
 const Requests = () => {
   const requests = useSelector((state) => state.admin.requests);
+  const pagination = useSelector((state) => state.admin.pagination);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllRequsets(1));
   }, [dispatch]);
-  const data = [
-    { id: 1, title: "مورچه", description: "یک حشره کوچک" },
-    { id: 2, title: "پرنده", description: "یک حیوان هوازی" },
-    { id: 3, title: "مار", description: "یک جانور خزنده" },
-    { id: 4, title: "خرگوش", description: "یک جانور پستاندار" },
-    { id: 5, title: "ماهی", description: "یک حیوان آبزی" },
-  ];
+
   const handleAccept = async (id) => {
-    console.log(id);
     try {
-      const result = await confirmMessage();
-      console.log(result);
+      const result = await confirmMessage("آیا برای تایید کردن مطمئن هستید ؟");
       if (result) {
         const { status } = await WorkConfirmationService(id);
-        console.log(status);
         if (status === 200) {
           successMessage(" کار تکنسین با موفقیت تایید شد !");
           dispatch(getAllRequsets(1));
@@ -49,11 +40,8 @@ const Requests = () => {
     }
   };
   const handleReject = async (id) => {
-    console.log(id);
-
     try {
-      const result = await confirmMessage();
-      console.log(result);
+      const result = await confirmMessage("آیا برای رد کردن مطمئن هستید ؟");
       if (result) {
         const { status } = await WorkRejectService(id);
         if (status === 200) {
@@ -66,11 +54,10 @@ const Requests = () => {
       console.log(error);
     }
   };
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  const onPageChange = async (page, currentPage) => {
+    if (currentPage !== page) {
+      dispatch(getAllJobs(page));
+    }
   };
   return (
     <>
@@ -107,7 +94,11 @@ const Requests = () => {
         </div>
       </div>
 
-      <Pagination />
+      <Pagination
+        totalItems={pagination?.totalPages}
+        pageSize={10}
+        onPageChange={onPageChange}
+      />
     </>
   );
 };

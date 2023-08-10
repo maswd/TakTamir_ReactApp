@@ -16,11 +16,11 @@ export const errorMessage = message => {
 
     })
 }
-export function confirmMessage(title, text, confirmButtonText, cancelButtonText) {
+export function confirmMessage(text) {
     return new Promise((resolve, reject) => {
       Swal.fire({
         title: "!",
-        text: "ایا مطمئن هستید ؟",
+        text: text?text: "ایا مطمئن هستید ؟",
         showCancelButton: true,
         confirmButtonText: "بله ",
         cancelButtonText: "لغو",
