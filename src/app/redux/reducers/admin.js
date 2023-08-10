@@ -12,7 +12,7 @@ export const adminReducer = (
     case "INIT_REQUESTS":
       return {
         ...state,
-        requests: [...action.payload],
+        requests: [...action.payload.data],
         pagination: { ...action.payload.paginationData },
       };
     default:

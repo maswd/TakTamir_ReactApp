@@ -12,7 +12,8 @@ export const AllUsersService = (token, page) => {
   );
 };
 export const RequestsService = (page) => {
-  return http.post(
+  return http.get(
+    // `${config.api}/api/AdminUsers/Work_pending_approval?page=${page}&pageSize=10`
     `${config.api}/api/AdminUsers/Work_pending_approval?page=${page}&pageSize=10`
   );
 };
@@ -25,5 +26,20 @@ export const VerifyAccountUserService = (id) => {
 export const RejectAccountUserService = (id) => {
   return http.post(
     `${config.api}/api/AdminUsers/RejectAccountUser?Userid=${id}`
+  );
+};
+export const worksAdminService = (page) => {
+  return http.get(
+    `${config.api}/api/JobAdmin/AllJobs?page=${page}&pageSize=10`
+  );
+};
+export const WorkConfirmationService = (id) => {
+  return http.get(
+    `${config.api}/api/AdminUsers/Work_booking_confirmation?Idorder=${id}    `
+  );
+};
+export const WorkRejectService = (id) => {
+  return http.get(
+    `${config.api}/api/AdminUsers/Work_booking_Reject?Idorder=${id}`
   );
 };

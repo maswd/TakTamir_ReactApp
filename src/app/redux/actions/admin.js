@@ -15,9 +15,8 @@ export const getAllUser = (page) => {
 export const getAllRequsets = (page) => {
   return async (dispatch, getState) => {
     try {
-      const {data:req} = await RequestsService(page);
-      console.log("req",req);
-      await dispatch({ type: "INIT_REQUESTS", payload: req });
+      const {data} = await RequestsService(page);
+      await dispatch({ type: "INIT_REQUESTS", payload: data });
     } catch (error) {
       dispatch({ type: "INIT_REQUESTS", payload: {...getState().admin} });
     }

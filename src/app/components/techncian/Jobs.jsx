@@ -26,21 +26,6 @@ function Jobs() {
   const handleCloseModal = () => {
     setSelectedJob(null);
   };
-  const handleReservation = async (id) => {
-    try {
-      const { status } = await reservationService(id);
-      if (status === 200) {
-        successMessage("رزرو انجام شد ! ");
-        setSelectedJob(null);
-        dispatch(getAllJobs(1));
-      }
-    } catch (error) {
-      if (error.response.status === 400) {
-        setSelectedJob(null);
-        errorMessage("اکانت شما هنوز تایید نشده است !");
-      }
-    }
-  };
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
       try {
@@ -56,6 +41,23 @@ function Jobs() {
     }
   };
 
+  const handleReservation = async (id) => {
+    try {
+      const { status } = await reservationService(id);
+      if (status === 200) {
+        successMessage("رزرو انجام شد ! ");
+        setSelectedJob(null);
+        dispatch(getAllJobs(1));
+        onPageChange(1,1)
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        setSelectedJob(null);
+        errorMessage("اکانت شما هنوز تایید نشده است !");
+      }
+    }
+  };
+  
   return (
     <>
       <section className=" mt-2">

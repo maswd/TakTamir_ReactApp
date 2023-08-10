@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Pagination from "../common/pagination";
+import Pagination from "../common/Pagination";
 import TableToCards from "./Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJobs } from "../../redux/actions/jobs";
@@ -8,7 +8,7 @@ function Works() {
   const dispatch=useDispatch()
   const jobs =useSelector(state=>state.jobs.jobs)
   useEffect(() => {
-    dispatch(getAllJobs())
+    dispatch(getAllJobs(1))
   }, [])
   
   return (
