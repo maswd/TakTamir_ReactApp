@@ -339,7 +339,6 @@ function Conect() {
                           )}
                         </div>
                       </div>
-                      <div className="lead_errors"></div>
                       <div className="tem2-action">
                         <button
                           type="submit"

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllOrders } from "../../redux/actions/jobs";
 import { Dropdown } from "react-bootstrap";
 import Pagination from "../common/Pagination";
+import { getStatusText } from "../../../utils/convertor";
 
 function Cards() {
   const [selectedStatus, setSelectedStatus] = useState("همه");
@@ -30,24 +31,7 @@ function Cards() {
 
   const [statusFilter, setStatusFilter] = useState("همه");
   // const statusJob = order.map((item) => item.jobsOrder.map((job) => job));
-  const getStatusText = (statusJob) => {
-    switch (statusJob) {
-      case "Completed":
-        return "انجام شده";
-      case "Cancel":
-        return "لغوشده";
-      case "Carry_off":
-        return "حمل به کارگاه ";
-      case "High_time":
-        return "کار زمان بالا ";
-      case "Doing":
-        return "در حال انجام ";
-      case "waiting":
-        return "در انتظار تایید";
-      default:
-        return "";
-    }
-  };
+
   const onPageChange = async (page, currentPage) => {
     if (currentPage !== page) {
       try {
@@ -68,8 +52,6 @@ function Cards() {
   };
 
   const filteredData = order.filter((card) => {
-    console.log("jobsOrder", getStatusText(card.jobsOrder[0].statusJob));
-    console.log(statusFilter);
     if (statusFilter === "همه") {
       return true;
     }

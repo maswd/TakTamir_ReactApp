@@ -1,62 +1,10 @@
 import React from "react";
 import User from "./User";
 import StatusDropdown from "./StatusDropdown";
+import { getStatusClass, getStatusIcon, getStatusText } from "../../../../utils/convertor";
 
 function Card(props) {
-  const getStatusClass = (statusJob) => {
-    switch (statusJob) {
-      case "Completed":
-        return "success";
-      case "Cancel":
-        return "danger";
-      case "Carry_off":
-        return "primary";
-      case "High_time":
-        return "warning";
-      case "Doing":
-        return "info";
-      case "waiting":
-        return "danger";
-      default:
-        return "";
-    }
-  };
-  const getStatusText = (statusJob) => {
-    switch (statusJob) {
-      case "Completed":
-        return "انجام شده";
-      case "Cancel":
-        return "لغو شده";
-      case "Carry_off":
-        return "حمل به کارگاه ";
-      case "High_time":
-        return "کار زمان بالا ";
-      case "Doing":
-        return "در حال انجام ";
-      case "waiting":
-        return "در انتظار تایید";
-      default:
-        return "";
-    }
-  };
-  const getStatusIcon = (statusJob) => {
-    switch (statusJob) {
-      case "Completed":
-        return "fa-truck-loading";
-      case "Cancel":
-        return "fa-times";
-      case "Carry_off":
-        return "fa-truck";
-      case "High_time":
-        return "fa-clock";
-      case "Doing":
-        return "fa-clipboard-list";
-      case "waiting":
-        return "fa-hourglass";
-      default:
-        return "";
-    }
-  };
+
   return (
     <div className={`col-xl-4 col-md-6 col-lg-12 mb-4`}>
       <div

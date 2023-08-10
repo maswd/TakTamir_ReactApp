@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Dropdown, Modal, Button } from "react-bootstrap";
 import { changeStatusService } from "../../../services/jobsService";
-import { errorMessage, successMessage } from "../../../../utils/message";
+import { confirmMessage, errorMessage, successMessage } from "../../../../utils/message";
 import { useDispatch } from "react-redux";
 import { getAllOrders } from "../../../redux/actions/jobs";
 import { useNavigate } from "react-router-dom";
@@ -34,16 +34,9 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
   const handleStatusSelect = async (eventKey) => {
     setSelectedStatus(eventKey);
     if (eventKey === "انجام شده") {
-      const result = await Swal.fire({
-        title: "!",
-        text: "ایا مطمئن هستید ؟",
-        icon: "",
-        showCancelButton: true,
-        confirmButtonText: "بله ",
-        cancelButtonText: "لغو",
-      });
+      const result = await confirmMessage()
       console.log(result);
-      if (result.isConfirmed) {
+      if (result) {
         localStorage.setItem("orderid",id)
         localStorage.setItem("name_Device",name_Device)
         localStorage.setItem("customer",customer)

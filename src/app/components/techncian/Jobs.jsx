@@ -6,7 +6,7 @@ import { getAllJobs } from "../../redux/actions/jobs";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { reservationService } from "../../services/jobsService";
-import { successMessage } from "../../../utils/message";
+import { errorMessage, successMessage } from "../../../utils/message";
 import "./jobsModal.css";
 import Pagination from "../common/Pagination";
 
@@ -27,11 +27,18 @@ function Jobs() {
     setSelectedJob(null);
   };
   const handleReservation = async (id) => {
-    const { status } = await reservationService(id);
-    if (status === 200) {
-      successMessage("رزرو انجام شد");
-      setSelectedJob(null);
-      dispatch(getAllJobs(1));
+    try {
+      const { status } = await reservationService(id);
+      if (status === 200) {
+        successMessage("رزرو انجام شد ! ");
+        setSelectedJob(null);
+        dispatch(getAllJobs(1));
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        setSelectedJob(null);
+        errorMessage("اکانت شما هنوز تایید نشده است !");
+      }
     }
   };
   const onPageChange = async (page, currentPage) => {
@@ -110,70 +117,68 @@ function Jobs() {
                         colSpan="1"
                         aria-label="Age: activate to sort column ascending"
                       >
-                        رزرو کار
+                        توضیحات
                       </th>
                     </tr>
                   </thead>
 
                   <tbody>
                     {loading && (
-                        <>
-                          <tr>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>
-                              <span
-                                className="spinner-border text-center text-dark mx-auto"
-                                role="status"
-                              ></span>
-                            </td>
-                          </tr>
-                        </>
-                      )}
-                    
+                      <>
+                        <tr>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>
+                            <span
+                              className="spinner-border text-center text-dark mx-auto"
+                              role="status"
+                            ></span>
+                          </td>
+                        </tr>
+                      </>
+                    )}
+
                     {(jobs?.jobs?.length === 0 ||
-                      typeof jobs?.jobs?.length === "undefined") &&
-                        <>
-                          <tr>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>
-                              <span
-                                className="spinner-border text-center text-dark mx-auto"
-                                role="status"
-                              ></span>
-                            </td>
-                          </tr>
-                        </>
-                      }
+                      typeof jobs?.jobs?.length === "undefined") && (
+                      <>
+                        <tr>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>
+                            <span
+                              className="spinner-border text-center text-dark mx-auto"
+                              role="status"
+                            ></span>
+                          </td>
+                        </tr>
+                      </>
+                    )}
                     {jobs?.jobs?.length > 0 &&
                       jobs?.jobs?.length !== undefined &&
                       jobs?.jobs.map((job) => (
                         <tr className="border-white" key={job.id}>
-                          <td>{job.name_Device}</td>
+                          <td className="text-gray-900">{job.name_Device}</td>
                           <td>
                             {job.reservationStatusResult ===
                               "WatingforReserve" && (
-                              <button className="btn btn-success btn-icon-split">
-                                <span className="text d-md-block d-none">
-                                  رزرو نشده
-                                </span>
-                                <span className="icon text-white-50">
-                                  <i className="fas fa-check"></i>
-                                </span>
+                              <button
+                                className="btn btn-success btn-icon-split"
+                                onClick={() => handleJobClick(job)}
+                              >
+                                <span className="text">قابل رزرو</span>
                               </button>
                             )}
                             {job.reservationStatusResult ===
                               "ReservedByTec" && (
                               <button
-                                className="btn shadow btn-icon-split"
+                                className="btn btn-dark shadow btn-icon-split"
                                 disabled
                               >
-                                <span className="text text-gray-900 d-md-block d-none">
+                                <span className="text text-whitw d-block">
                                   در حال تایید
                                 </span>
                               </button>
@@ -181,8 +186,8 @@ function Jobs() {
 
                             {job.reservationStatusResult ===
                               "ConfirmeByAdmin" && (
-                              <button className="btn btn-danger btn-icon-split">
-                                <span className="text d-md-block d-none">
+                              <button className="btn disabled-link btn-danger btn-icon-split">
+                                <span className="text d-md-block d-none ">
                                   رزرو شده
                                 </span>
                                 <span className="icon text-white-50">
@@ -194,13 +199,35 @@ function Jobs() {
                           <td className="">
                             {job.reservationStatusResult ===
                             "ConfirmeByAdmin" ? (
-                              <p className="shadow btn">رزرو شده</p>
+                              <p className="shadow btn disabled-link btn-secondary">
+                                رزرو شده
+                              </p>
+                            ) : job.reservationStatusResult ===
+                              "ReservedByTec" ? (
+                              <button
+                                onClick={() => handleJobClick(job)}
+                                className="btn btn-info disabled-link "
+                              >
+                                <div className="d-flex align-items-center g-3 justify-content-center">
+                                  <p className="d-none d-md-block">
+                                    {" "}
+                                    اطلاعات بیشتر
+                                  </p>
+                                  <i class="d-md-none fas fa-info-circle"></i>
+                                </div>
+                              </button>
                             ) : (
                               <button
                                 onClick={() => handleJobClick(job)}
-                                className="btn btn-info"
+                                className="btn btn-info "
                               >
-                                اطلاعات بیشتر
+                                <div className="d-flex align-items-center g-3 justify-content-center">
+                                  <p className="d-none d-md-block">
+                                    {" "}
+                                    اطلاعات بیشتر
+                                  </p>
+                                  <i class="d-md-none fas fa-info-circle"></i>
+                                </div>
                               </button>
                             )}
                           </td>

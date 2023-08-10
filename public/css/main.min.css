@@ -497,7 +497,7 @@ select {
 }
 
 .featuresfour-img__wrapper img {
-   border-radius: 15px;
+    border-radius: 15px;
 }
 
 .featuresfour-texts {
@@ -10406,20 +10406,16 @@ select {
     justify-content: center;
     align-items: center;
     background: rgb(var(--third));
-    color: white;
+    color: #fff;
     border: 2px solid rgb(var(--third));
     border-radius: 50px;
-    margin: 5px;
-    padding: 0px 8px;
-    min-width: 155px;
-    min-height: 50px;
     cursor: pointer;
     transition: all 0.3s
 }
 
 .textthree-texts__buttonOne:hover {
     background: transparent;
-    color: rgb(var(--third))
+    color: rgb(var(--third))!important;
 }
 
 .textthree-texts__buttonTwo {
@@ -10438,8 +10434,10 @@ select {
     transition: all 0.3s
 }
 
+
 .textthree-texts__buttonTwo:hover {
-    background: rgba(0, 0, 0, 0.15) !important
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: #fff !important
 }
 
 .textthree-img {
@@ -12492,7 +12490,7 @@ select {
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
-    
+
 }
 
 .tem2-lead .field-text:focus-within {

@@ -6,19 +6,14 @@ import { activeService, getProfile } from "../../services/userService";
 import Swal from "sweetalert2";
 import { addUser } from "../../redux/actions/user";
 import profile from '/img/user.png'
+import { confirmMessage } from "../../../utils/message";
 function Profile() {
   const user = useSelector((state) => state.user);
   const token = localStorage.getItem("access_token");
   const dispatch = useDispatch();
   const handleActive = async (e) => {
-    const result = await Swal.fire({
-      title: "!",
-      text: "ایا مطمئن هستید ؟",
-      showCancelButton: true,
-      confirmButtonText: "بله ",
-      cancelButtonText: "لغو",
-    });
-    if (result.isConfirmed) {
+    const result = await confirmMessage()
+    if (result) {
       const { status } = await activeService({ isActive: e });
       console.log(status)
       if (status === 200) {
