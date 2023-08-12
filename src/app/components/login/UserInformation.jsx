@@ -37,8 +37,7 @@ function UserInformation() {
   return (
     <>
       <div className="container">
-        <div className=" justify-content-center ">
-          <div className="col-xl-10 col-lg-12 col-md-9 ">
+          <div className="col-xl-10 col-lg-12 col-md-9 mx-auto ">
             <div className="card o-hidden border-0  my-2">
               <div className="card-body p-0">
                 <div className="row">
@@ -215,7 +214,6 @@ function UserInformation() {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
