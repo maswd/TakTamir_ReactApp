@@ -11,7 +11,7 @@ function Login() {
   return (
     <>
       <div className="container">
-        <div className="row justify-content-center ">
+        <div className=" justify-content-center ">
           <div className="col-xl-10 col-lg-12 col-md-9 ">
             <div className="card o-hidden border-0 my-2">
               <div className="card-body p-0">
