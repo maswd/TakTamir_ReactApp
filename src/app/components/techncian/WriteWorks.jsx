@@ -73,16 +73,18 @@ function WriteWorks() {
         navigate("/technician/orders", { replace: true });
       }
     } catch (error) {
-      console.log(error);
+      if(error.response){
+      errorMessage("مشکلی رخ داده است !")
+    }
     }
   };
   return (
     <div className="mt-1">
       <div className="d-flex flex-wrap justify-content-center align-items-center">
-        <p className="my-4 text-gray-900 font-weight-bold text__title-medium">
+        <div className="my-4 text-gray-900 font-weight-bold text__title-medium">
           نام مشتری : {name_Device}
           <p className="d-inline-block mr-3"> نام دستگاه :‌ {customer}</p>
-        </p>
+        </div>
 
         <div className="col-md-6">
           <div className=" mb-md-0 rounded text-dark p-3">

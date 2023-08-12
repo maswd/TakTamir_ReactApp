@@ -61,7 +61,6 @@ const UserContext = ({ children }) => {
         code: otp,
         phone_number: phone.length <= 0 ? localStorage.getItem("phone") : phone,
       });
-      console.log(data);
       if (status === 200) {
         localStorage.setItem("access_token", data.access_Token);
         localStorage.setItem("refresh_token", data.refresh_Token);
@@ -138,8 +137,7 @@ const UserContext = ({ children }) => {
     } catch (error) {
       dispatch(hideLoading());
       if (error.response.status === 400) {
-        const res = await checkPhone(localStorage.getItem(phone));
-        console.log(rex);
+         await checkPhone(localStorage.getItem(phone));
       }
     }
   };

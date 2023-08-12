@@ -1,8 +1,8 @@
+import Create from "../components/landing/Create";
 import Features from "../components/landing/Features";
 import Footer from "../components/landing/Footer";
 import Header from "../components/landing/Header";
 import Hero from "../components/landing/Hero";
-import Conect from "./Connect";
 
 function Landing() {
   return (
@@ -10,7 +10,7 @@ function Landing() {
       <Header />
       <Hero />
       <Features />
-      {/* <Conect /> */}
+      <Create />
       <Footer />
     </div>
   );

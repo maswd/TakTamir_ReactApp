@@ -44,12 +44,6 @@ function SampleNextArrow(props) {
 }
 
 const DynamicSlides = ({ data, handleReject, handleAccept }) => {
-  console.log(data);
-  const [slides, setSlides] = useState(data);
-  useEffect(() => {
-    setSlides(slides);
-  }, [data]);
-
   const settings = {
     dots: true,
     infinite: false,
@@ -59,37 +53,15 @@ const DynamicSlides = ({ data, handleReject, handleAccept }) => {
     prevArrow: <SamplePrevArrow />,
   };
   const accept = async (id) => {
-    try {
-      const result = await confirmMessage("آیا برای تایید کردن مطمئن هستید ؟");
-      if (result) {
-        const { status } = await WorkConfirmationService(id);
-        if (status === 200) {
-          handleAccept(id);
-        }
-      }
-    } catch (error) {
-      errorMessage("مشکلی رخ داده است !");
-      console.log(error);
-    }
+     handleAccept(id);
   };
   const reject = async (id) => {
-    try {
-      const result = await confirmMessage("آیا برای رد کردن مطمئن هستید ؟");
-      if (result) {
-        const { status } = await WorkRejectService(id);
-        if (status === 200) {
-          handleReject(id);
-        }
-      }
-    } catch (error) {
-      errorMessage("مشکلی رخ داده است !");
-      console.log(error);
-    }
+     handleReject(id);
   };
   return (
     <div className="container mb-3 mt-3 ">
       <Slider {...settings}>
-        {slides.map((i, jj) => (
+        {data.map((i, jj) => (
           <div
             key={jj}
             className={`d-flex justify-content-between align-items-center"`}

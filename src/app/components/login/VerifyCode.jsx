@@ -22,7 +22,6 @@ function ConfirmPhone() {
 
   const sendCodeAgain = async () => {
     const res = await checkPhone(localStorage.getItem("phone"));
-    console.log(res);
     setCounter(60);
   };
 

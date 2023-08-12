@@ -1,5 +1,5 @@
 import { http } from "./httpService";
-import config from "./config.json";
+import config from "/src/config.json";
 export const jobsService = (page) => {
   return http.get(
     `${config.api}/api/Jobs?page=${page}&pageSize=6`

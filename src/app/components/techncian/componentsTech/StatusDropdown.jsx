@@ -35,7 +35,6 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
     setSelectedStatus(eventKey);
     if (eventKey === "انجام شده") {
       const result = await confirmMessage()
-      console.log(result);
       if (result) {
         localStorage.setItem("orderid",id)
         localStorage.setItem("name_Device",name_Device)
@@ -51,7 +50,6 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
   };
 
   const handleModalConfirm = async (selectedStatus) => {
-    console.log(selectedStatus);
     setShowModal(false);
     const texts = {
       description: description,
@@ -59,14 +57,12 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
     };
     try {
       const res = await changeStatusService(id, texts);
-      console.log(res);
       if (res.status == 200) {
         successMessage("وضعیت تغییر کرد");
         dispatch(getAllOrders(1));
       }
       setDescription();
     } catch (error) {
-      console.log(error);
       if (error.response.status === 406) {
         errorMessage("وضعیت کار توسط مدیر تایید نشده است");
       } else errorMessage("مشکلی رخ داده است !");
@@ -95,7 +91,7 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
           </Dropdown.Item>
 
           <Dropdown.Item
-            eventKey="Cancel"
+            eventKey="لغو شده"
             className={`text-danger text-xs border-bottom border-light py-2 ${
               stat === "Cancel" ? "d-none" : ""
             }`}

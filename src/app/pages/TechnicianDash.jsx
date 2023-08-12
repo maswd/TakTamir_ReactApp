@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 function TechnicianDash() {
   const name_Device = localStorage.getItem("name_Device");
   const orderid = localStorage.getItem("orderid");
   const [isLinkDisabled, setIsLinkDisabled] = useState(null);
+
   useEffect(() => {
     // Check if the required values are present in localStorage
     if (name_Device && orderid) {
-      // Disable the link if both values are present
       setIsLinkDisabled(false);
     } else {
       // Enable the link if any of the values is missing
       setIsLinkDisabled(true);
     }
   }, [name_Device, orderid]);
-  
+  const role = useSelector((state) => state.user.role);
+  const history = useNavigate();
+  useEffect(() => {
+    if (role !== "Technician") {
+      history("/", { replace: true });
+    }
+  }, [history]);
+
+  const active = useSelector((state) => state.user.isActive);
   return (
     <div className="container-fluid" style={{ paddingBottom: "90px" }}>
       <Outlet />
@@ -42,7 +51,7 @@ function TechnicianDash() {
               } `}
             >
               <NavLink
-                to={isLinkDisabled?"write":"orders"}
+                to={isLinkDisabled ? "write" : "orders"}
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }
@@ -53,7 +62,11 @@ function TechnicianDash() {
                 <p className="small"> ثبت کار</p>
               </NavLink>
             </li>
-            <li className="nav-item mx-2 text-center ">
+            <li
+              className={`nav-item mx-2 text-center ${
+                !active && "disabled-link"
+              } `}
+            >
               <NavLink
                 to="orders"
                 className={({ isActive }) =>
@@ -66,7 +79,11 @@ function TechnicianDash() {
                 <p className="small"> سفارشات</p>
               </NavLink>
             </li>
-            <li className="nav-item  mx-2  text-center ">
+            <li
+              className={`nav-item  mx-2  text-center ${
+                !active && "disabled-link"
+              } `}
+            >
               <NavLink
                 to="jobs"
                 className={({ isActive }) =>

@@ -82,12 +82,98 @@ button {
   color: #000 !important;
   font-size: 3rem !important
 }
+
 .slick-dots li {
-  width: 12px!important;
+  width: 12px !important;
 }
+
 .error {
   color: #f60909;
   font-size: .7rem;
   position: relative;
   line-height: 1;
+}
+
+#dv-createLandin {
+  position: relative;
+  margin-top: 49px;
+}
+
+.dv-path {
+  position: absolute;
+  top: 41px;
+  right: 10px;
+  width: 718px;
+}
+
+#dv-createLandin h3,
+#dv-createLandin h3 span.highight {
+  position: relative;
+  color: #000;
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 48px;
+}
+
+#dv-createLandin h3 span.highlight {
+  background-color: rgba(100, 101, 244, 0.265);
+  line-height: 10px;
+  height: 10px;
+  margin: auto 0;
+  display: inline-block;
+}
+
+.dv-createLandin {
+  text-align: right;
+  position: relative;
+  background-color: transparent;
+}
+
+.dv-createLandin img {
+  margin-left: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+
+}
+
+@media screen and (max-width: 768px) {
+  .dv-createLandin  {
+    margin-top: 56px;
+  }
+}
+
+.dv-createLandin h4,
+.dv-createLandin span {
+  margin-bottom: 3px;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.dv-createLandin p,
+.dv-signIn a {
+  color: #4f5d75;
+  font-weight: 400;
+  font-size: 15px;
+
+}
+
+.dv-createLandin::before,
+.dv-testing>span::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(217,249,226,.3);
+  z-index: 99;
+  border-radius: 50%;
+}
+
+.hover:hover{
+  opacity: .7;
 }

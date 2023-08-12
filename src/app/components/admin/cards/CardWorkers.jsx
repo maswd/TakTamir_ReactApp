@@ -20,13 +20,13 @@ const CardWorkers = ({
         }`}
       >
         <div className="">
-        <p className="card-text">
+        <div className="card-text">
             {statusAccount === "Account is Verified" ? (
               <p className="text-success"> حساب تایید شده است !</p>
             ) : (
               <p className="text-danger">حساب تایید نشده است !</p>
             )}
-          </p>
+          </div>
           <h5 className="card-title">
             {" "}
             نام :{firstname} {lastName}
@@ -42,7 +42,7 @@ const CardWorkers = ({
           </div>
           <p className="card-text">
             تاریخ ثبت نام: {convertToPersianDate(create_at).slice(0, 10)}
-          </p>{" "}
+          </p>
          
         </div>
 

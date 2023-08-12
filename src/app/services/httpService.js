@@ -1,6 +1,5 @@
 import axios from "axios";
-import config from "./config.json";
-import Swal from "sweetalert2";
+import config from "/src/config.json";
 
 axios.defaults.headers.common["content-type"] = "application/json";
 
@@ -22,7 +21,6 @@ axios.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log(error);
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
@@ -37,7 +35,7 @@ axios.interceptors.response.use(
       const refreshToken = localStorage.getItem("refresh_token");
       const encodedRefreshToken = encodeURIComponent(refreshToken);
       const res = await axios.post(
-        `https://taktamir.mohamadrezakiani.ir/api/AuthUsers/refresh-token?refreshToken=${encodedRefreshToken}`
+        `${config.api}/api/AuthUsers/refresh-token?refreshToken=${encodedRefreshToken}`
       );
       if (res.status === 200) {
         localStorage.setItem("access_token", res.data.access_Token);

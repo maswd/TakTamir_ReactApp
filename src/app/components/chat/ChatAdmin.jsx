@@ -7,7 +7,7 @@ import User from "./User";
 import "./chat.css";
 import { successMessage } from "../../../utils/message";
 import { useRef } from "react";
-import config from '../../services/config.json'
+import config from "/src/config.json";
 const ChatAdmin = () => {
   const [rooms, setRooms] = useState([]);
   const [users, setUsers] = useState([]);
@@ -19,21 +19,19 @@ const ChatAdmin = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [allmessageUser]);
-
   const fetchRooms = useCallback(async () => {
     try {
       const accessToken = localStorage.getItem("access_token");
-      const response = await axios.get(
-        `${config.api}/api/Chats`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await axios.get(`${config.api}/api/Chats`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       setRooms(response.data);
     } catch (error) {
-      console.error("Error fetching rooms:", error);
+      if (error.response) {
+        errorMessage("مشکلی رخ داده است !");
+      }
     }
   }, []);
 
@@ -65,10 +63,11 @@ const ChatAdmin = () => {
       });
 
       newConnection.on("notification", (msg) => {
-
-        console.log("msg.Sender", msg.Sender);
-        if (msg.Sender !== nameRoom) {
-          successMessage(`${msg.Firstname} ${msg.LastName}`);
+        if (
+          msg.sender !== "Admin" &&
+          msg.firstname + msg.lastName !== nameRoom
+        ) {
+          successMessage(`${msg.firstname} ${msg.lastName}`);
         }
       });
       newConnection.on("ReceiveMessage", (user, message) => {
@@ -84,7 +83,9 @@ const ChatAdmin = () => {
       });
 
       newConnection.on("Erorr", (eror) => {
-        console.log(eror);
+        if (eror.response) {
+          errorMessage("مشکلی رخ داده است !");
+        }
       });
 
       newConnection.onclose(() => {
@@ -98,7 +99,6 @@ const ChatAdmin = () => {
       setNameRoom(Nameroom);
       setConnection(newConnection);
     } catch (e) {
-      console.log(e);
       connectToSignalR();
     }
   }, []);
@@ -119,7 +119,9 @@ const ChatAdmin = () => {
         const NameRoom = localStorage.getItem("NameRoom") || nameRoom;
         await connection.invoke("SendMessage", message, NameRoom);
       } catch (e) {
-        console.error(e);
+        if (e.response) {
+          errorMessage("مشکلی رخ داده است !");
+        }
       }
     },
     [connection, nameRoom]
@@ -216,11 +218,11 @@ const ChatAdmin = () => {
                 <div className="position-relative">
                   <div className="chat-messages p-4">
                     {allmessageUser.length === 0 ? (
-                      <p>
+                      <div>
                         <div className="alert alert-info" role="alert">
                           پیامی وجود ندارد
                         </div>
-                      </p>
+                      </div>
                     ) : (
                       allmessageUser?.map((m, index) =>
                         m.Sender === "Admin" ? (

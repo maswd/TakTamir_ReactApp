@@ -15,7 +15,6 @@ function Profile() {
     const result = await confirmMessage()
     if (result) {
       const { status } = await activeService({ isActive: e });
-      console.log(status)
       if (status === 200) {
         const {data,status} = await getProfile(token);
         if (status === 200) {
@@ -118,6 +117,9 @@ function Profile() {
           </div>
         </div>
       </div>
+      <div className="tem2-tag text-nowrap text-xs text-center">
+          ساخته شده توسط سافت کد
+        </div>
     </>
   );
 }

@@ -18,6 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             backgroundColor: "#F9A826",
             height: "5px",
             zIndex: "1000",
+            position:"fixed",
+            top:0
           }}
           updateTime={50}
           maxProgress={100}

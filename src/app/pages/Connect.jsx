@@ -5,10 +5,10 @@ import * as Yup from "yup";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { errorMessage } from "../../utils/message";
-
+import { errorMessage, successMessage } from "../../utils/message";
+import config from '/src/config.json'
 const validationSchema = Yup.object().shape({
-  nameDevice: Yup.string().required("• نام دستگاه را وارد کنید."),
+  name_Device: Yup.string().required("• نام دستگاه را وارد کنید."),
   problems: Yup.string().required("• مشکل دستگاه را وارد کنید."),
   description: Yup.string().required("• توضیحات را وارد کنید."),
   customerDto: Yup.object().shape({
@@ -29,7 +29,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  nameDevice: "",
+  name_Device: "",
   problems: "",
   description: "",
   customerDto: {
@@ -48,19 +48,22 @@ const ExampleForm = () => {
     try {
       dispatch(showLoading());
       const { status } = await axios.post(
-        "https://taktamir.mohamadrezakiani.ir/api/Jobs",
+        `${config.api}/api/Jobs`,
         values
       );
       if (status === 201) {
+        history("/", { replace: true });
         successMessage(" درخواست  شما با موفقیت ثبت شد !");
         dispatch(hideLoading());
-        initialValues();
         resetForm();
-        history("/", { replace: true });
+        initialValues();
       }
     } catch (error) {
       // resetForm();
-      errorMessage("مشکلی از سمت سرور رخ داده است");
+      if (error.response){
+        errorMessage("مشکلی از سمت سرور رخ داده است");
+
+      }
       dispatch(hideLoading());
     }
   };
@@ -132,13 +135,13 @@ const ExampleForm = () => {
 
                               <Field
                                 type="text"
-                                id="nameDevice"
-                                name="nameDevice"
+                                id="name_Device"
+                                name="name_Device"
                                 className="input text-right"
                               />
                             </div>
                             <ErrorMessage
-                              name="nameDevice"
+                              name="name_Device"
                               component="p"
                               className="error animated--grow-in"
                             />
@@ -306,6 +309,9 @@ const ExampleForm = () => {
           </div>
         </div>
       </div>
+      <div className="tem2-tag text-nowrap text-xs text-center">
+          ساخته شده توسط سافت کد
+        </div>
     </section>
   );
 };

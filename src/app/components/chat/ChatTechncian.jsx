@@ -5,17 +5,14 @@ import TechMessageRight from "./TechMessageRight";
 import * as signalR from "@microsoft/signalr";
 import { successMessage } from "../../../utils/message";
 import { useSelector } from "react-redux";
-import config from '../../services/config.json'
+import config from "/src/config.json";
 
 function ChatTechncian() {
   const user = useSelector((state) => state.user);
-  const [rooms, setRooms] = useState([]);
   const [users, setUsers] = useState([]);
   const [messageUser, setMessageUser] = useState("");
   const [allmessageUser, setAllMessageUser] = useState([]);
-  console.log("allmessageUser", allmessageUser);
   const [connection, setConnection] = useState();
-  console.log("KSLAKDLSA", connection);
   const messagesEndRef = useRef(null);
   const NameRoom = user.firstname + " " + user.lastName;
   useEffect(() => {
@@ -45,21 +42,16 @@ function ChatTechncian() {
       // });
 
       newConnection.on("notification", (msg) => {
-        console.log("msg", msg);
-        console.log("NameRoom", NameRoom);
-        if (msg.Sender !== NameRoom) {
-          successMessage(`${msg.Firstname} ${msg.LastName}`);     
+        if (msg.sender !== NameRoom) {
+          successMessage(" پیام جدید از  طرف پشتیبانی");
         }
-
       });
 
       newConnection.on("ReceiveMessage", (user, message) => {
         setAllMessageUser((messages) => [...messages, JSON.parse(message)]);
-        console.log("logger", message);
       });
 
       newConnection.on("AllMessage", (messagesroom) => {
-        console.log("AllMessage", messagesroom);
         setAllMessageUser(JSON.parse(messagesroom));
       });
 
@@ -68,7 +60,9 @@ function ChatTechncian() {
       });
 
       newConnection.on("Erorr", (eror) => {
-        console.log(eror);
+        if (eror.response) {
+          errorMessage("مشکلی رخ داده است !");
+        }
       });
 
       newConnection.onclose(() => {
@@ -82,7 +76,6 @@ function ChatTechncian() {
       // setNameRoom(Nameroom);
       setConnection(newConnection);
     } catch (e) {
-      console.log(e);
       connectToSignalR();
     }
   }, []);
@@ -92,7 +85,9 @@ function ChatTechncian() {
         setMessageUser("");
         await connection.invoke("SendMessage", message, NameRoom);
       } catch (e) {
-        console.error(e);
+        if (e.response) {
+          errorMessage("مشکلی رخ داده است !");
+        }
       }
     },
     [connection]
@@ -122,14 +117,18 @@ function ChatTechncian() {
               />
             </div>
             <div className="flex-grow-1 pr-3">
-              <strong>پشتیانی</strong>
-              <div className="text-muted small">
-                <em>Typing...</em>
-              </div>
+              <strong>پشتیبانی</strong>
+              <div className="text-muted small">{/* <em>Typing...</em> */}</div>
             </div>
           </div>
         </div>
-        <div className={`${ connection?._connectionState !== "Connecting" ? "d-none":"d-flex vh-100 align-items-center "} `}>
+        <div
+          className={`${
+            connection?._connectionState !== "Connecting"
+              ? "d-none"
+              : "d-flex vh-100 align-items-center "
+          } `}
+        >
           {connection !== undefined &&
             connection?._connectionState === "Connecting" && (
               <div
@@ -147,11 +146,11 @@ function ChatTechncian() {
                 style={{ height: "75vh", maxHeight: "75vh", margin: "60px 0" }}
               >
                 {allmessageUser.length === 0 ? (
-                  <p>
+                  <div>
                     <div className="alert alert-info" role="alert">
                       پیامی وجود ندارد
                     </div>
-                  </p>
+                  </div>
                 ) : (
                   allmessageUser?.map((m, index) =>
                     m.Sender === "Admin" ? (

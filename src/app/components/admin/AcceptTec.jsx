@@ -8,7 +8,6 @@ import { RejectAccountUserService, VerifyAccountUserService } from "../../servic
 const AcceptTec = () => {
   const user = useSelector((state) => state.admin.users);
   const pagination = useSelector((state) => state.admin.pagination);
-  console.log(user);
   const dispatch = useDispatch(1);
   useEffect(() => {
     dispatch(getAllUser(1));
@@ -24,14 +23,14 @@ const AcceptTec = () => {
       if (result) {
         const { status } = await VerifyAccountUserService(id);
         if (status === 200) {
-          console.log("کابرب ساخت")
           successMessage("حساب کاربر با موفقیت تایید شد !")
           dispatch(getAllUser(1));
         }
       }
     } catch (error) {
-      errorMessage("مشکلی رخ داده است !")
-      console.log(error)
+      if(error.response){
+        errorMessage("مشکلی رخ داده است !")
+      }
     }
   };
   const handleReject = async (id) => {
@@ -40,14 +39,14 @@ const AcceptTec = () => {
       if (result) {
         const { status } = await RejectAccountUserService(id);
         if (status === 200) {
-          console.log("کابرب پاک")
           successMessage("حساب کاربر باموفقیت رد شد !")
           dispatch(getAllUser(1));
         }
       }
     } catch (error) {
-      errorMessage("مشکلی رخ داده است !")
-      console.log(error)
+      if(error.response){
+        errorMessage("مشکلی رخ داده است !")
+      }
     }
   };
   return (

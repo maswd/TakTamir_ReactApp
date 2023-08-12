@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
 import Request from "../common/Request";
 import logo from "/img/logo.png";
 import { NavLink } from "react-router-dom";
 function Header() {
+  const [isSidebarToggled, setIsSidebarToggled] = useState(true);
+
+  const handleToggle = () => {
+      setIsSidebarToggled(!isSidebarToggled);
+    
+  };
   return (
     <div data-aos="fade-down" id="header">
       <section className="nav headerone__section right">
@@ -15,17 +22,26 @@ function Header() {
                 <div className="d-flex d-lg-none">
                   <Request text={"d-flex"} stylesRe link={"/request"} />
                   <button
-                    className="navbar-toggler navbar-toggler-right"
-                    data-toggle="collapse"
-                    data-target="#navbar"
-                    aria-controls="navbar"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
+                    className={`navbar-toggler navbar-toggler-right }`}
+                    onClick={handleToggle}
                   >
-                    <div className="icon-open"></div>
+                    <div
+                      className={`${
+                        !isSidebarToggled
+                          ? "icon-close animated--grow-in"
+                          : "icon-open animated--fade-in"
+                      }`}
+                    >
+                      {" "}
+                    </div>
                   </button>
                 </div>
-                <div className="collapse  navbar-collapse" id="navbar">
+                <div
+                  className={`collapse  navbar-collapse animated--grow-in  ${
+                    !isSidebarToggled ? "show" : " animated--fade-in"
+                  }`}
+                  id="navbar"
+                >
                   <ul className="navbar-nav nav-right">
                     <li className="nav-item active">
                       <div className=" ">

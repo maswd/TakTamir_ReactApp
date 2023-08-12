@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 const AdminSidebar = () => {
   const [isSidebarToggled, setIsSidebarToggled] = useState(true);
-  console.log(isSidebarToggled);
   useEffect(() => {
     setIsSidebarToggled(true);
   }, [isSidebarToggled]);
@@ -20,13 +19,13 @@ const AdminSidebar = () => {
       <ul
         className={`navbar-nav bg-gradient-info sidebar sidebar-dark accordion ${
           isSidebarToggled ? "toggled" : ""
-        }`} // id="accordionSidebar"
+        }`} 
         id="collapseDiv"
         data-bs-toggle="collapse"
       >
-        <NavLink className="sidebar-brand d-flex align-items-center justify-content-center">
+        <NavLink className="sidebar-brand d-flex align-items-center justify-content-center my-5">
           <div className="sidebar-brand-icon ">
-            <img className="w-100" src={logo} alt="" />
+            <img className="w-75 py-5" src={logo} alt="" />
           </div>
           <div className="sidebar-brand-text mx-3">پنل ادمین</div>
         </NavLink>

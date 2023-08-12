@@ -36,9 +36,9 @@ function Footer() {
                                                                     کوچه بالاور، پلاک ۷، برج فناوری دانشگاه صنعتی امیرکبیر،
                                                                     طبقه دوم، فینووا</p>
                                                             </li>
-                                                            <li ><img src={phone2} alt="" /><Link
+                                                            {/* <li ><img src={phone2} alt="" /><Link
                                                                 href="tel:%DB%B0%DB%B2%DB%B1-%DB%B1%DB%B2%DB%B3%DB%B4%DB%B5%DB%B6%DB%B7%DB%B8"
-                                                            >09159594376</Link></li>
+                                                            >09159594376</Link></li> */}
                                                             <li ><img src={email2} alt="" /><Link
                                                                 href="mailto:hi@landin.ir" className="tem2-email"
                                                             >taktamir.ir</Link></li>
@@ -126,7 +126,8 @@ function Footer() {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="tem2-tag">
+                                    <div className="tem2-tag text-nowrap text-xs">
+                                        ساخته شده توسط سافت کد
                                     </div>
                                 </div>
                             </div>

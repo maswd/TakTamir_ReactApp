@@ -32,14 +32,13 @@ function Jobs() {
       dispatch(getAllJobs(page));
     }
   };
-
   const handleReservation = async (id) => {
     try {
       const { status } = await reservationService(id);
       if (status === 200) {
         successMessage("رزرو انجام شد ! ");
         setSelectedJob(null);
-        dispatch(getAllJobs(page));
+        dispatch(getAllJobs(page?page:1));
         onPageChange(1, 1);
       }
     } catch (error) {
@@ -192,7 +191,7 @@ function Jobs() {
                                     {" "}
                                     اطلاعات بیشتر
                                   </p>
-                                  <i class="d-md-none fas fa-info-circle"></i>
+                                  <i className="d-md-none fas fa-info-circle"></i>
                                 </div>
                               </button>
                             ) : (
@@ -205,7 +204,7 @@ function Jobs() {
                                     {" "}
                                     اطلاعات بیشتر
                                   </p>
-                                  <i class="d-md-none fas fa-info-circle"></i>
+                                  <i className="d-md-none fas fa-info-circle"></i>
                                 </div>
                               </button>
                             )}

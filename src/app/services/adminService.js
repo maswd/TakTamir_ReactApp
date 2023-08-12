@@ -1,5 +1,5 @@
 import { http } from "./httpService";
-import config from "./config.json";
+import config from "/src/config.json";
 
 export const AllTechncianService = (token, page) => {
   return http.get(

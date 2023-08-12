@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Request = ({ link, text, hide, stylesRe }) => {
-  console.log(stylesRe);
   const iconStyle = stylesRe ? { background: "rgb(2, 195, 154)" } : {};
 
   return (
     <Link
       to={link}
       style={iconStyle}
-      className={`nav-link d-flex text-white hover rounded-pill align-items-center ml-2 ${text} position-relative`}
+      className={` hover nav-link d-flex text-white hover rounded-pill align-items-center ml-2 ${text} position-relative`}
     >
       <p
         className={`${hide ? "" : "pl-3"} `}

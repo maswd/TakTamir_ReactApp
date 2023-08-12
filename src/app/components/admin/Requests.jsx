@@ -25,7 +25,6 @@ const Requests = () => {
   }, [dispatch]);
 
   const handleAccept = async (id) => {
-    console.log(id)
     try {
       const result = await confirmMessage("آیا برای تایید کردن مطمئن هستید ؟");
       if (result) {
@@ -36,8 +35,9 @@ const Requests = () => {
         }
       }
     } catch (error) {
-      errorMessage("مشکلی رخ داده است !");
-      console.log(error);
+      if(error.response){
+        errorMessage("مشکلی رخ داده است !")
+      }
     }
   };
   const handleReject = async (id) => {
@@ -48,8 +48,9 @@ const Requests = () => {
           successMessage("کار با موفیقت رد شد  !");
         }
     } catch (error) {
-      errorMessage("مشکلی رخ داده است !");
-      console.log(error);
+      if(error.response){
+        errorMessage("مشکلی رخ داده است !")
+      }
     }
   };
   const onPageChange = async (page, currentPage) => {
