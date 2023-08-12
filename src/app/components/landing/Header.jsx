@@ -8,7 +8,7 @@ function Header() {
         <div className="container">
           <div className="row justify-content-md-center">
             <div className="col-md-12">
-              <nav className="navbar navbar-expand-lg navbar-light navbar-light forPadding">
+              <nav className="navbar navbar-expand-lg navbar-light navbar-light ">
                 <div className="navbar-brand">
                   <img src={logo} alt="logo" />
                 </div>

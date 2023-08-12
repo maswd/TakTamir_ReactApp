@@ -4520,6 +4520,13 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
 }
 
+@media screen and (max-width:350px) {
+  .navbar {
+
+    justify-content: center;
+  }
+}
+
 .navbar .container,
 .navbar .container-fluid,
 .navbar .container-sm,
@@ -12662,6 +12669,7 @@ body.sidebar-toggled footer.sticky-footer {
   border-top-left-radius: 50px !important;
   border-bottom-left-radius: 50px !important;
 }
+
 .rounded-pill-right {
   border-top-right-radius: 50px !important;
   border-bottom-right-radius: 50px !important;
