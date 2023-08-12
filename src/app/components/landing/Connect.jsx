@@ -89,10 +89,7 @@ function Conect() {
     }
   };
   return (
-    <section
-      className="tem2-leadSec leadcapturetwo__section "
-      style={{ overflowY: "scroll", height: "120vh", marginBottom: "3rem" }}
-    >
+    <section className="tem2-leadSec leadcapturetwo__section mx-auto w-100 ">
       <img
         className="leadcapturetwo__bgdecoration"
         src="https://cdn.landin.ir/default/sections/images/leaf.svg"
@@ -197,6 +194,7 @@ function Conect() {
                             <textarea
                               value={description}
                               type="text"
+                              style={{ minHeight: "58px" }}
                               landin-type="text"
                               className="input text-right"
                               onChange={(e) => {
@@ -322,6 +320,7 @@ function Conect() {
                             <textarea
                               value={customerDto.address}
                               type="text"
+                              style={{ minHeight: "58px" }}
                               className="input"
                               onChange={(event) => {
                                 setCustomerDto((prevCustomerDto) => ({

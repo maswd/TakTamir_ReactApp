@@ -1643,9 +1643,10 @@ select {
 
 .tem2-leadSec {
     padding: 100px 0;
-    overflow: hidden;
+    /* margin: 0 100px; */
+    /* overflow: hidden; */
     position: relative;
-    height: 100%
+    /* height: 100vh */
 }
 
 .tem2-leadSec .tem2-title {
@@ -1735,8 +1736,7 @@ select {
 }
 
 .leadcapturetwo__form-col {
-    margin-bottom: 40px;
-    margin-bottom: 4.5em
+    margin-bottom:15.5em
 }
 
 .leadcapturetwo__form-col form {
@@ -1888,9 +1888,10 @@ select {
     box-shadow: unset
 }
 
+
 @media screen and (max-width:991px) {
     .tem2-leadSecSec {
-        margin: 0px 0
+        margin: 0px 0 
     }
 
     .leadcapturetwo__bgdecoration {
@@ -1898,7 +1899,9 @@ select {
     }
 
     .tem2-leadSec {
-        padding: 0px 40px
+        padding: 0 20px;
+        margin-bottom: 21rem;
+
     }
 
     .tem2-leadSec .tem2-title {
@@ -12480,12 +12483,12 @@ select {
     display: flex;
     flex-grow: 1;
     background-color: #fff;
-    min-height: 40px;
+    /* min-height: 40px; */
     border-radius: 6px;
-    padding: 12px 12px;
+    padding: 0px 5px;
     justify-content: start;
     margin-bottom: 16px;
-    margin-left: 4px;
+    /* margin-left: 4px; */
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
@@ -12512,7 +12515,9 @@ select {
 .tem2-lead .field-text svg * {
     fill: rgb(var(--fourth), 0.7) !important
 }
-
+.input-group label{
+    padding-top: 4px!important;
+}
 .tem2-lead .field-text .input {
     width: 100%;
     min-height: 18px;
