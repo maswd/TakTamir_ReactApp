@@ -40,7 +40,7 @@ function UserInformation() {
   const user = useSelector((state) => state.user);
   const history = useNavigate();
   useEffect(() => {
-    if (!token && !user) {
+    if (!token && user) {
       history("/login", { replace: true });
     }
   }, [history]);
@@ -128,7 +128,7 @@ function UserInformation() {
                         {validator.current.message(
                           "serialNumber",
                           serialNumber,
-                          "required|integer|max:10|min:10"
+                          "required|max:10|min:10"
                         )}
                       </div>
                       <div>
