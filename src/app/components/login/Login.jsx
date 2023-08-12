@@ -24,6 +24,7 @@ function Login() {
                           خوش آمدید
                         </h1>
                         <p className="text-gray-900">ورود / ثبت نام </p>
+                      
                       </div>
                       <form className="user mt-3" onSubmit={handleLogin}>
                         <div className="form-group">
@@ -53,10 +54,14 @@ function Login() {
                         >
                           ورود
                         </button>
+                        
                       </form>
+                      
                       <hr />
-
-                      <p className="text-xs fw-bold color-700 mt-4">
+                      <Link className=" btn text-xs" to="/">
+                        بازگشت به صفحه اصلی
+                      </Link>
+                      <p className="text-xs fw-bold color-700 mt-2">
                         ورود شما به معنای پذیرش
                         <Link
                           className="mx-1 d-inline-block text-primray-700"
@@ -74,6 +79,7 @@ function Login() {
                         تک تعمیر 
                         است.
                       </p>
+                      
                     </div>
                   </div>
                 </div>

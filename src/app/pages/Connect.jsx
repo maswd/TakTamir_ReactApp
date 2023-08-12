@@ -4,7 +4,7 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { errorMessage } from "../../utils/message";
 
 const validationSchema = Yup.object().shape({
@@ -12,11 +12,12 @@ const validationSchema = Yup.object().shape({
   problems: Yup.string().required("• مشکل دستگاه را وارد کنید."),
   description: Yup.string().required("• توضیحات را وارد کنید."),
   customerDto: Yup.object().shape({
-    fullNameCustomer: Yup.string().required("• نام و نام خانوادگی را وارد کنید."),
+    fullNameCustomer: Yup.string().required(
+      "• نام و نام خانوادگی را وارد کنید."
+    ),
     phone: Yup.string()
       .matches(/^0[1-9]\d{9}$/, "• شماره ثابت را به درستی وارد کنید.")
-      .required("• شماره ثابت را وارد کنید.")
-      ,
+      .required("• شماره ثابت را وارد کنید."),
     phoneNumber: Yup.string()
       .matches(/^(?:0|98|\+98)?9\d{9}$/, "• شماره همراه را به درستی وارد کنید.")
       .required("• شماره همراه را وارد کنید."),
@@ -59,7 +60,7 @@ const ExampleForm = () => {
       }
     } catch (error) {
       // resetForm();
-      errorMessage("مشکلی از سمت سرور رخ داده است")
+      errorMessage("مشکلی از سمت سرور رخ داده است");
       dispatch(hideLoading());
     }
   };
@@ -77,12 +78,15 @@ const ExampleForm = () => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="tem2-title">
-                     <h3 className="tem2-topic">همین حالا شروع کنید</h3>
+                    <h3 className="tem2-topic">همین حالا شروع کنید</h3>
                     <div className="tem2-desc color-links">
                       <p style={{ direction: "rtl" }}>
-                         همین حالا درخواست مشاوره خود را ثبت کنید تا کارشناسان
-                        ما در اسرع وقت با شما تماس بگیرند.
+                        همین حالا درخواست مشاوره خود را ثبت کنید تا کارشناسان ما
+                        در اسرع وقت با شما تماس بگیرند.
                       </p>
+                      <Link className="btn mt-3" to="/">
+                        برو به صفحه اصلی
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -252,7 +256,7 @@ const ExampleForm = () => {
                           <div className="col-md-12">
                             <div className="field-text input-group">
                               <label className="text-nowrap text-xs">
-                                ادرس
+                                آدرس
                               </label>
                               <Field
                                 as="textarea"

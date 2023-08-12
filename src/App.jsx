@@ -17,7 +17,7 @@ import Jobs from "./app/components/techncian/Jobs";
 import Profile from "./app/components/techncian/Profile";
 import WriteWorks from "./app/components/techncian/WriteWorks";
 import UserContext from "./app/context/userContext";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import PrivateRoute from "./app/pages/PrivateRoute";
 import NotFound from "./app/pages/NotFound";
 import AcceptTec from "./app/components/admin/AcceptTec";
