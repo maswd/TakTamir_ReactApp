@@ -11,7 +11,6 @@ const CardRequests = ({
   handleAccept,
   handleReject,
 }) => {
-  let order = orders.map((i) => i);
   return (
     <div className="card   bg-transparent border-0 mb-3 col-12 col-md-8 col-lg-5 ">
       <div className="card-body rounded shadow-sm d-flex justify-content-between flex-column flex-wrap border">
@@ -30,7 +29,7 @@ const CardRequests = ({
         </div>
         <p className="text-gray-900  pt-2 text-lg fw-bolder">سفارش ها : </p>
         <DynamicSlides
-          data={order}
+          data={orders}
           handleAccept={handleAccept}
           handleReject={handleReject}
         />

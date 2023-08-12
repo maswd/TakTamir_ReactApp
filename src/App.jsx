@@ -24,9 +24,10 @@ import AcceptTec from "./app/components/admin/AcceptTec";
 import Requests from "./app/components/admin/Requests";
 import ChatAdmin from "./app/components/chat/ChatAdmin";
 import ChatTechncian from "./app/components/chat/ChatTechncian";
-import Connect from './app/components/landing/Connect'
+import Connect from "./app/components/landing/Connect";
 function App() {
   const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
 
   useEffect(() => {
     AOS.init();
@@ -39,7 +40,14 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Landing />} />
         <Route path="/request" element={<Connect />} />
-        <Route path="/dashboard" element={<Dashborad />}>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute user={user}>
+              <Dashborad />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<Workers />} />
           <Route path="works" element={<Works />} />
           <Route path="messages" element={<ChatAdmin />} />
@@ -88,7 +96,6 @@ function App() {
         />
       </Routes>
 
-  
       {/* <Route path="category" element={<DashCategory />} /> 
 
       {/* <Route path="/logout" element={<Logout />} />

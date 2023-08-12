@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import { getStatusClass, getStatusText } from "../../../../utils/convertor";
 import { useEffect } from "react";
+import {
+  WorkConfirmationService,
+  WorkRejectService,
+} from "../../../services/adminService";
+import {
+  confirmMessage,
+  errorMessage,
+  successMessage,
+} from "../../../../utils/message";
 export function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -34,7 +43,7 @@ function SampleNextArrow(props) {
   );
 }
 
-const DynamicSlides = ({ data, handleAccept, handleReject }) => {
+const DynamicSlides = ({ data, handleReject, handleAccept }) => {
   console.log(data);
   const [slides, setSlides] = useState(data);
   useEffect(() => {
@@ -49,7 +58,34 @@ const DynamicSlides = ({ data, handleAccept, handleReject }) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
+  const accept = async (id) => {
+    try {
+      const result = await confirmMessage("آیا برای تایید کردن مطمئن هستید ؟");
+      if (result) {
+        const { status } = await WorkConfirmationService(id);
+        if (status === 200) {
+          handleAccept(id);
+        }
+      }
+    } catch (error) {
+      errorMessage("مشکلی رخ داده است !");
+      console.log(error);
+    }
+  };
+  const reject = async (id) => {
+    try {
+      const result = await confirmMessage("آیا برای رد کردن مطمئن هستید ؟");
+      if (result) {
+        const { status } = await WorkRejectService(id);
+        if (status === 200) {
+          handleReject(id);
+        }
+      }
+    } catch (error) {
+      errorMessage("مشکلی رخ داده است !");
+      console.log(error);
+    }
+  };
   return (
     <div className="container mb-3 mt-3 ">
       <Slider {...settings}>
@@ -64,7 +100,7 @@ const DynamicSlides = ({ data, handleAccept, handleReject }) => {
               }  flex-column ml-2 align-self-center align-items-center `}
             >
               <button
-                onClick={() => handleAccept(i.id)}
+                onClick={() => accept(i.id)}
                 className={`btn  mb-3 btn-light  shadow-sm text-nowrap  border ${
                   handleAccept ? "d-block" : "d-none"
                 }`}
@@ -72,7 +108,7 @@ const DynamicSlides = ({ data, handleAccept, handleReject }) => {
                 تایید کردن
               </button>
               <button
-                onClick={() => handleReject(i.id)}
+                onClick={() => reject(i.id)}
                 className={`btn btn-danger shadow-sm  ${
                   handleReject ? "d-block" : "d-none"
                 }`}

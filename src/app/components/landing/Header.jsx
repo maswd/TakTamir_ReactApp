@@ -2,7 +2,6 @@ import Request from "../common/Request";
 import logo from "/img/logo.png";
 import { NavLink } from "react-router-dom";
 function Header() {
-
   return (
     <div data-aos="fade-down" id="header">
       <section className="nav headerone__section right">
@@ -14,11 +13,7 @@ function Header() {
                   <img src={logo} alt="logo" />
                 </div>
                 <div className="d-flex d-lg-none">
-                    
-                  <Request
-                    text={"d-flex"}
-                    stylesRe
-                  />
+                  <Request text={"d-flex"} stylesRe link={"/request"} />
                   <button
                     className="navbar-toggler navbar-toggler-right"
                     data-toggle="collapse"
@@ -35,21 +30,20 @@ function Header() {
                     <li className="nav-item active">
                       <div className=" ">
                         <NavLink className="nav-link" to="/login">
-                       ورود / ثبت نام 
+                          ورود / ثبت نام
                         </NavLink>
                       </div>
                     </li>
                     <li className="nav-item active">
-                      <NavLink type="button" className="nav-link">
+                      <a href="#features" type="button" className="nav-link">
                         درباره ما
-                      </NavLink>
+                      </a>
                     </li>
                     <li className="nav-item active">
-                      <NavLink type="button" className="nav-link">
+                      <a href="#footer" type="button" className="nav-link">
                         تماس با ما
-                      </NavLink>
+                      </a>
                     </li>
-                    
                   </ul>
                 </div>
                 <div className="d-none d-lg-block">

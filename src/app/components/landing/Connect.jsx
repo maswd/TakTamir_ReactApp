@@ -335,7 +335,7 @@ function Conect() {
                           {validator.current.message(
                             "address",
                             customerDto.address,
-                            "required|min:10|"
+                            "required|min:10"
                           )}
                         </div>
                       </div>

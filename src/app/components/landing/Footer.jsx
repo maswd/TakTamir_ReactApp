@@ -1,12 +1,12 @@
 import email2 from "/img/email2.svg"
 import address2 from "/img/address2.svg"
-import phone2 from "/img/email2.svg"
+import phone2 from "/img/phone2.svg"
 import {Link} from 'react-router-dom'
 function Footer() {
     return (
         <div data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="500" id="footer">
+        data-aos-duration="500" id="footer" >
             <section className="footertwo__section forPadding" >
                 <div className="container">
                     <div className="row justify-content-md-center">
@@ -38,10 +38,10 @@ function Footer() {
                                                             </li>
                                                             <li ><img src={phone2} alt="" /><Link
                                                                 href="tel:%DB%B0%DB%B2%DB%B1-%DB%B1%DB%B2%DB%B3%DB%B4%DB%B5%DB%B6%DB%B7%DB%B8"
-                                                            >۰۲۱-۱۲۳۴۵۶۷۸</Link></li>
+                                                            >09159594376</Link></li>
                                                             <li ><img src={email2} alt="" /><Link
                                                                 href="mailto:hi@landin.ir" className="tem2-email"
-                                                            >hi@landin.ir</Link></li>
+                                                            >taktamir.ir</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>

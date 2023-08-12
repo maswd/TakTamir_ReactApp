@@ -42,14 +42,11 @@ const Requests = () => {
   };
   const handleReject = async (id) => {
     try {
-      const result = await confirmMessage("آیا برای رد کردن مطمئن هستید ؟");
-      if (result) {
         const { status } = await WorkRejectService(id);
         if (status === 200) {
           dispatch(getAllRequsets(1));
           successMessage("کار با موفیقت رد شد  !");
         }
-      }
     } catch (error) {
       errorMessage("مشکلی رخ داده است !");
       console.log(error);
