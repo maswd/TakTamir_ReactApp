@@ -11,7 +11,9 @@ import LoadingBar from "react-redux-loading-bar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
+
     <BrowserRouter>
+
       <Provider store={store}>
         <LoadingBar
           style={{

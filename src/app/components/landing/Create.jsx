@@ -23,12 +23,12 @@ const Create = () => {
             <div className="d-flex align-items-start">
               <div className="col-12 px-0 d-flex">
                 <h3 className="how-to__create">
-                  چطور یک
+                  چطور
                   <span
                     style={{ filter: "hue-rotate(271deg)" }}
                     className="highlight mx-1"
                   >
-                    تعمیرکار در پلتفرم تک تعمیر
+                    تعمیرکار تک تعمیر
                   </span>
                   شوید ؟
                 </h3>

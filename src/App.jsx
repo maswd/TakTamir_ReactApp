@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useLayoutEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Landing from "./app/pages/Landing";
 import Dashborad from "./app/pages/Dashborad";
@@ -17,7 +17,7 @@ import Jobs from "./app/components/techncian/Jobs";
 import Profile from "./app/components/techncian/Profile";
 import WriteWorks from "./app/components/techncian/WriteWorks";
 import UserContext from "./app/context/userContext";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PrivateRoute from "./app/pages/PrivateRoute";
 import NotFound from "./app/pages/NotFound";
 import AcceptTec from "./app/components/admin/AcceptTec";
@@ -28,7 +28,12 @@ import Connect from "./app/pages/Connect";
 function App() {
   const user = useSelector((state) => state.user);
   // const user = useSelector((state) => state.user);
-
+  const location = useLocation();
+  // Scroll to top if path changes
+  useLayoutEffect(() => {
+    window.scrollTo(0, 1);
+  }, [location.pathname]);
+  
   useEffect(() => {
     AOS.init();
     AOS.refresh();
