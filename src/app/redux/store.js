@@ -18,9 +18,9 @@ const persistConfig = {
 const compose = composeWithDevTools({});
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-export let store = createStore(persistedReducer, compose(applyMiddleware(loadingBarMiddleware(),thunk, logger)));
+export let store = createStore(persistedReducer, compose(applyMiddleware(loadingBarMiddleware(),thunk)));
 
 export const persistor = persistStore(store);
 
 // subscribe
-store.subscribe(() => console.log(store.getState()));
+// store.subscribe(() => console.log(store.getState()));
