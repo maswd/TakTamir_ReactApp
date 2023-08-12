@@ -24,7 +24,7 @@ import AcceptTec from "./app/components/admin/AcceptTec";
 import Requests from "./app/components/admin/Requests";
 import ChatAdmin from "./app/components/chat/ChatAdmin";
 import ChatTechncian from "./app/components/chat/ChatTechncian";
-import Connect from "./app/components/landing/Connect";
+import Connect from "./app/pages/Connect";
 function App() {
   const user = useSelector((state) => state.user);
   // const user = useSelector((state) => state.user);

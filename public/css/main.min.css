@@ -8294,12 +8294,6 @@ select {
 .tem3-lead .input-group {
     border: 1px solid #eaeaea !important;
     margin-bottom: 16px !important;
-    flex-wrap: nowrap !important;
-    -webkit-border-radius: 24px;
-    -moz-border-radius: 24px;
-    -ms-border-radius: 24px;
-    -o-border-radius: 24px;
-    flex-wrap: nowrap;
     border: solid 1px #eaeaea;
     background-color: #fff
 }
@@ -12411,7 +12405,7 @@ select {
     background-color: white;
     border: 1px solid #eaeaea !important;
     border-radius: 6px;
-    margin-bottom: 16px !important;
+    margin-bottom: 8px !important;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
@@ -12485,9 +12479,9 @@ select {
     background-color: #fff;
     /* min-height: 40px; */
     border-radius: 6px;
-    padding: 0px 5px;
+    padding: 3px 5px;
     justify-content: start;
-    margin-bottom: 16px;
+    margin-top: 8px;
     /* margin-left: 4px; */
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -15782,9 +15776,7 @@ jdp-container .jdp-time select {
     border-radius: 10px !important;
     color: #838396 !important;
     font-size: 15px !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    text-indent: 1px !important;
+    /* text-indent: 1px !important; */
     text-overflow: '' !important
 }
 

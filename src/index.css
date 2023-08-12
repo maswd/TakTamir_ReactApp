@@ -85,3 +85,9 @@ button {
 .slick-dots li {
   width: 12px!important;
 }
+.error {
+  color: #f60909;
+  font-size: .7rem;
+  position: relative;
+  line-height: 1;
+}

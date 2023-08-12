@@ -2,7 +2,7 @@ import Features from "../components/landing/Features";
 import Footer from "../components/landing/Footer";
 import Header from "../components/landing/Header";
 import Hero from "../components/landing/Hero";
-import Conect from "../components/landing/Connect";
+import Conect from "./Connect";
 
 function Landing() {
   return (
