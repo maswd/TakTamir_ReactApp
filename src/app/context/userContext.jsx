@@ -73,20 +73,34 @@ const UserContext = ({ children }) => {
         if (data.role === "Technician") {
           history("/technician", { replace: true });
         }
+        if (status === 426) {
+          history("/user-information",{replace: true});
+          localStorage.setItem(
+            "access_token",
+            error.response.data.access_Token
+          );
+          localStorage.setItem(
+            "refresh_token",
+            error.response.data.refresh_Token
+          );
+          history("/user-information",{replace: true});
+        }
         dispatch(hideLoading());
       }
     } catch (error) {
       dispatch(hideLoading());
       if (error.response.status === 426) {
-        history("/user-information");
+        history("/user-information",{replace: true});
         localStorage.setItem("access_token", error.response.data.access_Token);
         localStorage.setItem(
           "refresh_token",
           error.response.data.refresh_Token
         );
-        history("/user-information");
+        dispatch(hideLoading());
+        history("/user-information",{replace: true});
       } else if (error.response.status === 400) {
         errorMessage("کد یا شماره تلفن نامعتبر است");
+        dispatch(hideLoading());
       } else if (error.response.status === 403) {
         localStorage.setItem("access_token", error.response.data.access_Token);
         localStorage.setItem(
@@ -99,7 +113,7 @@ const UserContext = ({ children }) => {
           confirmButtonText: "خروج",
         });
         if (res) {
-          history("/logout");
+          history("/logout",{replace: true});
         }
       }
     }
@@ -114,7 +128,7 @@ const UserContext = ({ children }) => {
         const { status } = await checkPhone(phone);
         if (status === 200) {
           localStorage.setItem("phone", phone);
-          history("/confirm");
+          history("/confirm",{replace:true});
           dispatch(hideLoading());
         }
       } else {
@@ -166,7 +180,7 @@ const UserContext = ({ children }) => {
           confirmButtonText: "خروج",
         });
         if (res) {
-          history("/logout");
+          history("/logout",{replace: true});
         }
       }
     }
