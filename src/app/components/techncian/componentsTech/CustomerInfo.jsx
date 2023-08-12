@@ -1,17 +1,11 @@
 import { useState } from "react";
 
-function CustomerInfo() {
-  const [nationalCode, setNationalCode] = useState("");
-  const [jobDescription, setJobDescription] = useState("");
-
-  const handleNationalCodeChange = (event) => {
-    setNationalCode(event.target.value);
-  };
-
-  const handleJobDescriptionChange = (event) => {
-    setJobDescription(event.target.value);
-  };
-
+function CustomerInfo({handler}) {
+ 
+const { nationalCode,
+  jobDescription,
+  handleNationalCodeChange,
+  handleJobDescriptionChange}=handler
   return (
     <div
       className="mx-auto rounded text-dark  p-3 "

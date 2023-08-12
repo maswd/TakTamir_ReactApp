@@ -166,23 +166,23 @@ sup {
     top: -.5em
 }
 
-a {
+button{
     color: #007bff;
     text-decoration: none;
     background-color: transparent
 }
 
-a:hover {
+button:hover {
     color: #0056b3;
     text-decoration: underline
 }
 
-a:not([href]):not([class]) {
+button:not([href]):not([class]) {
     color: inherit;
     text-decoration: none
 }
 
-a:not([href]):not([class]):hover {
+button:not([href]):not([class]):hover {
     color: inherit;
     text-decoration: none
 }
@@ -534,7 +534,7 @@ code {
     word-wrap: break-word
 }
 
-a>code {
+button>code {
     color: inherit
 }
 
@@ -2884,8 +2884,8 @@ textarea.form-control.is-invalid {
     cursor: pointer
 }
 
-a.btn.disabled,
-fieldset:disabled a.btn {
+button.btn.disabled,
+fieldset:disabled button.btn {
     pointer-events: none
 }
 
@@ -5198,12 +5198,12 @@ input[type=submit].btn-block {
     color: rgba(0, 0, 0, .5)
 }
 
-.navbar-light .navbar-text a {
+.navbar-light .navbar-text button {
     color: rgba(0, 0, 0, .9)
 }
 
-.navbar-light .navbar-text a:focus,
-.navbar-light .navbar-text a:hover {
+.navbar-light .navbar-text button:focus,
+.navbar-light .navbar-text button:hover {
     color: rgba(0, 0, 0, .9)
 }
 
@@ -5249,12 +5249,12 @@ input[type=submit].btn-block {
     color: rgba(255, 255, 255, .5)
 }
 
-.navbar-dark .navbar-text a {
+.navbar-dark .navbar-text button {
     color: #fff
 }
 
-.navbar-dark .navbar-text a:focus,
-.navbar-dark .navbar-text a:hover {
+.navbar-dark .navbar-text button:focus,
+.navbar-dark .navbar-text button:hover {
     color: #fff
 }
 
@@ -5658,8 +5658,8 @@ input[type=submit].btn-block {
     }
 }
 
-a.badge:focus,
-a.badge:hover {
+button.badge:focus,
+button.badge:hover {
     text-decoration: none
 }
 
@@ -5683,14 +5683,14 @@ a.badge:hover {
     background-color: #007bff
 }
 
-a.badge-primary:focus,
-a.badge-primary:hover {
+button.badge-primary:focus,
+button.badge-primary:hover {
     color: #fff;
     background-color: #0062cc
 }
 
-a.badge-primary.focus,
-a.badge-primary:focus {
+button.badge-primary.focus,
+button.badge-primary:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5)
 }
@@ -5700,14 +5700,14 @@ a.badge-primary:focus {
     background-color: #6c757d
 }
 
-a.badge-secondary:focus,
-a.badge-secondary:hover {
+button.badge-secondary:focus,
+button.badge-secondary:hover {
     color: #fff;
     background-color: #545b62
 }
 
-a.badge-secondary.focus,
-a.badge-secondary:focus {
+button.badge-secondary.focus,
+button.badge-secondary:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(108, 117, 125, .5)
 }
@@ -5717,14 +5717,14 @@ a.badge-secondary:focus {
     background-color: #28a745
 }
 
-a.badge-success:focus,
-a.badge-success:hover {
+button.badge-success:focus,
+button.badge-success:hover {
     color: #fff;
     background-color: #1e7e34
 }
 
-a.badge-success.focus,
-a.badge-success:focus {
+button.badge-success.focus,
+button.badge-success:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5)
 }
@@ -5734,14 +5734,14 @@ a.badge-success:focus {
     background-color: #17a2b8
 }
 
-a.badge-info:focus,
-a.badge-info:hover {
+button.badge-info:focus,
+button.badge-info:hover {
     color: #fff;
     background-color: #117a8b
 }
 
-a.badge-info.focus,
-a.badge-info:focus {
+button.badge-info.focus,
+button.badge-info:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5)
 }
@@ -5751,14 +5751,14 @@ a.badge-info:focus {
     background-color: #ffc107
 }
 
-a.badge-warning:focus,
-a.badge-warning:hover {
+button.badge-warning:focus,
+button.badge-warning:hover {
     color: #212529;
     background-color: #d39e00
 }
 
-a.badge-warning.focus,
-a.badge-warning:focus {
+button.badge-warning.focus,
+button.badge-warning:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(255, 193, 7, .5)
 }
@@ -5768,14 +5768,14 @@ a.badge-warning:focus {
     background-color: #dc3545
 }
 
-a.badge-danger:focus,
-a.badge-danger:hover {
+button.badge-danger:focus,
+button.badge-danger:hover {
     color: #fff;
     background-color: #bd2130
 }
 
-a.badge-danger.focus,
-a.badge-danger:focus {
+button.badge-danger.focus,
+button.badge-danger:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .5)
 }
@@ -5785,14 +5785,14 @@ a.badge-danger:focus {
     background-color: #f8f9fa
 }
 
-a.badge-light:focus,
-a.badge-light:hover {
+button.badge-light:focus,
+button.badge-light:hover {
     color: #212529;
     background-color: #dae0e5
 }
 
-a.badge-light.focus,
-a.badge-light:focus {
+button.badge-light.focus,
+button.badge-light:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(248, 249, 250, .5)
 }
@@ -5802,14 +5802,14 @@ a.badge-light:focus {
     background-color: #343a40
 }
 
-a.badge-dark:focus,
-a.badge-dark:hover {
+button.badge-dark:focus,
+button.badge-dark:hover {
     color: #fff;
     background-color: #1d2124
 }
 
-a.badge-dark.focus,
-a.badge-dark:focus {
+button.badge-dark.focus,
+button.badge-dark:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(52, 58, 64, .5)
 }
@@ -6452,7 +6452,7 @@ button.close {
     border: 0
 }
 
-a.close.disabled {
+button.close.disabled {
     pointer-events: none
 }
 
@@ -7362,8 +7362,8 @@ a.close.disabled {
     background-color: #007bff !important
 }
 
-a.bg-primary:focus,
-a.bg-primary:hover,
+button.bg-primary:focus,
+button.bg-primary:hover,
 button.bg-primary:focus,
 button.bg-primary:hover {
     background-color: #0062cc !important
@@ -7373,8 +7373,8 @@ button.bg-primary:hover {
     background-color: #6c757d !important
 }
 
-a.bg-secondary:focus,
-a.bg-secondary:hover,
+button.bg-secondary:focus,
+button.bg-secondary:hover,
 button.bg-secondary:focus,
 button.bg-secondary:hover {
     background-color: #545b62 !important
@@ -7384,8 +7384,8 @@ button.bg-secondary:hover {
     background-color: #28a745 !important
 }
 
-a.bg-success:focus,
-a.bg-success:hover,
+button.bg-success:focus,
+button.bg-success:hover,
 button.bg-success:focus,
 button.bg-success:hover {
     background-color: #1e7e34 !important
@@ -7395,8 +7395,8 @@ button.bg-success:hover {
     background-color: #17a2b8 !important
 }
 
-a.bg-info:focus,
-a.bg-info:hover,
+button.bg-info:focus,
+button.bg-info:hover,
 button.bg-info:focus,
 button.bg-info:hover {
     background-color: #117a8b !important
@@ -7406,8 +7406,8 @@ button.bg-info:hover {
     background-color: #ffc107 !important
 }
 
-a.bg-warning:focus,
-a.bg-warning:hover,
+button.bg-warning:focus,
+button.bg-warning:hover,
 button.bg-warning:focus,
 button.bg-warning:hover {
     background-color: #d39e00 !important
@@ -7417,8 +7417,8 @@ button.bg-warning:hover {
     background-color: #dc3545 !important
 }
 
-a.bg-danger:focus,
-a.bg-danger:hover,
+button.bg-danger:focus,
+button.bg-danger:hover,
 button.bg-danger:focus,
 button.bg-danger:hover {
     background-color: #bd2130 !important
@@ -7428,8 +7428,8 @@ button.bg-danger:hover {
     background-color: #f8f9fa !important
 }
 
-a.bg-light:focus,
-a.bg-light:hover,
+button.bg-light:focus,
+button.bg-light:hover,
 button.bg-light:focus,
 button.bg-light:hover {
     background-color: #dae0e5 !important
@@ -7439,8 +7439,8 @@ button.bg-light:hover {
     background-color: #343a40 !important
 }
 
-a.bg-dark:focus,
-a.bg-dark:hover,
+button.bg-dark:focus,
+button.bg-dark:hover,
 button.bg-dark:focus,
 button.bg-dark:hover {
     background-color: #1d2124 !important
@@ -11277,8 +11277,8 @@ button.bg-dark:hover {
     color: #007bff !important
 }
 
-a.text-primary:focus,
-a.text-primary:hover {
+button.text-primary:focus,
+button.text-primary:hover {
     color: #0056b3 !important
 }
 
@@ -11286,8 +11286,8 @@ a.text-primary:hover {
     color: #6c757d !important
 }
 
-a.text-secondary:focus,
-a.text-secondary:hover {
+button.text-secondary:focus,
+button.text-secondary:hover {
     color: #494f54 !important
 }
 
@@ -11295,8 +11295,8 @@ a.text-secondary:hover {
     color: #28a745 !important
 }
 
-a.text-success:focus,
-a.text-success:hover {
+button.text-success:focus,
+button.text-success:hover {
     color: #19692c !important
 }
 
@@ -11304,8 +11304,8 @@ a.text-success:hover {
     color: #17a2b8 !important
 }
 
-a.text-info:focus,
-a.text-info:hover {
+button.text-info:focus,
+button.text-info:hover {
     color: #0f6674 !important
 }
 
@@ -11313,8 +11313,8 @@ a.text-info:hover {
     color: #ffc107 !important
 }
 
-a.text-warning:focus,
-a.text-warning:hover {
+button.text-warning:focus,
+button.text-warning:hover {
     color: #ba8b00 !important
 }
 
@@ -11322,8 +11322,8 @@ a.text-warning:hover {
     color: #dc3545 !important
 }
 
-a.text-danger:focus,
-a.text-danger:hover {
+button.text-danger:focus,
+button.text-danger:hover {
     color: #a71d2a !important
 }
 
@@ -11331,8 +11331,8 @@ a.text-danger:hover {
     color: #f8f9fa !important
 }
 
-a.text-light:focus,
-a.text-light:hover {
+button.text-light:focus,
+button.text-light:hover {
     color: #cbd3da !important
 }
 
@@ -11340,8 +11340,8 @@ a.text-light:hover {
     color: #343a40 !important
 }
 
-a.text-dark:focus,
-a.text-dark:hover {
+button.text-dark:focus,
+button.text-dark:hover {
     color: #121416 !important
 }
 
@@ -11362,7 +11362,7 @@ a.text-dark:hover {
 }
 
 .text-hide {
-    font: 0/0 a;
+    font: 0/0 button;
     color: transparent;
     text-shadow: none;
     background-color: transparent;
@@ -11399,7 +11399,7 @@ a.text-dark:hover {
         box-shadow: none !important
     }
 
-    a:not(.btn) {
+    button:not(.btn) {
         text-decoration: underline
     }
 

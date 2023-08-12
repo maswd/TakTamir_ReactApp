@@ -1,12 +1,12 @@
 import email2 from "/img/email2.svg"
 import address2 from "/img/address2.svg"
-import phone2 from "/img/email2.svg"
-
+import phone2 from "/img/phone2.svg"
+import {Link} from 'react-router-dom'
 function Footer() {
     return (
         <div data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="500" id="footer">
+        data-aos-duration="500" id="footer" >
             <section className="footertwo__section forPadding" >
                 <div className="container">
                     <div className="row justify-content-md-center">
@@ -36,19 +36,19 @@ function Footer() {
                                                                     کوچه بالاور، پلاک ۷، برج فناوری دانشگاه صنعتی امیرکبیر،
                                                                     طبقه دوم، فینووا</p>
                                                             </li>
-                                                            <li ><img src={phone2} alt="" /><a
+                                                            <li ><img src={phone2} alt="" /><Link
                                                                 href="tel:%DB%B0%DB%B2%DB%B1-%DB%B1%DB%B2%DB%B3%DB%B4%DB%B5%DB%B6%DB%B7%DB%B8"
-                                                            >۰۲۱-۱۲۳۴۵۶۷۸</a></li>
-                                                            <li ><img src={email2} alt="" /><a
+                                                            >09159594376</Link></li>
+                                                            <li ><img src={email2} alt="" /><Link
                                                                 href="mailto:hi@landin.ir" className="tem2-email"
-                                                            >hi@landin.ir</a></li>
+                                                            >taktamir.ir</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-md-3">
                                                 <div className="tem2-social">
-                                                    <div className="tem2-media"><a href="https://www.aparat.com/#"
+                                                    <div className="tem2-media"><Link href="https://www.aparat.com/#"
                                                         target="_blank" rel="noopener noreferrer"><span
                                                             className="icon-holder"><svg id="brand"
                                                                 xmlns="http://www.w3.org/2000/svg" width="22.973"
@@ -75,7 +75,7 @@ function Footer() {
                                                                         transform="translate(-3.008 -3.015)"
                                                                         fill="#212936"></path>
                                                                 </g>
-                                                            </svg></span></a><a href="https://www.instagram.com/#"
+                                                            </svg></span></Link><Link href="https://www.instagram.com/#"
                                                                 target="_blank" rel="noopener noreferrer"><span
                                                                     className="icon-holder"><svg id="instagram"
                                                                         xmlns="http://www.w3.org/2000/svg" width="22.694"
@@ -104,7 +104,7 @@ function Footer() {
                                                                                 fill="#212936"></circle>
                                                                         </g>
                                                                     </g>
-                                                                </svg></span></a><a href="https://www.twitter.com/#"
+                                                                </svg></span></Link><Link href="https://www.twitter.com/#"
                                                                     target="_blank" rel="noopener noreferrer"><span
                                                                         className="icon-holder"><svg xmlns="http://www.w3.org/2000/svg"
                                                                             width="23.445" height="19.049"
@@ -119,7 +119,7 @@ function Footer() {
                                                                             </path>
                                                                         </g>
                                                                     </g>
-                                                                </svg></span></a></div>
+                                                                </svg></span></Link></div>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 function Pricing() {
   return (
     <div id="pricing">
@@ -26,22 +28,22 @@ function Pricing() {
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره یک
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره دو
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row justify-content-center mt-5 mb-4">
-                  <a href="#" className="card-button-priceing-template-four">
+                  <Link  className="card-button-priceing-template-four">
                     ثبت درخواست
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div data-aos="fade-up"
@@ -59,22 +61,22 @@ function Pricing() {
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره یک
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره دو
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row justify-content-center mt-5 mb-4">
-                  <a href="#" className="card-button-priceing-template-four">
+                  <Link  className="card-button-priceing-template-four">
                     ثبت درخواست
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div data-aos="fade-up"
@@ -92,22 +94,22 @@ function Pricing() {
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره یک
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره دو
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row justify-content-center mt-5 mb-4">
-                  <a href="#" className="card-button-priceing-template-four">
+                  <Link  className="card-button-priceing-template-four">
                     ثبت درخواست
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div data-aos="fade-up"
@@ -125,22 +127,22 @@ function Pricing() {
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره یک
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row mb-2">
                   <div className="plan-details-wrapper">
-                    <a href="#" className="detail">
+                    <Link  className="detail">
                       ویژگی شماره دو
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="row justify-content-center mt-5 mb-4">
-                  <a href="#" className="card-button-priceing-template-four">
+                  <Link  className="card-button-priceing-template-four">
                     ثبت درخواست
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

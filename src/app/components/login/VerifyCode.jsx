@@ -3,11 +3,12 @@ import { context } from "../../context/context";
 import AuthCode from "react-auth-code-input";
 import { checkPhone } from "../../services/userService";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function ConfirmPhone() {
   const LoginContext = useContext(context);
   const { setOtp, otp, handleCode } = LoginContext;
-const form =useSelector(state=>state.form)
+  const form = useSelector((state) => state.form);
   const [counter, setCounter] = useState(60);
 
   useEffect(() => {
@@ -22,25 +23,26 @@ const form =useSelector(state=>state.form)
   const sendCodeAgain = async () => {
     const res = await checkPhone(localStorage.getItem("phone"));
     console.log(res);
-    setCounter(60)
+    setCounter(60);
   };
 
   return (
     <>
       <div className="container">
-        <div className="row justify-content-center ">
-          <div className="col-xl-10 col-lg-12 col-md-9 ">
+          <div className="col-xl-10 col-lg-12 col-md-9  mx-auto ">
             <div className="card o-hidden border-0 my-2">
               <div className="card-body p-0">
                 <div className="row">
-                  <div className="col-12  col-lg-6  d-block bg-login-image"> </div>
+                  <div className="col-12  col-lg-6  d-block bg-login-image">
+                    {" "}
+                  </div>
                   <div className="col-12 col-lg-6 ">
-                    <div className="p-lg-5 my-lg-5">   
-                    <div className="text-center pb-lg-2">
+                    <div className="p-lg-5 my-lg-5">
+                      <div className="text-center pb-lg-2">
                         <h1 className="h4 text-gray-900 mb-4">
                           تایید شماره تلفن
                         </h1>
-                      </div>       
+                      </div>
                       <form
                         className="p-2 user"
                         onSubmit={handleCode}
@@ -58,8 +60,6 @@ const form =useSelector(state=>state.form)
                           }}
                         />
 
-                       
-                        
                         <div className="p-3">
                           <button
                             type="submit"
@@ -69,6 +69,9 @@ const form =useSelector(state=>state.form)
                             تایید
                           </button>
                         </div>
+                        <Link className=" btn text-xs" to="/login">
+                          بازگشت به ورود / ثبت نام
+                        </Link>
                         <hr />
                         <div className="mx-3">
                           <button
@@ -95,7 +98,6 @@ const form =useSelector(state=>state.form)
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }

@@ -1,37 +1,93 @@
-
 body {
-    font-family: IranSans;
-    /* overflow-x: hidden; */
-    overflow-wrap:break-word
+  font-family: IranSans;
+  overflow-x: hidden;
+  /* overflow: break-word */
+}
+
+button {
+  border: 0;
 }
 
 :root {
-    --first: 13, 179, 158;
-    --second: 2, 195, 154;
-    --third: 57, 74, 109;
-    --fourth: 15, 33, 45;
-    --body-color: #fff;
+  --first: 13, 179, 158;
+  --second: 2, 195, 154;
+  --third: 57, 74, 109;
+  --fourth: 15, 33, 45;
+  --body-color: #fff;
 }
+
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    border-radius: 50px;
-  }
-  
-  /* Set the color of the scrollbar */
-  ::-webkit-scrollbar-thumb {
-    background-color: #ccc;    border-radius: 50px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+}
 
-  }
-  
-  /* Set the color of the scrollbar track */
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;    border-radius: 50px;
+/* Set the color of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 50px;
 
-  }
-  
-  /* Add a hover effect to the scrollbar thumb */
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa;    border-radius: 50px;
+}
 
-  }
+/* Set the color of the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 50px;
+
+}
+
+/* Add a hover effect to the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+  border-radius: 50px;
+
+}
+
+
+.switch-handle {
+  border-radius: 50px;
+  width: 58px !important;
+}
+
+.switch-group {
+  border-radius: 50px;
+}
+
+.disabled-link {
+  pointer-events: none;
+  /* Disable click events */
+  opacity: 0.5;
+  /* Apply a visual indication for disabled state */
+  /* Add any additional styling for a disabled link */
+}
+
+.slick-prev:before {
+  content: '←';
+}
+
+.slick-next:before,
+.slick-prev:before {
+  font-size: 20px;
+  line-height: 1;
+  opacity: .75;
+  color: #fff;
+}
+
+.slick-next:before {
+  color: #000 !important;
+  font-size: 3rem !important;
+}
+
+.slick-prev:before {
+  color: #000 !important;
+  font-size: 3rem !important
+}
+.slick-dots li {
+  width: 12px!important;
+}
+.error {
+  color: #f60909;
+  font-size: .7rem;
+  position: relative;
+  line-height: 1;
+}

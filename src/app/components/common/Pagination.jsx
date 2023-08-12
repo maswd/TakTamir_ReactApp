@@ -1,104 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Pagination = () => {
+const Pagination = ({ totalItems, onPageChange }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(totalItems);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    localStorage.setItem('page', page);
+    onPageChange(page, currentPage);
+  };
+
+
+  const renderPageLinks = () => {
+    const pageLinks = [];
+    for (let page = 1; page <= totalPages; page++) {
+      pageLinks.push(
+        <li
+          key={page}
+          className={`paginate_button page-item ${
+            page === currentPage ? "active" : ""
+          }`}
+        >
+          <button
+            type="button"
+            aria-controls="dataTable"
+            tabIndex="0"
+            className="page-link"
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </button>
+        </li>
+      );
+    }
+    return pageLinks;
+  };
+
   return (
     <ul
-      className="pagination shadow-sm justify-content-center"
+      className="mt-2 mb-3 pagination shadow-sm justify-content-center"
       style={{ direction: "ltr" }}
     >
       <li
         className="paginate_button text-center w-100 page-item previous disabled"
         id="dataTable_previous"
       >
-        <a
-          href="#"
+        <button
+          type="button"
           aria-controls="dataTable"
           data-dt-idx="0"
           tabIndex="0"
-          className="page-link"
+          className="page-link w-100"
         >
           برگشت
-        </a>
+        </button>
       </li>
-      <li className="paginate_button page-item ">
-        <a
-          href="#"
-          aria-controls="dataTable"
-          data-dt-idx="1"
-          tabIndex="0"
-          className="page-link"
-        >
-          1
-        </a>
-      </li>
-      <li className="paginate_button page-item active ">
-        <a
-          href="#"
-          aria-controls="dataTable"
-          data-dt-idx="2"
-          tabIndex="0"
-          className="page-link"
-        >
-          2
-        </a>
-      </li>
-      <li className="paginate_button page-item ">
-        <a
-          href="#"
-          aria-controls="dataTable"
-          data-dt-idx="3"
-          tabIndex="0"
-          className="page-link"
-        >
-          3
-        </a>
-      </li>
-      <li className="paginate_button page-item ">
-        <a
-          href="#"
-          aria-controls="dataTable"
-          data-dt-idx="4"
-          tabIndex="0"
-          className="page-link"
-        >
-          4
-        </a>
-      </li>
-      <li className="paginate_button page-item ">
-        <a
-          href="#"
-          aria-controls="dataTable"
-          data-dt-idx="5"
-          tabIndex="0"
-          className="page-link"
-        >
-          5
-        </a>
-      </li>
-      <li className="paginate_button page-item ">
-        <a
-          href="#"
-          aria-controls="dataTable"
-          data-dt-idx="6"
-          tabIndex="0"
-          className="page-link"
-        >
-          6
-        </a>
-      </li>
+      {renderPageLinks()}
       <li
         className="w-100 text-center paginate_button page-item next"
         id="dataTable_next"
       >
-        <a
-          href="#"
+        <button
+          type="button"
           aria-controls="dataTable"
           data-dt-idx="7"
           tabIndex="0"
-          className="page-link"
+          className="page-link w-100"
         >
           بعدی
-        </a>
+        </button>
       </li>
     </ul>
   );

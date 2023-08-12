@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "/image 1.svg";
+import logo from "/img/logo.png";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -24,12 +24,12 @@ const AdminSidebar = () => {
         id="collapseDiv"
         data-bs-toggle="collapse"
       >
-        <a className="sidebar-brand d-flex align-items-center justify-content-center">
-          <div className="sidebar-brand-icon rotate-n-15">
-            <img src={logo} alt="" />
+        <NavLink className="sidebar-brand d-flex align-items-center justify-content-center">
+          <div className="sidebar-brand-icon ">
+            <img className="w-100" src={logo} alt="" />
           </div>
           <div className="sidebar-brand-text mx-3">پنل ادمین</div>
-        </a>
+        </NavLink>
 
         <hr className="sidebar-divider my-0" />
 

@@ -4520,6 +4520,13 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
 }
 
+@media screen and (max-width:350px) {
+  .navbar {
+
+    justify-content: center;
+  }
+}
+
 .navbar .container,
 .navbar .container-fluid,
 .navbar .container-sm,
@@ -11418,7 +11425,7 @@ a:focus {
 
 .topbar .dropdown .dropdown-menu {
   width: calc(100% - 1.5rem);
-  right: 0.75rem;
+  left: 0;
 }
 
 .topbar .dropdown-list {
@@ -11483,7 +11490,7 @@ a:focus {
 
   .topbar .dropdown .dropdown-menu {
     width: auto;
-    right: 0;
+    left: 0;
   }
 
   .topbar .dropdown-list {
@@ -12240,13 +12247,7 @@ form.user .btn-user {
   box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
 }
 
-.error {
-  color: #5a5c69;
-  font-size: 7rem;
-  position: relative;
-  line-height: 1;
-  width: 12.5rem;
-}
+
 
 @-webkit-keyframes noise-anim {
   0% {
@@ -12668,6 +12669,7 @@ body.sidebar-toggled footer.sticky-footer {
   border-top-left-radius: 50px !important;
   border-bottom-left-radius: 50px !important;
 }
+
 .rounded-pill-right {
   border-top-right-radius: 50px !important;
   border-bottom-right-radius: 50px !important;

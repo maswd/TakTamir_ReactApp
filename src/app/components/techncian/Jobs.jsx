@@ -4,15 +4,20 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllJobs } from "../../redux/actions/jobs";
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { reservationService } from "../../services/jobsService";
-import { successMessage } from "../../../utils/message";
+import { errorMessage, successMessage } from "../../../utils/message";
+import "./jobsModal.css";
+import Pagination from "../common/Pagination";
+
 function Jobs() {
   const [selectedJob, setSelectedJob] = useState(null);
-  const jobs = useSelector((state) => state.jobs.jobs);
+  const jobs = useSelector((state) => state.jobs);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const page =localStorage.getItem('page')
   useEffect(() => {
-    dispatch(getAllJobs());
+    dispatch(getAllJobs(1));
   }, [dispatch]);
 
   const handleJobClick = (job) => {
@@ -22,13 +27,29 @@ function Jobs() {
   const handleCloseModal = () => {
     setSelectedJob(null);
   };
-  const handleReservation = async (id) => {
-    const { status } = await reservationService(id);
-    if (status === 200) {
-      successMessage("رزرو انجام شد")
-      setSelectedJob(null);
+  const onPageChange = async (page, currentPage) => {
+    if (currentPage !== page) {
+      dispatch(getAllJobs(page));
     }
   };
+
+  const handleReservation = async (id) => {
+    try {
+      const { status } = await reservationService(id);
+      if (status === 200) {
+        successMessage("رزرو انجام شد ! ");
+        setSelectedJob(null);
+        dispatch(getAllJobs(page));
+        onPageChange(1, 1);
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        setSelectedJob(null);
+        errorMessage("اکانت شما هنوز تایید نشده است !");
+      }
+    }
+  };
+
   return (
     <>
       <section className=" mt-2">
@@ -80,7 +101,7 @@ function Jobs() {
                         colSpan="1"
                         aria-label="Position: activate to sort column ascending"
                       >
-                        نام مشتری
+                        وضعیت
                       </th>
                       <th
                         className="p-3 bg-white text-gray-900"
@@ -90,70 +111,144 @@ function Jobs() {
                         colSpan="1"
                         aria-label="Age: activate to sort column ascending"
                       >
-                        وضعیت
+                        توضیحات
                       </th>
                     </tr>
                   </thead>
 
                   <tbody>
-                    {jobs.map((job) => (
-                      <tr className="border-white" key={job.id}>
-                        <td>{job.name_Device}</td>
-                        <td className="">{job.customer.fullNameCustomer}</td>
-                        <td>
-                          {!job.reservation ? (
-                            <button
-                              className="btn btn-success btn-icon-split"
-                              onClick={() => handleJobClick(job)}
-                            >
-                              <span className="text d-md-block d-none">
-                                رزرو کردن
-                              </span>
-                              <span className="icon text-white-50">
-                                <i className="fas fa-check"></i>
-                              </span>
-                            </button>
-                          ) : (
-                            <div className="btn btn-danger btn-icon-split">
-                              <span className="text d-md-block d-none">
+  
+
+                    {(jobs?.jobs?.length === 0 ||
+                      typeof jobs?.jobs?.length === "undefined") && (
+                      <>
+                        <tr>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>
+                            <span
+                              className="spinner-border text-center text-dark mx-auto"
+                              role="status"
+                            ></span>
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                    {jobs?.jobs?.length > 0 &&
+                      jobs?.jobs?.length !== undefined &&
+                      jobs?.jobs.map((job) => (
+                        <tr className="border-white" key={job.id}>
+                          <td className="text-gray-900">{job.name_Device}</td>
+                          <td>
+                            {job.reservationStatusResult ===
+                              "WatingforReserve" && (
+                              <button
+                                className="btn btn-success btn-icon-split"
+                                onClick={() => handleJobClick(job)}
+                              >
+                                <span className="text">قابل رزرو</span>
+                              </button>
+                            )}
+                            {job.reservationStatusResult ===
+                              "ReservedByTec" && (
+                              <button
+                                className="btn btn-dark shadow btn-icon-split"
+                                disabled
+                              >
+                                <span className="text text-whitw d-block">
+                                  در حال تایید
+                                </span>
+                              </button>
+                            )}
+
+                            {job.reservationStatusResult ===
+                              "ConfirmeByAdmin" && (
+                              <button className="btn disabled-link btn-danger btn-icon-split">
+                                <span className="text d-md-block d-none ">
+                                  رزرو شده
+                                </span>
+                                <span className="icon text-white-50">
+                                  <i className="fas fa-times"></i>
+                                </span>
+                              </button>
+                            )}
+                          </td>
+                          <td className="">
+                            {job.reservationStatusResult ===
+                            "ConfirmeByAdmin" ? (
+                              <p className="shadow btn disabled-link btn-secondary">
                                 رزرو شده
-                              </span>
-                              <span className="icon text-white-50">
-                                <i className="fas fa-times"></i>
-                              </span>
-                            </div>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
+                              </p>
+                            ) : job.reservationStatusResult ===
+                              "ReservedByTec" ? (
+                              <button
+                                onClick={() => handleJobClick(job)}
+                                className="btn btn-info disabled-link "
+                              >
+                                <div className="d-flex align-items-center g-3 justify-content-center">
+                                  <p className="d-none d-md-block">
+                                    {" "}
+                                    اطلاعات بیشتر
+                                  </p>
+                                  <i class="d-md-none fas fa-info-circle"></i>
+                                </div>
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => handleJobClick(job)}
+                                className="btn btn-info "
+                              >
+                                <div className="d-flex align-items-center g-3 justify-content-center">
+                                  <p className="d-none d-md-block">
+                                    {" "}
+                                    اطلاعات بیشتر
+                                  </p>
+                                  <i class="d-md-none fas fa-info-circle"></i>
+                                </div>
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 {selectedJob && (
-                  <Modal show={true} onHide={handleCloseModal}>
-                    <Modal.Header closeButton>
+                  <Modal
+                    style={{ marginTop: "3rem", padding: "0" }}
+                    contentClassName="modal-content"
+                    show={true}
+                    onHide={handleCloseModal}
+                  >
+                    <Modal.Header className="header" closeButton>
                       <Modal.Title>{selectedJob?.name_Device}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className="py-5 px-4">
                       <p>مشکل: {selectedJob?.problems}</p>
-                      <p>مشتری : {selectedJob.customer?.fullNameCustomer}</p>
-                      <p>آدرس: {selectedJob.customer?.address}</p>
-                      <p>شماره تلفن: {selectedJob.customer?.phone}</p>
+                      <p className="my-3">
+                        مشتری : {selectedJob?.customer?.fullNameCustomer}
+                      </p>
+                      <p>آدرس: {selectedJob?.customer?.address}</p>
+                      <p className="my-3">
+                        شماره تلفن: {selectedJob?.customer?.phone}
+                      </p>
                       <p>توضیحات: {selectedJob?.description}</p>
                     </Modal.Body>
                     <Modal.Footer>
                       <button
-                        className="btn btn-success"
-                        onClick={() => handleReservation(selectedJob.id)}
+                        className="btn shadow-sm btn-info text-light px-5 py-2 mx-auto "
+                        style={{
+                          border: "1px solid #f9e090 ",
+                          color: " #000",
+                          fontWeight: "500",
+                        }}
+                        onClick={() => handleReservation(selectedJob?.id)}
                       >
                         گرفتن کار
                       </button>
-                      <button
-                        className="btn btn-danger"
-                        onClick={handleCloseModal}
-                      >
-                        بستن
-                      </button>
                     </Modal.Footer>
+                    {/* </div> */}
                   </Modal>
                 )}
               </div>
@@ -176,6 +271,11 @@ function Jobs() {
               className="textthree-bgBox "
             ></div>
           </div>
+          <Pagination
+            totalItems={jobs?.pagination?.totalPages}
+            pageSize={10}
+            onPageChange={onPageChange}
+          />
         </div>
       </section>
     </>

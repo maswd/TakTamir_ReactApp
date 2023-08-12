@@ -497,8 +497,7 @@ select {
 }
 
 .featuresfour-img__wrapper img {
-    max-width: 415px;
-    max-height: 340px
+    border-radius: 15px;
 }
 
 .featuresfour-texts {
@@ -1644,9 +1643,10 @@ select {
 
 .tem2-leadSec {
     padding: 100px 0;
-    overflow: hidden;
+    /* margin: 0 100px; */
+    /* overflow: hidden; */
     position: relative;
-    height: 100%
+    /* height: 100vh */
 }
 
 .tem2-leadSec .tem2-title {
@@ -1736,8 +1736,7 @@ select {
 }
 
 .leadcapturetwo__form-col {
-    margin-bottom: 40px;
-    margin-bottom: 4.5em
+    margin-bottom: 15.5em
 }
 
 .leadcapturetwo__form-col form {
@@ -1889,6 +1888,7 @@ select {
     box-shadow: unset
 }
 
+
 @media screen and (max-width:991px) {
     .tem2-leadSecSec {
         margin: 0px 0
@@ -1899,7 +1899,9 @@ select {
     }
 
     .tem2-leadSec {
-        padding: 0px 40px
+        padding: 0 20px;
+        margin-bottom: 21rem;
+
     }
 
     .tem2-leadSec .tem2-title {
@@ -4678,7 +4680,13 @@ select {
     user-select: none;
     object-fit: contain;
     max-width: 350px;
-    max-height: 89px
+    max-height: 127px
+}
+
+@media screen and (max-width: 768px) {
+    .nav .navbar .navbar-brand img {
+        max-height: 100px
+    }
 }
 
 .nav .navbar .navbar-toggler {
@@ -4712,7 +4720,7 @@ select {
 
 @media screen and (max-width:991px) {
     .nav .navbar {
-        padding: 30px 15px
+        padding: 30px 0px
     }
 
     .nav .navbar .navbar-nav {
@@ -8292,12 +8300,6 @@ select {
 .tem3-lead .input-group {
     border: 1px solid #eaeaea !important;
     margin-bottom: 16px !important;
-    flex-wrap: nowrap !important;
-    -webkit-border-radius: 24px;
-    -moz-border-radius: 24px;
-    -ms-border-radius: 24px;
-    -o-border-radius: 24px;
-    flex-wrap: nowrap;
     border: solid 1px #eaeaea;
     background-color: #fff
 }
@@ -10407,20 +10409,16 @@ select {
     justify-content: center;
     align-items: center;
     background: rgb(var(--third));
-    color: white;
+    color: #fff;
     border: 2px solid rgb(var(--third));
     border-radius: 50px;
-    margin: 5px;
-    padding: 0px 8px;
-    min-width: 155px;
-    min-height: 50px;
     cursor: pointer;
     transition: all 0.3s
 }
 
 .textthree-texts__buttonOne:hover {
     background: transparent;
-    color: rgb(var(--third))
+    color: rgb(var(--third)) !important;
 }
 
 .textthree-texts__buttonTwo {
@@ -10439,8 +10437,10 @@ select {
     transition: all 0.3s
 }
 
+
 .textthree-texts__buttonTwo:hover {
-    background: rgba(0, 0, 0, 0.15) !important
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: #fff !important
 }
 
 .textthree-img {
@@ -12411,7 +12411,7 @@ select {
     background-color: white;
     border: 1px solid #eaeaea !important;
     border-radius: 6px;
-    margin-bottom: 16px !important;
+    margin-bottom: 8px !important;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
@@ -12483,17 +12483,17 @@ select {
     display: flex;
     flex-grow: 1;
     background-color: #fff;
-    min-height: 40px;
+    /* min-height: 40px; */
     border-radius: 6px;
-    padding: 12px 12px;
+    padding: 3px 5px;
     justify-content: start;
-    align-items: center;
-    margin-bottom: 16px;
-    margin-left: 4px;
+    margin-top: 8px;
+    /* margin-left: 4px; */
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     -ms-border-radius: 6px;
-    -o-border-radius: 6px
+    -o-border-radius: 6px;
+
 }
 
 .tem2-lead .field-text:focus-within {
@@ -12516,17 +12516,22 @@ select {
     fill: rgb(var(--fourth), 0.7) !important
 }
 
+.input-group label {
+    padding-top: 4px !important;
+}
+
 .tem2-lead .field-text .input {
     width: 100%;
-    min-height: 22px;
+    min-height: 18px;
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
     border: none;
     cursor: pointer;
     background-color: transparent;
+    text-align: right;
     position: relative;
     z-index: 1;
-    line-height: 2.3
+    line-height: 1.3
 }
 
 .tem2-lead .field-text .input::placeholder {
@@ -15779,9 +15784,7 @@ jdp-container .jdp-time select {
     border-radius: 10px !important;
     color: #838396 !important;
     font-size: 15px !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    text-indent: 1px !important;
+    /* text-indent: 1px !important; */
     text-overflow: '' !important
 }
 

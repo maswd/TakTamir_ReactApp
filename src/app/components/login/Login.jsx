@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { context } from "../../context/context";
 import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom'
 
 function Login() {
   const LoginContext = useContext(context);
@@ -10,8 +11,7 @@ function Login() {
   return (
     <>
       <div className="container">
-        <div className="row justify-content-center ">
-          <div className="col-xl-10 col-lg-12 col-md-9 ">
+          <div className="col-xl-10 col-lg-12 col-md-9 mx-auto ">
             <div className="card o-hidden border-0 my-2">
               <div className="card-body p-0">
                 <div className="row">
@@ -23,6 +23,7 @@ function Login() {
                           خوش آمدید
                         </h1>
                         <p className="text-gray-900">ورود / ثبت نام </p>
+                      
                       </div>
                       <form className="user mt-3" onSubmit={handleLogin}>
                         <div className="form-group">
@@ -52,27 +53,32 @@ function Login() {
                         >
                           ورود
                         </button>
+                        
                       </form>
+                      
                       <hr />
-
-                      <p className="text-xs fw-bold color-700 mt-4">
+                      <Link className=" btn text-xs" to="/">
+                        بازگشت به صفحه اصلی
+                      </Link>
+                      <p className="text-xs fw-bold color-700 mt-2">
                         ورود شما به معنای پذیرش
-                        <a
+                        <Link
                           className="mx-1 d-inline-block text-primray-700"
                           href="/page/terms/"
                         >
                           شرایط 
-                        </a>
+                        </Link>
                         و
-                        <a
+                        <Link
                           className="mx-1 d-inline-block color-secondary-700"
                           href="/page/privacy/"
                         >
                           قوانین 
-                        </a>
+                        </Link>
                         تک تعمیر 
                         است.
                       </p>
+                      
                     </div>
                   </div>
                 </div>
@@ -80,7 +86,6 @@ function Login() {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }
