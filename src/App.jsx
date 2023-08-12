@@ -27,6 +27,7 @@ import ChatTechncian from "./app/components/chat/ChatTechncian";
 import Connect from "./app/pages/Connect";
 function App() {
   const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
 
   useEffect(() => {
     AOS.init();
@@ -95,7 +96,33 @@ function App() {
         />
       </Routes>
 
-      
+      {/* <Route path="category" element={<DashCategory />} /> 
+
+      {/* <Route path="/logout" element={<Logout />} />
+      <Route path="/verify" element={<VerifyCode />} />
+
+      <Route
+        path="/login"
+        element={
+          <UserContext>
+            <CheckPhone />
+          </UserContext>
+        }
+      />
+      <Route
+        path="/Register"
+        element={
+          <UserContext>
+            <Register />
+          </UserContext>
+        }
+      />
+      <Route path="/" element={<Home />}>
+
+        <Route path="about" element={<About />} />
+
+      </Route>
+      <Route path="*" element={<Error />} /> */}
     </>
   );
 }
