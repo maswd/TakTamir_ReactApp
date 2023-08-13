@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Request from "../common/Request";
-import logo from "/img/logo.png";
+import logo from "/img/landin.png";
 import { NavLink } from "react-router-dom";
 function Header() {
   const [isSidebarToggled, setIsSidebarToggled] = useState(true);
