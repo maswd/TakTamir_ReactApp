@@ -177,3 +177,38 @@ button {
 .hover:hover{
   opacity: .7;
 }
+#dv-cardsPart1, .dv-sliderDefine {
+  position: relative;
+}
+
+.dv-sliderDefine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 37px;
+  bottom: 0;
+  width: 59px;
+  height: 59px;
+  border-radius: 50%;
+  background-color: rgba(217,249,226,.7);
+  z-index: -1;
+}
+
+.dv-sliderDefine svg {
+  margin-top: 5px;
+}
+
+.dv-sliderDefine span {
+  color: #4f5d75;
+  font-size: 19px;
+  font-weight: 800;
+  display: block;
+  text-align: center;
+}
+
+.slider-item svg{
+  max-height: 4rem;
+  /* max-width: 4rem; */
+  width: 100%;
+  filter: opacity(.7);
+}

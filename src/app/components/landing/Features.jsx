@@ -3,9 +3,17 @@ import imagecontenct from "/img/vecteezy_man-repair-appliances_.jpg";
 function Features() {
   return (
     <div id="features">
-      <section className="featuresfour-wrapper featuresfour__section forPadding">
-        <div className="featuresfour-texts">
-          <div className="featuresfour-texts__title">
+      <section
+        data-aos="fade-up"
+        className=" featuresfour__section forPadding"
+      >
+        <div className="featuresfour-texts " style={{background:"rgba(237,251,248,.7)",padding:"95px 0 80px"}}>
+          <img
+            className="position-absolute top-0 end-0"
+            style={{ top: 0, right: 0 }}
+            src="https://cdn.landin.ir/default/sections/images/leaf.svg"
+          />
+          <div className="featuresfour-texts__title ">
             ویژگی‌ها و ارزش‌های ما
           </div>
           <div className="featuresfour-texts__desc right">
@@ -419,7 +427,7 @@ function Features() {
             >
               <img
                 src={imagecontenct}
-                style={{ width: "100%",margin:"-2rem -5rem 0 0" }}
+                style={{ width: "100%", margin: "-2rem -5rem 0 0" }}
               />
             </div>
           </div>

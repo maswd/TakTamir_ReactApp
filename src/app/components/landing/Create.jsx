@@ -21,12 +21,12 @@ const Create = () => {
           </div>
           <div className="col-11 col-md-12">
             <div className="d-flex align-items-start">
-              <div className="col-12 px-0 d-flex">
-                <h3 className="how-to__create">
+              <div className="d-flex">
+                <h3 className="how-to__create text-nowrap">
                   چطور
                   <span
                     style={{ filter: "hue-rotate(271deg)" }}
-                    className="highlight mx-1"
+                    className="highlight mx-1 "
                   >
                     تعمیرکار تک تعمیر
                   </span>
