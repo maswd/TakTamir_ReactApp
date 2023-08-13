@@ -14,9 +14,9 @@ const CardRequests = ({
   return (
     <div className="card   bg-transparent border-0 mb-3 col-12 col-md-8 col-lg-5 ">
       <div className="card-body rounded shadow-sm d-flex justify-content-between flex-column flex-wrap border">
-        <p className="text-gray-900 mb-1  text-lg ">اطلاعات تکنسین : </p>
-        <h5 className="card-title">نام و نام خانوادگی : {fullNameUser}</h5>
-        <p className="card-text">شماره تماس: {phoneNumber}</p>
+        <p className="text-gray-900 mb-1 text-gray-900  text-lg ">اطلاعات تکنسین : </p>
+        <h5 className="card-title text-gray-900">نام و نام خانوادگی : {fullNameUser}</h5>
+        <p className="card-text text-gray-900">شماره تماس: {phoneNumber}</p>
         <p className="border-top mt-2 pt-2 text-gray-900 text-lg fw-bolder">
           تخصص ها :
         </p>

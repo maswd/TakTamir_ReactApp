@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Pagination from "../common/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import CardWorks from './cards/CardWorks'
+import CardWorks from "./cards/CardWorks";
 import { getAllWorks } from "../../redux/actions/admin";
 function Works() {
   const dispatch = useDispatch();
@@ -37,9 +37,15 @@ function Works() {
         </div>
         <div className="py-2">
           <div className="d-flex flex-wrap mx-auto">
-            {works.map((item, index) => (
-              <CardWorks key={index} {...item} />
-            ))}
+            {pagination?.totalPages === 0 && (
+              <div className="alert alert-secondary w-100" role="alert">
+                <i className="fa fa-exclamation-triangle ml-2"></i>
+                کاری وجود ندارد !
+              </div>
+            )}
+            {works.map((item, index) =>
+              item.orders.length ? <CardWorks key={index} {...item} /> : null
+            )}
           </div>
         </div>
       </div>

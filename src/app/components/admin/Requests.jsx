@@ -35,21 +35,21 @@ const Requests = () => {
         }
       }
     } catch (error) {
-      if(error.response){
-        errorMessage("مشکلی رخ داده است !")
+      if (error.response) {
+        errorMessage("مشکلی رخ داده است !");
       }
     }
   };
   const handleReject = async (id) => {
     try {
-        const { status } = await WorkRejectService(id);
-        if (status === 200) {
-          dispatch(getAllRequsets(1));
-          successMessage("کار با موفیقت رد شد  !");
-        }
+      const { status } = await WorkRejectService(id);
+      if (status === 200) {
+        dispatch(getAllRequsets(1));
+        successMessage("کار با موفیقت رد شد  !");
+      }
     } catch (error) {
-      if(error.response){
-        errorMessage("مشکلی رخ داده است !")
+      if (error.response) {
+        errorMessage("مشکلی رخ داده است !");
       }
     }
   };
@@ -81,6 +81,12 @@ const Requests = () => {
         </div>
         <div className="py-2">
           <div className="d-flex flex-wrap">
+            {pagination?.totalPages === 0 && (
+              <div className="alert alert-secondary w-100" role="alert">
+                <i className="fa fa-exclamation-triangle ml-2"></i>
+                درخواستی وجود ندارد !
+              </div>
+            )}
             {requests.map((item, index) => (
               <CardRequests
                 key={index}
