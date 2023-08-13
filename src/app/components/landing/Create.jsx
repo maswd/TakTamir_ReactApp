@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Create = () => {
   return (
     <section id="dv-createLandin">
-      <div className="container">
-        <div className="row justify-content-center position-relative">
+      <div className="container w-100 py-5 my-5">
+        <div className="row justify-content-center position-relative mt-5 ">
           <div
             className="w-100 dv-path d-none d-xl-inline-block"
             data-aos="fade-up"
@@ -19,7 +19,7 @@ const Create = () => {
               draggable="false"
             />
           </div>
-          <div className="col-11 col-md-12">
+          <div className="col-11 col-md-12 ">
             <div className="d-flex align-items-start">
               <div className="d-flex">
                 <h3 className="how-to__create text-nowrap">
