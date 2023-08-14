@@ -103,7 +103,7 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
             eventKey="در حال انجام"
             className={`${
               stat === "Doing" ? "d-none" : ""
-            } text-success text-xs border-bottom border-light py-2 `}
+            } text-info text-xs border-bottom border-light py-2 `}
           >
             در حال انجام
           </Dropdown.Item>
@@ -119,7 +119,7 @@ function StatusDropdown({ id, stat,name_Device,customer }) {
 
           <Dropdown.Item
             eventKey="انجام شده"
-            className={`text-info text-xs pt-2 ${
+            className={`text-success text-xs pt-2 ${
               stat === "Completed" ? "d-none" : ""
             }`}
             disabled={stat === "Completed"}

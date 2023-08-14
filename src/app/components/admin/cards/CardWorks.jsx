@@ -3,10 +3,9 @@ import { getStatusText, getStatusClass } from "../../../../utils/convertor";
 import { useState } from "react";
 import DynamicSlides from "./Slider";
 const CardWorks = ({ fullNameUser, phoneNumber, orders, specialtyDtos }) => {
-  console.log(orders.length);
   return (
     <div
-      className={`card   bg-transparent border-0 mb-3 col-12 col-md-8 col-lg-6`}
+      className={`card bg-transparent border-0 mb-3 col-12 col-md-8 col-lg-6`}
     >
       <div
         className={`card-body rounded-top shadow-sm border border-${getStatusClass()}`}

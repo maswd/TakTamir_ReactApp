@@ -72,7 +72,7 @@ const AcceptTec = () => {
         </div>
         <div className="py-2">
           <div className="d-flex flex-wrap">
-          {pagination?.totalPages === 0 && (
+          {user.length === 0 && (
               <div className="alert alert-secondary w-100" role="alert">
                 <i className="fa fa-exclamation-triangle ml-2"></i>
                 درخواستی وجود ندارد !

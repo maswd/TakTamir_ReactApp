@@ -36,7 +36,7 @@ function Card(props) {
               </div>
             </div>
             <div className="col-auto text-left">
-              {props.jobsOrder[0].statusJob !== "Completed" && props.jobsOrder[0].statusJob !== "waiting" && (
+              {props.jobsOrder[0].statusJob !== "Completed" && props.jobsOrder[0].statusJob !== "waiting" && props.jobsOrder[0].statusJob !== "Cancel" && (
                 <StatusDropdown
                   id={props.id}
                   stat={props.jobsOrder[0].statusJob}
