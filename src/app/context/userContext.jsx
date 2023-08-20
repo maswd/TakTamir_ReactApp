@@ -115,6 +115,9 @@ const UserContext = ({ children }) => {
           history("/logout",{replace: true});
         }
       }
+    }finally{
+      dispatch(hideLoading());
+
     }
   };
 
@@ -139,6 +142,9 @@ const UserContext = ({ children }) => {
       if (error.response.status === 400) {
          await checkPhone(localStorage.getItem(phone));
       }
+    }finally{
+      dispatch(hideLoading());
+
     }
   };
   const handleRegister = async (e) => {
@@ -181,6 +187,9 @@ const UserContext = ({ children }) => {
           history("/logout",{replace: true});
         }
       }
+    }finally{
+      dispatch(hideLoading());
+
     }
   };
   return (

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { successMessage } from "../../../utils/message";
 
 function WriteWorks() {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState("");
   const [items, setItems] = useState([{ name: "", price: "" }]);
   const [nationalCode, setNationalCode] = useState("");
   const [jobDescription, setJobDescription] = useState("");
@@ -61,7 +61,7 @@ function WriteWorks() {
       name_Device: name_Device,
       usedTokcet: hasSubscription,
       suppliessDtos: items,
-      CodemeliiCustomer:nationalCode
+      CodemeliiCustomer: nationalCode,
     };
     try {
       const { status } = await endJobService(orderID, state);
@@ -69,15 +69,16 @@ function WriteWorks() {
         localStorage.removeItem("name_Device");
         localStorage.removeItem("orderid");
         localStorage.removeItem("customer");
-        successMessage("ثبت کار با موفقیت انجام شد !")
+        successMessage("ثبت کار با موفقیت انجام شد !");
         navigate("/technician/orders", { replace: true });
       }
     } catch (error) {
-      if(error.response){
-      errorMessage("مشکلی رخ داده است !")
-    }
+      if (error.response) {
+        errorMessage("مشکلی رخ داده است !");
+      }
     }
   };
+
   return (
     <div className="mt-1">
       <div className="d-flex flex-wrap justify-content-center align-items-center">
@@ -99,9 +100,9 @@ function WriteWorks() {
               />
               <input
                 type="tel"
-                className="form-control mt-2 shadow-sm w-100 "
+                className="form-control mt-2 shadow-sm w-100"
                 id="amount"
-                placeholder="مبلغ دریافتی را وارد کنید "
+                placeholder="مبلغ دریافتی را وارد کنید"
                 value={amount}
                 onChange={handleAmountChange}
               />

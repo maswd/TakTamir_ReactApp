@@ -9,11 +9,9 @@ const CardWorkers = ({
   isActive,
   create_at,
   statusAccount,
-  id,
-  handleAdmin,
+  role,
 }) => {
   return (
-    
     <div className="card  bg-transparent border-0 mb-3 col-12  col-lg-6">
       <div
         className={`card-body rounded shadow-sm d-flex justify-content-between border border-left-${
@@ -21,7 +19,7 @@ const CardWorkers = ({
         }`}
       >
         <div className="">
-        <div className="card-text">
+          <div className="card-text">
             {statusAccount === "Account is Verified" ? (
               <p className="text-success"> حساب تایید شده است !</p>
             ) : (
@@ -44,7 +42,6 @@ const CardWorkers = ({
           <p className="card-text">
             تاریخ ثبت نام: {convertToPersianDate(create_at).slice(0, 10)}
           </p>
-         
         </div>
 
         <div className="d-flex flex-column justify-content-between align-items-end">
@@ -59,12 +56,14 @@ const CardWorkers = ({
           >
             <span> {isActive ? "کار میگیرم" : "کار نمیگیرم"}</span>
           </button>
-          <button
-            onClick={() => handleAdmin(id)}
-            className=" ml-2 btn text-nowrap btn-primary text-xs"
-          >
-            ارتقاء حساب
-          </button>
+          {role === "Technician" && (
+            <button
+              onClick={() => handleAdmin(id)}
+              className=" ml-2 btn text-nowrap btn-primary text-xs"
+            >
+              ارتقاء حساب
+            </button>
+          )}
         </div>
       </div>
     </div>

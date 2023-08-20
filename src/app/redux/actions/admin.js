@@ -1,4 +1,4 @@
-import { AllTechncianService, AllUsersService, RequestsService, WorksService } from "../../services/adminService";
+import { AllTechncianService, AllUsersService, CompeletedService, RequestsService, WorksService } from "../../services/adminService";
 
 export const getAllTechncian = (page) => {
   return async (dispatch, getState) => {
@@ -39,6 +39,17 @@ export const getAllWorks = (page) => {
       await dispatch({ type: "INIT_WORKS", payload: data });
     } catch (error) {
       dispatch({ type: "INIT_WORKS", payload: {...getState().admin} });
+    }
+  };
+};
+
+export const getCompeletedOrders = (page) => {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await CompeletedService(page);
+      await dispatch({ type: "INIT_WORKS", payload: data });
+    } catch (error) {
+      dispatch({ type: "INIT_WORKS", payload: { ...getState().admin } });
     }
   };
 };

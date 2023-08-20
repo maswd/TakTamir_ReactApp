@@ -73,10 +73,10 @@ const AcceptTec = () => {
         <div className="py-2">
           <div className="d-flex flex-wrap">
           {user.length === 0 && (
-              <div className="alert alert-secondary w-100" role="alert">
-                <i className="fa fa-exclamation-triangle ml-2"></i>
-                درخواستی وجود ندارد !
-              </div>
+               <div className="alert alert-secondary w-100" role="alert">
+               <i className="fa fa-exclamation-triangle ml-2"></i>
+               اطلاعاتی وجود ندارد !
+             </div>
             )}
             {user.map((item, index) => (
               <CardAcceptTec

@@ -216,7 +216,7 @@ function Jobs() {
                 {selectedJob && (
                   <Modal
                     style={{ marginTop: "3rem", padding: "0" }}
-                    contentClassName="modal-content"
+                    contentClassName="modal-contents"
                     show={true}
                     onHide={handleCloseModal}
                   >

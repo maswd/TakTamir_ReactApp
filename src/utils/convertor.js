@@ -53,13 +53,29 @@ export const getStatusIcon = (statusJob) => {
   }
 };
 
-import PersianDate from 'persian-date';
+import PersianDate from "persian-date";
 
 export function convertToPersianDate(inputDateTime) {
   const inputDate = new Date(inputDateTime);
   const persianDate = new PersianDate(inputDate);
-  
-  const formattedDateTime = persianDate.format('YYYY/MM/DD ساعت: HH:mm:ss');
+
+  const formattedDateTime = persianDate.format("YYYY/MM/DD ساعت: HH:mm:ss");
 
   return formattedDateTime;
+}
+
+export function ToRial(str) {
+  if (typeof str === "undefined") {
+    return null;
+  }
+  let number = parseFloat(str);
+  if (!isNaN(number) && Number.isFinite(number)) {
+    number = Math.floor(number);
+  }
+  let formattedNumber = number.toString().replace(/\,/g, "");
+  var objRegex = new RegExp("(-?[0-9]+)([0-9]{3})");
+  while (objRegex.test(formattedNumber)) {
+    formattedNumber = formattedNumber.replace(objRegex, "$1,$2");
+  }
+  return formattedNumber;
 }

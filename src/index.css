@@ -62,7 +62,7 @@ button {
 }
 
 .slick-prev:before {
-  content: '←';
+  content: '←'!important;
 }
 
 .slick-next:before,
@@ -71,6 +71,8 @@ button {
   line-height: 1;
   opacity: .75;
   color: #fff;
+  font-family: IranSans!important;
+
 }
 
 .slick-next:before {

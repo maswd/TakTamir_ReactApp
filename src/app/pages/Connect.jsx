@@ -6,7 +6,7 @@ import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { errorMessage, successMessage } from "../../utils/message";
-import config from '/src/config.json'
+import config from "/src/config.json";
 const validationSchema = Yup.object().shape({
   name_Device: Yup.string().required("• نام دستگاه را وارد کنید."),
   problems: Yup.string().required("• مشکل دستگاه را وارد کنید."),
@@ -47,10 +47,7 @@ const ExampleForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       dispatch(showLoading());
-      const { status } = await axios.post(
-        `${config.api}/api/Jobs`,
-        values
-      );
+      const { status } = await axios.post(`${config.api}/api/Jobs`, values);
       if (status === 201) {
         history("/", { replace: true });
         successMessage(" درخواست  شما با موفقیت ثبت شد !");
@@ -60,10 +57,11 @@ const ExampleForm = () => {
       }
     } catch (error) {
       // resetForm();
-      if (error.response){
+      if (error.response) {
         errorMessage("مشکلی از سمت سرور رخ داده است");
-
       }
+      dispatch(hideLoading());
+    } finally {
       dispatch(hideLoading());
     }
   };
@@ -129,7 +127,7 @@ const ExampleForm = () => {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 نام دستگاه
                               </label>
 
@@ -148,7 +146,7 @@ const ExampleForm = () => {
                           </div>
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 مشکل دستگاه
                               </label>
                               <Field
@@ -166,7 +164,7 @@ const ExampleForm = () => {
                           </div>
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 توضیحات
                               </label>
                               <Field
@@ -185,7 +183,7 @@ const ExampleForm = () => {
                           </div>
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 نام و نام خانوادگی
                               </label>
                               <Field
@@ -204,7 +202,7 @@ const ExampleForm = () => {
 
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 شماره ثابت
                               </label>
                               <Field
@@ -222,7 +220,7 @@ const ExampleForm = () => {
                           </div>
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 شماره همراه
                               </label>
                               <Field
@@ -240,7 +238,7 @@ const ExampleForm = () => {
                           </div>
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 کد ملی
                               </label>
                               <Field
@@ -258,7 +256,7 @@ const ExampleForm = () => {
                           </div>
                           <div className="col-md-12">
                             <div className="field-text input-group">
-                              <label className="text-nowrap text-xs">
+                              <label className="text-nowrap text-sm">
                                 آدرس
                               </label>
                               <Field
@@ -309,9 +307,9 @@ const ExampleForm = () => {
           </div>
         </div>
       </div>
-      <div className="tem2-tag text-nowrap text-xs text-center">
-          ساخته شده توسط سافت کد
-        </div>
+      <div className="tem2-tag text-nowrap text-sm text-center">
+        ساخته شده توسط سافت کد
+      </div>
     </section>
   );
 };

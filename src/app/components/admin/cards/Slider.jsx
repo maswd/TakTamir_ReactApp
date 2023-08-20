@@ -68,8 +68,8 @@ const DynamicSlides = ({ data, handleReject, handleAccept }) => {
           >
             <div
               className={`${
-                handleAccept ? "d-flex" : "d-none"
-              }  flex-column ml-2 align-self-center align-items-center `}
+                handleAccept ? "d-flex" : "d-none" 
+              }  flex-column ml-2 align-self-center align-items-center order-1`}
             >
               <button
                 onClick={() => accept(i.id)}

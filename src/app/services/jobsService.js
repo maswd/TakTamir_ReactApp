@@ -5,6 +5,7 @@ export const jobsService = (page) => {
     `${config.api}/api/Jobs?page=${page}&pageSize=6`
   );
 };
+
 export const orderService = (page) => {
   return http.get(`${config.api}/api/Users/MyJobs?page=${page}&pageSize=6`);
 };

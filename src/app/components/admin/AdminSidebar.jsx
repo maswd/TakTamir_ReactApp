@@ -75,6 +75,12 @@ const AdminSidebar = () => {
             <span> درخواست ها </span>
           </NavLink>
         </li>
+        <li className="nav-item ">
+          <NavLink onClick={handleToggle} to="money" className="nav-link">
+          <i className="fas fa-dollar-sign"></i>
+            <span> مالی </span>
+          </NavLink>
+        </li>
         <hr className="sidebar-divider d-none d-md-block" />
 
         <div className="text-center d-none d-md-inline">

@@ -1,28 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { activeService, getProfile } from "../../services/userService";
 import Swal from "sweetalert2";
 import { addUser } from "../../redux/actions/user";
-import profile from '/img/user.png'
+import profile from "/img/user.png";
 import { confirmMessage } from "../../../utils/message";
+import { ToRial } from "../../../utils/convertor";
 function Profile() {
   const user = useSelector((state) => state.user);
   const token = localStorage.getItem("access_token");
   const dispatch = useDispatch();
+  useEffect(() => {
+   const fetch =async () => {
+    const { data, status } = await getProfile(token);
+    if (status === 200) {
+      dispatch(addUser(data))}
+   }
+   fetch()
+
+  }, []);
+
+
+
   const handleActive = async (e) => {
-    const result = await confirmMessage()
+    const result = await confirmMessage();
     if (result) {
       const { status } = await activeService({ isActive: e });
       if (status === 200) {
-        const {data,status} = await getProfile(token);
+        const { data, status } = await getProfile(token);
         if (status === 200) {
           dispatch(addUser(data));
         }
       }
     }
   };
+
   return (
     <>
       <div className="mt-2 ">
@@ -75,7 +89,7 @@ function Profile() {
                       </>
                     </div>
                     <p className="h6 my-3">
-                      حساب ذخیره : {user?.wallet?.balance}
+                      حساب ذخیره : {ToRial(user?.wallet?.balance)}
                     </p>
                   </div>
                 </div>
@@ -118,8 +132,8 @@ function Profile() {
         </div>
       </div>
       <div className="tem2-tag text-nowrap text-xs text-center">
-          ساخته شده توسط سافت کد
-        </div>
+        ساخته شده توسط سافت کد
+      </div>
     </>
   );
 }

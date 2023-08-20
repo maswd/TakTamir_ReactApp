@@ -62,3 +62,9 @@ export const UpgradeAccountService = (id) => {
     `${config.api}/api/AdminUsers/UpgradeAccounttoAdmin?userid=${id}`
   );
 };
+export const CompeletedService = (page) => {
+  return http.get(`${config.api}/api/Financial/OrdersOutstanding?page=${page}&pageSize=6`);
+};
+export const paymentService = (orderId,userId,percnt) => {
+  return http.post(`${config.api}/api/Financial/${orderId}/${userId}?Percent=${percnt}`);
+};

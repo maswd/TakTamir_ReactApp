@@ -25,6 +25,7 @@ import Requests from "./app/components/admin/Requests";
 import ChatAdmin from "./app/components/chat/ChatAdmin";
 import ChatTechncian from "./app/components/chat/ChatTechncian";
 import Connect from "./app/pages/Connect";
+import Money from "./app/components/admin/Money";
 function App() {
   const user = useSelector((state) => state.user);
   // const user = useSelector((state) => state.user);
@@ -58,6 +59,7 @@ function App() {
           <Route path="messages" element={<ChatAdmin />} />
           <Route path="accept" element={<AcceptTec />} />
           <Route path="requests" element={<Requests />} />
+          <Route path="money" element={<Money />} />
         </Route>
         <Route
           path="/technician"

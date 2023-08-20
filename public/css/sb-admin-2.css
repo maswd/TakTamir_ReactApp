@@ -11194,6 +11194,9 @@ a:focus {
 .text-xs {
   font-size: .7rem;
 }
+.text-sm {
+  font-size: .8rem;
+}
 
 .text-lg {
   font-size: 1.2rem;
