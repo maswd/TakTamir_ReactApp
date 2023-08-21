@@ -47,9 +47,9 @@ export const getCompeletedOrders = (page) => {
   return async (dispatch, getState) => {
     try {
       const { data } = await CompeletedService(page);
-      await dispatch({ type: "INIT_WORKS", payload: data });
+      await dispatch({ type: "INIT_PAY", payload: data });
     } catch (error) {
-      dispatch({ type: "INIT_WORKS", payload: { ...getState().admin } });
+      dispatch({ type: "INIT_PAY", payload: { ...getState().admin } });
     }
   };
 };

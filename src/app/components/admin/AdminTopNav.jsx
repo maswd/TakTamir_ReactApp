@@ -15,7 +15,7 @@ function AdminTopNav() {
             <i className="fa fa-bars"></i>
           </button>
 
-          <ul className="navbar-nav pr-5 mr-auto">
+          <ul className="navbar-nav mr-auto">
             <li className="nav-item dropdown no-arrow mx-1">
               <Link
                 className="nav-link dropdown-toggle"

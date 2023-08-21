@@ -37,15 +37,16 @@ function Works() {
         </div>
         <div className="py-2">
           <div className="d-flex flex-wrap mx-auto">
-            {works.length === 0 && (
-               <div className="alert alert-secondary w-100" role="alert">
-               <i className="fa fa-exclamation-triangle ml-2"></i>
-               اطلاعاتی وجود ندارد !
-             </div>
+            {works?.length === 0 && (
+              <div className="alert alert-secondary w-100" role="alert">
+                <i className="fa fa-exclamation-triangle ml-2"></i>
+                اطلاعاتی وجود ندارد !
+              </div>
             )}
-            {works.map((item, index) =>
-              item.orders.length ? <CardWorks key={index} {...item} /> : null
-            )}
+            {works &&
+              works?.map((item, index) =>
+                item.orders.length ? <CardWorks key={index} {...item} /> : null
+              )}
           </div>
         </div>
       </div>

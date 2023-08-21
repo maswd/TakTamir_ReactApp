@@ -8,7 +8,7 @@ import { paymentService } from "../../services/adminService";
 
 const Money = () => {
   const dispatch = useDispatch();
-  const works = useSelector((state) => state.admin.works);
+  const pays = useSelector((state) => state.admin.pays);
   const pagination = useSelector((state) => state.admin.pagination);
   useEffect(() => {
     dispatch(getCompeletedOrders(1));
@@ -51,15 +51,16 @@ const Money = () => {
         </div>
         <div className="py-2">
           <div className="d-flex flex-wrap">
-            {works.map((item, index) =>
+            {pays?.every((item) => item.orders.length === 0) && (
+              <div className="alert alert-secondary w-100" role="alert">
+                <i className="fa fa-exclamation-triangle ml-2"></i>
+                اطلاعاتی وجود ندارد !
+              </div>
+            )}
+            {pays?.map((item, index) =>
               item.orders.length !== 0 ? (
                 <CardCompleted key={index} {...item} handle={handleConfirm} />
-              ) : (
-                <div key={index} className="alert alert-secondary w-100" role="alert">
-                  <i className="fa fa-exclamation-triangle ml-2"></i>
-                  اطلاعاتی وجود ندارد !
-                </div>
-              )
+              ) : null
             )}
           </div>
         </div>

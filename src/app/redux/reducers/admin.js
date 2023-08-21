@@ -21,6 +21,12 @@ export const adminReducer = (
         works: [...action.payload.data],
         pagination: { ...action.payload.paginationdata },
       };
+    case "INIT_PAY":
+      return {
+        ...state,
+        pays: [...action.payload.data],
+        pagination: { ...action.payload.paginationdata },
+      };
     default:
       return state;
   }
