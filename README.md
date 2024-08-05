@@ -17,6 +17,15 @@
 
 
 ## دمو
+
+### video from platform
+[![Watch the video]](https://github.com/maswd/TakTamir_ReactApp/blob/master/public/img/%D8%AA%DA%A9%20%D9%86%D8%B9%D9%85%DB%8C%D8%B)
+
+
+## Authors
+
+* Mohamadreza Kiani
+* Masoud Gorgani
 برای مشاهده دمو، روی لینک زیر کلیک کنید:
 
 
@@ -27,6 +36,7 @@
 
 دموی آنلاین : 
 لینک [مشاهده](https://app.tak-tamir.ir)
+
 
 ## نصب و راه‌اندازی
 
