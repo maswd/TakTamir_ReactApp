@@ -48,3 +48,26 @@
   "sweetalert2": "^11.7.20",
   "yup": "^1.2.0"
 }
+نحوه راه‌اندازی پروژه
+ابتدا مخزن پروژه را کلون کنید:
+bash
+Copy code
+git clone https://github.com/username/tak-tamir.git
+به دایرکتوری پروژه بروید:
+bash
+Copy code
+cd tak-tamir
+وابستگی‌های پروژه را نصب کنید:
+bash
+Copy code
+npm install
+پروژه را اجرا کنید:
+bash
+Copy code
+npm start
+
+## دمو
+
+برای مشاهده دمو، روی لینک زیر کلیک کنید:
+
+[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
