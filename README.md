@@ -17,17 +17,7 @@
 
 
 ## دمو
-
-### video from platform
-[![Watch the video]](https://github.com/maswd/TakTamir_ReactApp/blob/0adaa1116e2e6f564a3b06738b7772f5ebf5a9e5/public/img/app.mkv)
-
-
-## Authors
-
-* Mohamadreza Kiani
-* Masoud Gorgani
 برای مشاهده دمو، روی لینک زیر کلیک کنید:
-
 
 ویدیو آپارات:
 
@@ -62,6 +52,12 @@
     npm run dev
     ```
 
+
+
+## سازندگان
+
+* Masoud Gorgani -> Front-end
+* Mohamadreza Kiani ->  Back-end
 ## وابستگی‌های پروژه
 
 ```json
