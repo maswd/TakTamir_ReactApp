@@ -15,6 +15,31 @@
 - **Socket.IO - SignalR** برای پیاده‌سازی سیستم چت.
 - **Bootstrap** طراحی رابط کاربری
 
+
+## نصب و راه‌اندازی
+
+برای اجرای این پروژه، مراحل زیر را دنبال کنید:
+
+1. ابتدا مخزن را کلون کنید:
+    ```bash
+    git clone https://github.com/maswd/TakTamir_ReactApp.git
+    ```
+
+2. وارد پوشه پروژه شوید:
+    ```bash
+    cd TakTamir_ReactApp
+    ```
+
+3. وابستگی‌ها را نصب کنید:
+    ```bash
+    npm install
+    ```
+
+4. پروژه را اجرا کنید:
+    ```bash
+    npm run dev
+    ```
+
 ## وابستگی‌های پروژه
 
 ```json
@@ -49,27 +74,3 @@
   "yup": "^1.2.0"
 }
 
-
-## نصب و راه‌اندازی
-
-برای اجرای این پروژه، مراحل زیر را دنبال کنید:
-
-1. ابتدا مخزن را کلون کنید:
-    ```bash
-    git clone https://github.com/maswd/TakTamir_ReactApp.git
-    ```
-
-2. وارد پوشه پروژه شوید:
-    ```bash
-    cd TakTamir_ReactApp
-    ```
-
-3. وابستگی‌ها را نصب کنید:
-    ```bash
-    npm install
-    ```
-
-4. پروژه را اجرا کنید:
-    ```bash
-    npm run dev
-    ```
